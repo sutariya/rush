@@ -1,24 +1,9 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                body {
-                  background-color: white; /* Ensure the iframe has a white background */
-                }
-    
-                
-              </style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitride Browser</title>
+    <title>Rush Browser</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -56,7 +41,7 @@
         header {
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
-            padding: 20px 0;
+            padding: 24px 0; /* Slightly increased for bigger logo */
             position: fixed;
             width: 100%;
             top: 0;
@@ -73,21 +58,25 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px; /* More space around logo */
         }
-        
-        .logo img {
-            height: 40px;
-            filter: brightness(0) invert(1); /* Forces logo to pure white */
+
+        /* 🚀 HEADER: DOUBLED VIDEO LOGO (64px) */
+        .logo-video-wrapper {
+            width: auto;
+            height: 64px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
         }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--white);
+
+        .logo-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
-        
+
         .nav-links {
             display: flex;
             gap: 30px;
@@ -427,16 +416,15 @@
             flex: 1;
             min-width: 250px;
         }
-        
-        .footer-logo .logo {
-            margin-bottom: 24px;
+
+        /* 🖼️ FOOTER: STATIC PNG LOGO (NOT VIDEO) */
+        .footer-logo .logo-img {
+            height: 32px; /* Smaller, clean static version */
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
-        .footer-logo .logo img {
-            height: 40px;
-            filter: brightness(0) invert(1); /* Ensures logo is white in footer too */
-        }
-        
         .footer-logo p {
             color: var(--medium-gray);
             line-height: 1.7;
@@ -508,6 +496,11 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            /* Reduce header logo on mobile */
+            .logo-video-wrapper {
+                height: 32px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -536,8 +529,12 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="nitride.svg" alt="Nitride Browser Logo">
-                    <div class="logo-text">NITRIDE</div>
+                    <div class="logo-video-wrapper">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="rush.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
                 <div class="nav-links">
                     <a href="#features">FEATURES</a>
@@ -554,7 +551,7 @@
     <section class="hero">
         <div class="container">
             <h1>DECENTRALIZED BROWSING. REDEFINED.</h1>
-            <p>Nitride Browser resolves HNS and ENS domains natively, delivering seamless access to the next-generation internet with uncompromising speed and security.</p>
+            <p>Rush Browser resolves HNS and ENS domains natively, delivering seamless access to the next-generation internet with uncompromising speed and security.</p>
             <div class="hero-buttons">
                 <a href="#download" class="primary-btn">DOWNLOAD NOW</a>
                 <a href="#features" class="secondary-btn">LEARN MORE</a>
@@ -599,7 +596,7 @@
     <section class="download" id="download">
         <div class="container">
             <div class="section-title">
-                <h2>DOWNLOAD NITRIDE</h2>
+                <h2>DOWNLOAD RUSH</h2>
                 <p>Professional-grade browser for Windows, macOS, and Linux</p>
             </div>
             <div class="download-options">
@@ -636,13 +633,13 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>ABOUT NITRIDE</h2>
-                    <p>Nitride represents the next evolution in web browsing — engineered for professionals who demand precision, performance, and privacy.</p>
+                    <h2>ABOUT RUSH</h2>
+                    <p>Rush represents the next evolution in web browsing — engineered for professionals who demand precision, performance, and privacy.</p>
                     <p>Our architecture combines enterprise-grade security with native support for decentralized protocols, eliminating complexity while maximizing capability.</p>
-                    <p>Built for developers, researchers, and forward-thinking organizations, Nitride provides uncompromising access to both traditional and decentralized web infrastructure.</p>
+                    <p>Built for developers, researchers, and forward-thinking organizations, Rush provides uncompromising access to both traditional and decentralized web infrastructure.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1523001185760-84ed1a5c6377?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nitride Browser Interface">
+                    <img src="https://images.unsplash.com/photo-1523001185760-84ed1a5c6377?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rush Browser Interface">
                 </div>
             </div>
         </div>
@@ -654,11 +651,11 @@
             <div class="license-content">
                 <h2>LICENSE</h2>
                 <p class="highlight">PROPRIETARY COMMERCIAL LICENSE</p>
-                <p>Nitride Browser is protected under a proprietary commercial license. All rights reserved.</p>
+                <p>Rush Browser is protected under a proprietary commercial license. All rights reserved.</p>
                 <p>Unauthorized copying, modification, distribution, reverse engineering, or exploitation is strictly prohibited.</p>
-                <p>This software and its associated documentation are the exclusive property of Nitride Technologies. Use is granted only under explicit written agreement with the copyright holder.</p>
+                <p>This software and its associated documentation are the exclusive property of Rush Technologies. Use is granted only under explicit written agreement with the copyright holder.</p>
                 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.</p>
-                <p>© 2023 Nitride Technologies. All rights reserved.</p>
+                <p>© 2024 Rush Technologies. All rights reserved.</p>
             </div>
         </div>
     </section>
@@ -668,10 +665,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <div class="logo">
-                        <img src="nitride.svg" alt="Nitride Browser Logo">
-                        <div class="logo-text">NITRIDE</div>
-                    </div>
+                    <!-- 👇 STATIC PNG LOGO IN FOOTER — NO VIDEO -->
+                    <img src="rush.png" alt="Rush Browser Logo" class="logo-img">
                     <p>Professional-grade browsing for the decentralized era.</p>
                 </div>
                 <div class="footer-links">
@@ -703,7 +698,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2023 NITRIDE TECHNOLOGIES. PROPRIETARY & CONFIDENTIAL.</p>
+                <p>© 2024 RUSH TECHNOLOGIES. PROPRIETARY & CONFIDENTIAL. Visit <a href="https://RushBrowser.com" style="color: var(--white); text-decoration: underline;">RushBrowser.com</a></p>
             </div>
         </div>
     </footer>
@@ -753,12 +748,3 @@
     </script>
 </body>
 </html>
-
-
-    
-              <script>
-                              
-              </script>
-                        </body>
-                        </html>
-                    
