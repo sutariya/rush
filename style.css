@@ -6,6 +6,7 @@
     --dark-gray: #303030;
     --darker-gray: #1a1a1a;
     --border-gray: #404040;
+    --primary-color: #ffffff; /* Added for consistency, can be changed */
 }
 
 * {
@@ -74,7 +75,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--light-gray);
+    color: var(--white);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -83,7 +84,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--white);
+    color: var(--primary-color);
 }
 
 .download-btn {
@@ -348,7 +349,7 @@ nav {
     border: 1px solid var(--border-gray);
 }
 
-/* License Section */
+/* License Section (Retained for license.html) */
 .license {
     padding: 100px 0;
     background: var(--black);
@@ -391,28 +392,29 @@ nav {
 /* Footer */
 footer {
     background: var(--black);
-    padding: 40px 0 20px; /* Reduced padding for a sleeker look */
+    padding: 60px 0 30px; /* Adjusted padding for top and bottom */
     border-top: 1px solid var(--border-gray);
 }
 
 .footer-content {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    text-align: center; /* Center the text within the container */
-    margin-bottom: 20px; /* Reduced margin */
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 40px; /* Increased margin below logo section */
 }
 
 .footer-logo {
-    flex: 1;
-    max-width: 400px; /* Give it a max-width to control centering */
+    display: flex; /* Use flex to align items easily */
+    flex-direction: column; /* Stack logo and text vertically */
+    align-items: center; /* Center items horizontally */
+    max-width: 400px;
 }
 
 .footer-logo .logo-img {
-    height: 32px;
+    height: 64px; /* Increased logo size (2x previous 32px) */
     width: auto;
     object-fit: contain;
-    display: block;
-    margin: 0 auto 15px auto; /* Center the logo and add space below */
+    margin: 0 auto 20px auto; /* Increased margin below logo */
 }
 
 .footer-logo p {
@@ -421,15 +423,14 @@ footer {
     font-size: 0.95rem;
 }
 
-/* Removed .footer-links styles as the element is gone */
-
 .copyright {
     text-align: center;
-    padding-top: 20px; /* Reduced padding */
+    padding-top: 30px; /* Consistent padding above the line */
     border-top: 1px solid var(--border-gray);
     color: var(--medium-gray);
     font-size: 0.9rem;
     letter-spacing: 0.5px;
+    margin-top: 30px; /* Consistent padding below the line */
 }
 
 /* Responsive Design */
