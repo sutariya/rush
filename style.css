@@ -391,21 +391,20 @@ nav {
 /* Footer */
 footer {
     background: var(--black);
-    padding: 60px 0 30px;
+    padding: 40px 0 20px; /* Reduced padding for a sleeker look */
     border-top: 1px solid var(--border-gray);
 }
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
+    justify-content: center; /* Center the content horizontally */
+    text-align: center; /* Center the text within the container */
+    margin-bottom: 20px; /* Reduced margin */
 }
 
 .footer-logo {
     flex: 1;
-    min-width: 250px;
+    max-width: 400px; /* Give it a max-width to control centering */
 }
 
 .footer-logo .logo-img {
@@ -413,6 +412,7 @@ footer {
     width: auto;
     object-fit: contain;
     display: block;
+    margin: 0 auto 15px auto; /* Center the logo and add space below */
 }
 
 .footer-logo p {
@@ -421,42 +421,11 @@ footer {
     font-size: 0.95rem;
 }
 
-.footer-links {
-    flex: 1;
-    min-width: 200px;
-}
-
-.footer-links h3 {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: var(--white);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: var(--medium-gray);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-}
-
-.footer-links a:hover {
-    color: var(--white);
-}
+/* Removed .footer-links styles as the element is gone */
 
 .copyright {
     text-align: center;
-    padding-top: 24px;
+    padding-top: 20px; /* Reduced padding */
     border-top: 1px solid var(--border-gray);
     color: var(--medium-gray);
     font-size: 0.9rem;
