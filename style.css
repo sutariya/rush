@@ -110,7 +110,7 @@ nav {
     padding: 160px 0 100px;
     text-align: center;
     position: relative;
-    background-image: url('/hero-bg.jpg');
+    background-image: url('hero-bg.jpg'); /* Corrected path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -225,6 +225,19 @@ nav {
     font-size: 2.5rem;
     margin-bottom: 24px;
     color: var(--light-gray);
+}
+
+.feature-icon-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.feature-icon-svg img {
+    height: 40px;
+    width: auto;
 }
 
 .feature-card h3 {
