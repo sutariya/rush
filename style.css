@@ -110,7 +110,7 @@ nav {
     padding: 160px 0 100px;
     text-align: center;
     position: relative;
-    background-image: url('/hero-bg.jpg'); /* ← CRITICAL: Restores red UI */
+    background-image: url('/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -402,15 +402,18 @@ footer {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centered horizontally */
+    align-items: center;
     flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .footer-logo {
     flex: 1;
     min-width: 250px;
+    text-align: center;
 }
 
 .footer-logo .logo-img {
@@ -418,45 +421,15 @@ footer {
     width: auto;
     object-fit: contain;
     display: block;
+    margin: 0 auto 16px;
 }
 
 .footer-logo p {
     color: var(--medium-gray);
     line-height: 1.7;
     font-size: 0.95rem;
-}
-
-.footer-links {
-    flex: 1;
-    min-width: 200px;
-}
-
-.footer-links h3 {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: var(--white);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: var(--medium-gray);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-}
-
-.footer-links a:hover {
-    color: var(--white);
+    margin: 0;
+    text-align: center;
 }
 
 .copyright {
@@ -499,6 +472,10 @@ footer {
     .about-logo {
         max-width: 80%;
         height: auto;
+    }
+
+    .footer-logo {
+        min-width: 100%;
     }
 }
 
