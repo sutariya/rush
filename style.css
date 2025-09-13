@@ -237,6 +237,7 @@ nav {
 .feature-card p {
     color: var(--medium-gray);
     line-height: 1.7;
+    font-size: 0.98rem;
 }
 
 /* Download Section */
@@ -350,7 +351,8 @@ nav {
     border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-gray);
-    filter: grayscale(100%) contrast(1.1);
+    /* ✅ REMOVED grayscale filter — shows real colors */
+    filter: none;
 }
 
 /* License Section */
@@ -396,17 +398,17 @@ nav {
 /* Footer */
 footer {
     background: var(--black);
-    padding: 60px 0 30px;
+    padding: 40px 0 30px; /* ✅ Reduced top/bottom padding */
     border-top: 1px solid var(--border-gray);
 }
 
 .footer-content {
     display: flex;
-    justify-content: center; /* Centered horizontally */
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* ✅ Tighter spacing */
     text-align: center;
 }
 
@@ -421,7 +423,7 @@ footer {
     width: auto;
     object-fit: contain;
     display: block;
-    margin: 0 auto 16px;
+    margin: 0 auto 12px; /* ✅ Reduced space below logo */
 }
 
 .footer-logo p {
@@ -430,6 +432,7 @@ footer {
     font-size: 0.95rem;
     margin: 0;
     text-align: center;
+    padding: 0 20px; /* Optional: slight horizontal padding for readability */
 }
 
 .copyright {
@@ -476,6 +479,10 @@ footer {
 
     .footer-logo {
         min-width: 100%;
+    }
+
+    .footer-content {
+        margin-bottom: 16px;
     }
 }
 
