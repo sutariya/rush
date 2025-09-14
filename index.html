@@ -30,8 +30,10 @@
                 </div>
                 <div class="nav-links">
                     <a href="#features">FEATURES</a>
+                    <a href="#support">SUPPORT</a>
                     <a href="#download">DOWNLOAD</a>
                     <a href="#about">ABOUT</a>
+                    <a href="#acquisition">ACQUISITION</a>
                     <a href="#license">LICENSE</a>
                 </div>
                 <a href="#download" class="download-btn">DOWNLOAD</a>
@@ -133,6 +135,52 @@
         </div>
     </section>
 
+    <section class="support" id="support">
+        <div class="container">
+            <div class="section-title">
+                <h2>SUPPORT THE MISSION</h2>
+                <p>Rush is a critical piece of infrastructure for Web3. Your contribution directly funds development and helps build a truly decentralized internet.</p>
+            </div>
+            <div class="donation-options">
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fab fa-btc"></i>
+                    </div>
+                    <h3>BITCOIN (BTC)</h3>
+                    <p class="crypto-address">bc1qyourbtcaddressgoeshere...</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fab fa-ethereum"></i>
+                    </div>
+                    <h3>ETHEREUM (ETH)</h3>
+                    <p class="crypto-address">0xYourEthAddressGoesHere...</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>USDT (ERC-20)</h3>
+                    <p class="crypto-address">0xYourUsdtAddressGoesHere...</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--medium-gray); margin-top: 40px;">Please ensure you are sending to the correct address and network.</p>
+        </div>
+    </section>
+    <section class="acquisition" id="acquisition">
+        <div class="container">
+            <div class="acquisition-content">
+                <h2>ACQUISITION OPPORTUNITY</h2>
+                <p>An opportunity to own a foundational piece of Web3 infrastructure. Rush Browser, including all source code, intellectual property, brand assets, and the RushBrowser.com domain, is available for a full acquisition.</p>
+                <p>We are seeking a strategic buyer equipped to carry this project to its full potential and accelerate the global adoption of the decentralized web.</p>
+                <p class="highlight">For serious inquiries and to receive a detailed prospectus, please contact our acquisitions advisor directly.</p>
+                <a href="mailto:acquisitions@rushbrowser.com" class="primary-btn">CONTACT US</a>
+            </div>
+        </div>
+    </section>
     <section class="license" id="license">
         <div class="container">
             <div class="license-content">
@@ -204,5 +252,27 @@
             observer.observe(el);
         });
     </script>
-</body>
+    
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const addressText = this.previousElementSibling.innerText;
+                
+                navigator.clipboard.writeText(addressText).then(() => {
+                    // Provide feedback to the user
+                    const originalText = this.innerText;
+                    this.innerText = 'COPIED!';
+                    
+                    // Revert the button text after 2 seconds
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+    </script>
+    </body>
 </html>

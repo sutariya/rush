@@ -515,3 +515,127 @@ footer {
         max-width: 280px;
     }
 }
+
+/* ================================== */
+/* STYLES FOR NEW SECTIONS            */
+/* ================================== */
+
+/* Support / Donate Section */
+.support {
+    padding: 100px 0;
+    background: var(--darker-gray);
+    text-align: center;
+}
+
+.donation-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.donation-card {
+    background: var(--black);
+    border-radius: 12px;
+    padding: 36px 30px;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.donation-icon {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    color: var(--light-gray);
+}
+
+.donation-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.crypto-address {
+    color: var(--medium-gray);
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+    word-break: break-all; /* Ensures long addresses don't break the layout */
+    background: var(--darker-gray);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.copy-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--white);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    border: 1px solid var(--white);
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background: transparent;
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+
+/* Acquisition Section */
+.acquisition {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.acquisition-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--darker-gray);
+    padding: 48px 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-gray);
+    text-align: center;
+}
+
+.acquisition-content h2 {
+    font-size: 2rem;
+    margin-bottom: 28px;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.acquisition-content p {
+    color: var(--light-gray);
+    margin-bottom: 22px;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.acquisition-content .highlight {
+    font-weight: 600;
+    color: var(--white);
+    margin-top: 28px;
+    border-top: 1px solid var(--border-gray);
+    padding-top: 28px;
+}
+
+.acquisition-content .primary-btn {
+    margin-top: 20px;
+}
