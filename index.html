@@ -33,7 +33,6 @@
                     <a href="#support">SUPPORT</a>
                     <a href="#download">DOWNLOAD</a>
                     <a href="#about">ABOUT</a>
-                    <a href="#acquisition">ACQUISITION</a>
                     <a href="#license">LICENSE</a>
                 </div>
                 <a href="#download" class="download-btn">DOWNLOAD</a>
@@ -63,21 +62,21 @@
                     <div class="feature-icon-svg">
                         <img src="eh.svg" alt="HNS & ENS Resolution Logo">
                     </div>
-                    <h3>HNS & ENS RESOLUTION</h3>
+                    <h3>NATIVE HNS & ENS RESOLUTION</h3>
                     <p>Unlock the decentralized web. Rush provides native resolution for Handshake's millions of TLDs and SLDs, alongside seamless support for Ethereum Name Service (.eth) domains. No extensions, no proxies, just direct access.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-clone"></i>
                     </div>
-                    <h3>MULTI-TAB BROWSING</h3>
+                    <h3>FOCUSED MULTI-TAB BROWSING</h3>
                     <p>Experience a streamlined and efficient workflow. Manage multiple decentralized websites with a clean, fast tab interface designed for the unique demands of HNS and ENS browsing — no bloat, no lag.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>ZERO TRACKING</h3>
+                    <h3>ABSOLUTE ZERO TRACKING</h3>
                     <p>Your online activity is yours alone. Rush is built on a foundation of privacy with no analytics, no cookies, and no telemetry. We don't just promise privacy, we've engineered it into the core of our browser.</p>
                 </div>
             </div>
@@ -143,6 +142,9 @@
             </div>
             <div class="donation-options">
                 <div class="donation-card">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bc1qyourbtcaddressgoeshere..." alt="Bitcoin QR Code" class="qr-code-img">
+                    </div>
                     <div class="donation-icon">
                         <i class="fab fa-btc"></i>
                     </div>
@@ -151,6 +153,9 @@
                     <button class="copy-btn">COPY ADDRESS</button>
                 </div>
                 <div class="donation-card">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xYourEthAddressGoesHere..." alt="Ethereum QR Code" class="qr-code-img">
+                    </div>
                     <div class="donation-icon">
                         <i class="fab fa-ethereum"></i>
                     </div>
@@ -159,6 +164,9 @@
                     <button class="copy-btn">COPY ADDRESS</button>
                 </div>
                 <div class="donation-card">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xYourUsdtAddressGoesHere..." alt="USDT ERC-20 QR Code" class="qr-code-img">
+                    </div>
                     <div class="donation-icon">
                         <i class="fas fa-dollar-sign"></i>
                     </div>
@@ -170,17 +178,7 @@
             <p style="text-align: center; color: var(--medium-gray); margin-top: 40px;">Please ensure you are sending to the correct address and network.</p>
         </div>
     </section>
-    <section class="acquisition" id="acquisition">
-        <div class="container">
-            <div class="acquisition-content">
-                <h2>ACQUISITION OPPORTUNITY</h2>
-                <p>An opportunity to own a foundational piece of Web3 infrastructure. Rush Browser, including all source code, intellectual property, brand assets, and the RushBrowser.com domain, is available for a full acquisition.</p>
-                <p>We are seeking a strategic buyer equipped to carry this project to its full potential and accelerate the global adoption of the decentralized web.</p>
-                <p class="highlight">For serious inquiries and to receive a detailed prospectus, please contact our acquisitions advisor directly.</p>
-                <a href="mailto:acquisitions@rushbrowser.com" class="primary-btn">CONTACT US</a>
-            </div>
-        </div>
-    </section>
+
     <section class="license" id="license">
         <div class="container">
             <div class="license-content">
@@ -254,17 +252,16 @@
     </script>
     
     <script>
+        // Script for copy buttons
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const addressText = this.previousElementSibling.innerText;
                 
                 navigator.clipboard.writeText(addressText).then(() => {
-                    // Provide feedback to the user
                     const originalText = this.innerText;
                     this.innerText = 'COPIED!';
                     
-                    // Revert the button text after 2 seconds
                     setTimeout(() => {
                         this.innerText = originalText;
                     }, 2000);
@@ -274,5 +271,5 @@
             });
         });
     </script>
-    </body>
+</body>
 </html>
