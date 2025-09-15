@@ -34,14 +34,17 @@
         :root {
             --black: #000000;
             --white: #ffffff;
-            --light-gray: #e0e0e0;
-            --medium-gray: #a0a0a0;
-            --dark-gray: #303030;
-            --darker-gray: #1a1a1a;
-            --border-gray: #404040;
-            --accent: #ff3131;
-            --accent-light: #ff6b6b;
-            --gradient: linear-gradient(135deg, #ff3131 0%, #ff6b6b 100%);
+            --light-gray: #f5f5f5;
+            --medium-gray: #888888;
+            --dark-gray: #1a1a1a;
+            --darker-gray: #0d0d0d;
+            --border-gray: #2a2a2a;
+            --accent: #ffffff;
+            --accent-light: #e6e6e6;
+            --gradient: linear-gradient(135deg, #0d0d0d 0%, #000000 100%);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
         }
 
         * {
@@ -68,7 +71,7 @@
 
         /* Header & Navigation */
         header {
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.98);
             backdrop-filter: blur(10px);
             padding: 20px 0;
             position: fixed;
@@ -103,6 +106,7 @@
             height: 100%;
             object-fit: contain;
             display: block;
+            filter: invert(1);
         }
 
         .nav-links {
@@ -111,7 +115,7 @@
         }
 
         .nav-links a {
-            color: var(--light-gray);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
@@ -124,8 +128,8 @@
         }
 
         .download-btn {
-            background: var(--gradient);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             padding: 12px 28px;
             border-radius: 30px;
             text-decoration: none;
@@ -134,12 +138,13 @@
             letter-spacing: 0.5px;
             transition: all 0.3s;
             border: none;
-            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            background: var(--accent-light);
         }
 
         /* Hero Section */
@@ -147,10 +152,8 @@
             padding: 180px 0 120px;
             text-align: center;
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.97)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="black"/><path d="M0 50 L100 50" stroke="grey" stroke-width="0.5" stroke-opacity="0.2"/><path d="M50 0 L50 100" stroke="grey" stroke-width="0.5" stroke-opacity="0.2"/></svg>');
+            background-size: 30px;
         }
 
         .hero h1 {
@@ -164,7 +167,7 @@
 
         .hero p {
             font-size: 1.35rem;
-            color: var(--light-gray);
+            color: var(--text-secondary);
             max-width: 800px;
             margin: 0 auto 48px;
             line-height: 1.7;
@@ -188,14 +191,14 @@
         }
 
         .primary-btn {
-            background: var(--gradient);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             border: none;
-            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .secondary-btn {
-            border: 2px solid var(--light-gray);
+            border: 2px solid var(--white);
             color: var(--white);
             background: transparent;
         }
@@ -205,11 +208,12 @@
         }
 
         .primary-btn:hover {
-            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+            background: var(--accent-light);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
 
         .secondary-btn:hover {
-            background: var(--light-gray);
+            background: var(--white);
             color: var(--black);
         }
 
@@ -230,10 +234,6 @@
             margin-bottom: 24px;
             color: var(--white);
             letter-spacing: -0.5px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
         }
 
         .section-title p {
@@ -251,7 +251,7 @@
         }
 
         .feature-card {
-            background: var(--black);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 42px 32px;
             text-align: center;
@@ -259,6 +259,7 @@
             border: 1px solid var(--border-gray);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .feature-card::before {
@@ -268,7 +269,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--gradient);
+            background: var(--white);
         }
 
         .feature-card:hover {
@@ -286,12 +287,13 @@
 
         .feature-icon {
             font-size: 2.8rem;
-            color: var(--accent);
+            color: var(--white);
         }
 
         .feature-icon-svg img {
             height: 80px;
             width: auto;
+            filter: invert(1);
         }
 
         .feature-card h3 {
@@ -305,6 +307,144 @@
             color: var(--medium-gray);
             line-height: 1.7;
             font-size: 1.05rem;
+        }
+
+        /* Comparison Section */
+        .comparison {
+            padding: 120px 0;
+            background: var(--black);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 48px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-gray);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .browser-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .browser-logo {
+            height: 40px;
+            width: auto;
+            filter: invert(1);
+        }
+
+        .checkmark {
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .cross {
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            padding: 120px 0;
+            background: var(--darker-gray);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-gray);
+        }
+
+        .roadmap-item {
+            width: 50%;
+            padding: 0 40px 60px 0;
+            position: relative;
+            text-align: right;
+        }
+
+        .roadmap-item:nth-child(even) {
+            margin-left: 50%;
+            padding: 0 0 60px 40px;
+            text-align: left;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .roadmap-item:nth-child(even)::before {
+            left: -10px;
+            right: auto;
+        }
+
+        .roadmap-content {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .roadmap-content h3 {
+            color: var(--white);
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .roadmap-content p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .roadmap-date {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
 
         /* Download Section */
@@ -322,7 +462,7 @@
         }
 
         .download-card {
-            background: var(--darker-gray);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 42px 32px;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -337,7 +477,7 @@
         .download-icon {
             font-size: 3.2rem;
             margin-bottom: 28px;
-            color: var(--accent);
+            color: var(--white);
         }
 
         .download-card h3 {
@@ -357,8 +497,8 @@
             display: inline-block;
             margin-top: 20px;
             padding: 14px 28px;
-            background: var(--gradient);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
@@ -366,12 +506,13 @@
             letter-spacing: 0.5px;
             transition: all 0.3s;
             border: none;
-            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .download-card a:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+            background: var(--accent-light);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
 
         /* About Section */
@@ -396,13 +537,10 @@
             color: var(--white);
             font-weight: 800;
             letter-spacing: -0.5px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .about-text p {
-            color: var(--light-gray);
+            color: var(--text-secondary);
             margin-bottom: 24px;
             line-height: 1.8;
             font-size: 1.1rem;
@@ -428,81 +566,73 @@
             text-align: center;
         }
 
-        .donation-options {
-            display: flex;
-            flex-direction: column;
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-top: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .donation-option {
-            display: flex;
-            align-items: center;
-            background: var(--darker-gray);
-            border-radius: 12px;
-            padding: 20px;
+        .donation-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
             border: 1px solid var(--border-gray);
             transition: all 0.3s;
-        }
-
-        .donation-option:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .donation-icon {
-            font-size: 2rem;
-            margin-right: 20px;
-            color: var(--accent);
-            min-width: 40px;
             text-align: center;
         }
 
-        .donation-details {
-            flex: 1;
-            text-align: left;
+        .donation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .donation-details h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
+        .donation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             color: var(--white);
-            font-weight: 600;
+        }
+
+        .donation-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: var(--white);
         }
 
         .crypto-address {
             color: var(--medium-gray);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             word-break: break-all;
             font-family: 'Courier New', Courier, monospace;
             line-height: 1.5;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
         }
 
         .copy-btn {
             padding: 10px 20px;
-            background: var(--gradient);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             border: none;
             border-radius: 30px;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .copy-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+            background: var(--accent-light);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
 
         .support-text {
             text-align: center;
-            color: var(--light-gray);
+            color: var(--text-secondary);
             margin-top: 48px;
             font-size: 1.1rem;
             line-height: 1.7;
@@ -512,8 +642,8 @@
         }
 
         .partnership-note {
-            background: linear-gradient(135deg, rgba(255, 49, 49, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
-            border-left: 4px solid var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--white);
             padding: 24px;
             margin-top: 40px;
             border-radius: 8px;
@@ -521,13 +651,13 @@
         }
 
         .partnership-note h4 {
-            color: var(--accent);
+            color: var(--white);
             margin-bottom: 12px;
             font-size: 1.3rem;
         }
 
         .partnership-note p {
-            color: var(--light-gray);
+            color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 8px;
         }
@@ -539,7 +669,7 @@
         }
 
         .license-content {
-            background: var(--black);
+            background: var(--card-bg);
             padding: 48px 40px;
             border-radius: 16px;
             border: 1px solid var(--border-gray);
@@ -554,7 +684,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--gradient);
+            background: var(--white);
         }
 
         .license-content h2 {
@@ -564,13 +694,10 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .license-content p {
-            color: var(--light-gray);
+            color: var(--text-secondary);
             margin-bottom: 24px;
             line-height: 1.8;
             font-size: 1.05rem;
@@ -578,7 +705,7 @@
 
         .license-content .highlight {
             font-weight: 700;
-            color: var(--accent);
+            color: var(--white);
             margin: 32px 0 20px;
             padding-top: 32px;
             border-top: 1px solid var(--border-gray);
@@ -614,6 +741,7 @@
             object-fit: contain;
             display: block;
             margin: 0 auto 16px;
+            filter: invert(1);
         }
 
         .footer-logo p {
@@ -643,6 +771,25 @@
             
             .download-options {
                 grid-template-columns: 1fr;
+            }
+
+            .roadmap-timeline::before {
+                left: 20px;
+            }
+
+            .roadmap-item {
+                width: 100%;
+                padding: 0 0 60px 40px;
+                text-align: left;
+            }
+
+            .roadmap-item:nth-child(even) {
+                margin-left: 0;
+            }
+
+            .roadmap-item::before {
+                left: -10px;
+                right: auto;
             }
         }
 
@@ -689,6 +836,11 @@
                 grid-template-columns: 1fr;
             }
             
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
             .feature-card,
             .download-card {
                 width: 100%;
@@ -699,18 +851,8 @@
                 padding: 32px 24px;
             }
             
-            .donation-option {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .donation-icon {
-                margin-right: 0;
-                margin-bottom: 16px;
-            }
-            
-            .donation-details {
-                text-align: center;
+            .donation-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -743,6 +885,11 @@
             .download-card a {
                 padding: 12px 24px;
             }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 16px 12px;
+            }
         }
     </style>
 </head>
@@ -757,10 +904,10 @@
                 </div>
                 <div class="nav-links">
                     <a href="#features">FEATURES</a>
-                    <a href="#support">SUPPORT</a>
+                    <a href="#comparison">COMPARE</a>
+                    <a href="#roadmap">ROADMAP</a>
                     <a href="#download">DOWNLOAD</a>
-                    <a href="#about">ABOUT</a>
-                    <a href="#license">LICENSE</a>
+                    <a href="#support">SUPPORT</a>
                 </div>
                 <a href="#download" class="download-btn">DOWNLOAD</a>
             </nav>
@@ -805,6 +952,136 @@
                     </div>
                     <h3>ABSOLUTE ZERO TRACKING</h3>
                     <p>Your online activity is yours alone. Rush is built on a foundation of privacy with no analytics, no cookies, and no telemetry. We don't just promise privacy, we've engineered it into the core of our browser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison" id="comparison">
+        <div class="container">
+            <div class="section-title">
+                <h2>WHY CHOOSE RUSH?</h2>
+                <p>Compare Rush with other popular browsers</p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>
+                            <div class="browser-header">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTEyIDBDMTguNjMgMCAyNCA1LjM3IDI0IDEyYzAgNi42My01LjM3IDEyLTEyIDEyQzUuMzggMjQgMCAxOC42MyAwIDEyQzAgNS4zNyA1LjM4IDAgMTIgMHgiLz48cGF0aCBmaWxsPSJibGFjayIgZD0iTTEyIDE1LjMxQTEuMzEgMS4zMSAwIDAgMCAxMy4zMSAxNEEzLjY5IDMuNjkgMCAwIDAgMTcgMTBhMy42OSAzLjY5IDAgMCAwLTMuNjktNEEzLjY5IDMuNjkgMCAwIDAgMTAgMTBhMy42OSAzLjY5IDAgMCAwIDMuNjkgNGMwIC43Mi0uMjYgMS4zOC0uNjkgMS44OUE1LjUgNS41IDAgMCAxIDcgMTBhNSA1IDAgMCAxIDUtNSA1IDUgMCAwIDEgNSA1YTUgNSAwIDAgMS01IDVjLTEuNjMgMC0zLjA2LS43OC00LTEuOTlBNy4wNiA3LjA2IDAgMCAwIDEyIDE1LjMxeiIvPjwvc3ZnPg==" class="browser-logo" alt="Chrome">
+                                <span>Chrome</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="browser-header">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTEyIDBDMTguNjMgMCAyNCA1LjM3IDI0IDEyYzAgNi42My01LjM3IDEyLTEyIDEyQzUuMzggMjQgMCAxOC42MyAwIDEyQzAgNS4zNyA1LjM4IDAgMTIgMHgiLz48cGF0aCBmaWxsPSJibGFjayIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDIgMC04LTMuNTgtOC04czMuNTgtOCA4LTggOCAzLjU4IDggOC0zLjU4IDgtOCA4eiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNMTIgNmMtMy4zMSAwLTYgMi42OS02IDZzMi42OSA2IDYgNiA2LTIuNjkgNi02LTItNi02LTZ6Ii8+PC9zdmc+" class="browser-logo" alt="Brave">
+                                <span>Brave</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="browser-header">
+                                <img src="rush_logo.svg" class="browser-logo" alt="Rush" style="filter: invert(1);">
+                                <span>Rush</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Native HNS Support</td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Native ENS Support</td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Zero Tracking</td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Built-in Ad Blocker</td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Web3 Focused</td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Lightweight</td>
+                        <td><i class="fas fa-times cross"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Open Source</td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                        <td><i class="fas fa-check checkmark"></i></td>
+                        <td><i class="fas fa-times cross"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-title">
+                <h2>DEVELOPMENT ROADMAP</h2>
+                <p>Our vision for the future of decentralized browsing</p>
+            </div>
+            
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q1 2024</div>
+                    <div class="roadmap-content">
+                        <h3>Initial Release</h3>
+                        <p>Launch of Rush Browser v1.0 with native HNS and ENS resolution, multi-tab support, and basic privacy features.</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q2 2024</div>
+                    <div class="roadmap-content">
+                        <h3>Enhanced Privacy Features</h3>
+                        <p>Implementation of advanced fingerprinting protection, enhanced cookie management, and built-in VPN options.</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q3 2024</div>
+                    <div class="roadmap-content">
+                        <h3>Mobile Version</h3>
+                        <p>Release of Rush Browser for iOS and Android, bringing decentralized browsing to mobile devices.</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q4 2024</div>
+                    <div class="roadmap-content">
+                        <h3>Web3 Integration</h3>
+                        <p>Built-in cryptocurrency wallet, dApp browser, and enhanced support for blockchain-based applications.</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-date">2025</div>
+                    <div class="roadmap-content">
+                        <h3>Decentralized Ecosystem</h3>
+                        <p>Development of Rush Network - a fully decentralized peer-to-peer web infrastructure powered by HNS.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -879,36 +1156,33 @@
                 <h2>SUPPORT THE MISSION</h2>
                 <p>Rush is a critical piece of infrastructure for Web3. Your contribution directly funds development and helps build a truly decentralized internet.</p>
             </div>
-            <div class="donation-options">
-                <div class="donation-option">
+            
+            <div class="donation-grid">
+                <div class="donation-card">
                     <div class="donation-icon">
                         <i class="fab fa-btc"></i>
                     </div>
-                    <div class="donation-details">
-                        <h3>BITCOIN (BTC)</h3>
-                        <p class="crypto-address">bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
+                    <h3>BITCOIN (BTC)</h3>
+                    <p class="crypto-address">bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
                 </div>
-                <div class="donation-option">
+                
+                <div class="donation-card">
                     <div class="donation-icon">
                         <i class="fab fa-ethereum"></i>
                     </div>
-                    <div class="donation-details">
-                        <h3>ETHEREUM (ETH)</h3>
-                        <p class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
+                    <h3>ETHEREUM (ETH)</h3>
+                    <p class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
                 </div>
-                <div class="donation-option">
+                
+                <div class="donation-card">
                     <div class="donation-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <div class="donation-details">
-                        <h3>HANDSHAKE (HNS)</h3>
-                        <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
+                    <h3>HANDSHAKE (HNS)</h3>
+                    <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
                 </div>
             </div>
             
@@ -916,11 +1190,11 @@
                 <p>Rush Browser represents the final piece of the puzzle in the Web3 and decentralized domains ecosystem. This project has required significant effort and investment to bring to life. Your support enables further development and innovation in the decentralized web space.</p>
                 
                 <div class="partnership-note">
-  <h4>PARTNERSHIP OPPORTUNITIES</h4>
-  <p>We invite leading organizations, DAOs, and visionary investors to partner with us in shaping the future of decentralized browsing.</p>
-  <p>For contributions of <strong>$1M or more</strong>, partners will receive official partnership status with prominent recognition across our platform, community, and ecosystem initiatives.</p>
-  <p>As a partner, you will play a pivotal role in advancing a critical piece of Web3 infrastructure while helping accelerate innovation for ENS, HNS, and the broader decentralized internet.</p>
-</div>
+                    <h4>PARTNERSHIP OPPORTUNITIES</h4>
+                    <p>We invite leading organizations, DAOs, and visionary investors to partner with us in shaping the future of decentralized browsing.</p>
+                    <p>For contributions of <strong>$1M or more</strong>, partners will receive official partnership status with prominent recognition across our platform, community, and ecosystem initiatives.</p>
+                    <p>As a partner, you will play a pivotal role in advancing a critical piece of Web3 infrastructure while helping accelerate innovation for ENS, HNS, and the broader decentralized internet.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -989,7 +1263,7 @@
         }, observerOptions);
 
         // Initialize elements with animation properties
-        document.querySelectorAll('.feature-card, .download-card, .donation-option').forEach(el => {
+        document.querySelectorAll('.feature-card, .download-card, .donation-card, .roadmap-item, .comparison-table').forEach(el => {
             el.style.opacity = "0";
             el.style.transform = "translateY(20px)";
             el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
