@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rush Browser | Native HNS & ENS Support for Decentralized Web</title>
-    <meta name="description" content="Rush Browser natively resolves Handshake (HNS) and Ethereum Name Service (ENS) domains — eliminating the need for extensions or third-party services. Access the decentralized web with enterprise-grade speed, security, and zero tracking.">
-    <meta name="keywords" content="HNS browser, ENS browser, Handshake domain, Ethereum Name Service, decentralized web, blockchain browser, Rush Browser, web3 browser, next-gen internet, .bit, .eth, multi-tab browsing, zero tracking">
+    <title>Rush Browser | Native HNS & ENS Support</title>
+    <meta name="description" content="Rush Browser natively resolves Handshake (HNS) and Ethereum Name Service (ENS) domains — no extensions, no tracking. Built on Electron for Windows, macOS, Linux.">
+    <meta name="keywords" content="HNS browser, ENS browser, Handshake, Ethereum Name Service, decentralized web, blockchain, Rush Browser, web3, .bit, .eth, electron app">
     
     <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC8LNHP06J"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header -->
     <header>
         <div class="container">
             <nav>
@@ -38,304 +38,233 @@
                     <a href="#download">DOWNLOAD</a>
                     <a href="#support">SUPPORT</a>
                 </div>
-                <a href="#download" class="download-btn">DOWNLOAD</a>
+                <a href="#download" class="download-btn">DOWNLOAD v1.0</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1>DECENTRALIZED BROWSING. REDEFINED.</h1>
-            <p>Rush Browser resolves HNS and ENS domains natively, delivering seamless access to the next-generation internet with uncompromising speed and security.</p>
+            <h1>NATIVE HNS & ENS BROWSING</h1>
+            <p>Built on Electron. Zero extensions. Zero tracking. Just pure decentralized domain resolution.</p>
             <div class="hero-buttons">
                 <a href="#download" class="primary-btn">DOWNLOAD NOW</a>
-                <a href="#features" class="secondary-btn">LEARN MORE</a>
+                <a href="#features" class="secondary-btn">HOW IT WORKS</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>PRECISION ENGINEERED</h2>
-                <p>Designed for the future of the web with uncompromising attention to detail</p>
+                <h2>BUILT FOR REALITY</h2>
+                <p>No magic. No vaporware. Just focused, native resolution for HNS and ENS domains.</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up">
-                    <div class="feature-icon-svg">
-                        <img src="eh.svg" alt="HNS & ENS Resolution Logo">
-                    </div>
-                    <h3>NATIVE HNS & ENS RESOLUTION</h3>
-                    <p>Unlock the decentralized web. Rush provides native resolution for Handshake's millions of TLDs and SLDs, alongside seamless support for Ethereum Name Service (.eth) domains. No extensions, no proxies, just direct access.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-clone"></i>
+                        <img src="eh.svg" alt="HNS & ENS">
                     </div>
-                    <h3>FOCUSED MULTI-TAB BROWSING</h3>
-                    <p>Experience a streamlined and efficient workflow. Manage multiple decentralized websites with a clean, fast tab interface designed for the unique demands of HNS and ENS browsing — no bloat, no lag.</p>
+                    <h3>NATIVE RESOLUTION</h3>
+                    <p>Resolves .eth and all Handshake TLDs directly — no middleware, no extensions, no configuration.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-window-restore"></i>
                     </div>
-                    <h3>ABSOLUTE ZERO TRACKING</h3>
-                    <p>Your online activity is yours alone. Rush is built on a foundation of privacy with no analytics, no cookies, and no telemetry. We don't just promise privacy, we've engineered it into the core of our browser.</p>
+                    <h3>ELECTRON FOUNDATION</h3>
+                    <p>Stable, cross-platform, familiar UI. Built on proven Electron framework for reliability.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>ZERO TRACKING</h3>
+                    <p>No telemetry. No analytics. No cookies. Your browsing stays private, always.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Roadmap Section -->
+    <!-- Roadmap -->
     <section class="roadmap" id="roadmap">
         <div class="container">
             <div class="section-title">
-                <h2>OUR ROADMAP</h2>
-                <p>Building the future of decentralized browsing, one milestone at a time</p>
+                <h2>REALISTIC ROADMAP</h2>
+                <p>What’s actually coming next — built on Electron, focused on core functionality.</p>
             </div>
-            <div class="roadmap-container">
-                <div class="roadmap-item" data-aos="fade-right">
-                    <div class="roadmap-badge">v1.1</div>
-                    <div class="roadmap-content">
-                        <h3>Enhanced Web3 Tools</h3>
-                        <p>ENS subdomain manager, HNS root zone resolver improvements, performance optimizations, and critical bug fixes.</p>
-                        <div class="roadmap-timeline">
-                            <span class="timeline-marker"></span>
-                            <span class="timeline-date">Q3 2025</span>
-                        </div>
+            <div class="roadmap-list">
+                <div class="roadmap-item">
+                    <div class="item-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="item-content">
+                        <h3>In-App Wallet (v1.1)</h3>
+                        <p>Send/receive ETH & HNS directly. Connect your keys. No bloated integrations — just core functionality.</p>
                     </div>
                 </div>
-                
-                <div class="roadmap-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="roadmap-badge">v2.0</div>
-                    <div class="roadmap-content">
-                        <h3>IPFS & DApp Hub</h3>
-                        <p>Native IPFS gateway integration, built-in dApp explorer, improved wallet support, and enhanced developer tools.</p>
-                        <div class="roadmap-timeline">
-                            <span class="timeline-marker"></span>
-                            <span class="timeline-date">Q1 2026</span>
-                        </div>
+                <div class="roadmap-item">
+                    <div class="item-icon"><img src="dane.svg" alt="DANE" width="24"></div>
+                    <div class="item-content">
+                        <h3>DANE Support (v1.2)</h3>
+                        <p>Add DNS-Based Authentication of Named Entities for enhanced domain security and verification.</p>
                     </div>
                 </div>
-                
-                <div class="roadmap-item" data-aos="fade-right" data-aos-delay="200">
-                    <div class="roadmap-badge">v3.0</div>
-                    <div class="roadmap-content">
-                        <h3>Community Governance</h3>
-                        <p>DAO-driven roadmap, partner contributions, decentralized funding model, and community voting for feature prioritization.</p>
-                        <div class="roadmap-timeline">
-                            <span class="timeline-marker"></span>
-                            <span class="timeline-date">Q3 2026</span>
-                        </div>
+                <div class="roadmap-item">
+                    <div class="item-icon"><i class="fas fa-sync"></i></div>
+                    <div class="item-content">
+                        <h3>Resolver Cache & Offline Mode (v1.3)</h3>
+                        <p>Faster resolution with local caching. Basic offline access to recently visited decentralized sites.</p>
                     </div>
                 </div>
-                
-                <div class="roadmap-item" data-aos="fade-right" data-aos-delay="300">
-                    <div class="roadmap-badge">Future</div>
-                    <div class="roadmap-content">
-                        <h3>Decentralized Identity</h3>
-                        <p>Integration with decentralized identity protocols, cross-chain domain resolution, and advanced privacy features.</p>
-                        <div class="roadmap-timeline">
-                            <span class="timeline-marker"></span>
-                            <span class="timeline-date">2027+</span>
-                        </div>
+                <div class="roadmap-item">
+                    <div class="item-icon"><i class="fas fa-code"></i></div>
+                    <div class="item-content">
+                        <h3>Open Source Release (Post-Grant)</h3>
+                        <p>Full source code release on GitHub after securing initial development grants.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
+    <!-- Why Rush -->
     <section class="comparison" id="comparison">
         <div class="container">
             <div class="section-title">
-                <h2>WHY CHOOSE RUSH?</h2>
-                <p>The only browser built from the ground up for the decentralized web</p>
+                <h2>WHY RUSH BROWSER?</h2>
+                <p>The only browser focused purely on decentralized domain resolution.</p>
             </div>
-            <div class="comparison-container">
-                <div class="comparison-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="feature-header">Feature</th>
-                                <th class="rush-header">Rush Browser</th>
-                                <th class="brave-header">Brave</th>
-                                <th class="chrome-header">Chrome + Extensions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="feature-cell">Native ENS/HNS Support</td>
-                                <td class="rush-cell"><i class="fas fa-check check-icon"></i> Built-in</td>
-                                <td class="brave-cell">Limited</td>
-                                <td class="chrome-cell">Requires extensions</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-cell">Zero Tracking</td>
-                                <td class="rush-cell"><i class="fas fa-check check-icon"></i> Absolute</td>
-                                <td class="brave-cell">Partial</td>
-                                <td class="chrome-cell">Extensive tracking</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-cell">Performance</td>
-                                <td class="rush-cell"><i class="fas fa-check check-icon"></i> Optimized</td>
-                                <td class="brave-cell">Good</td>
-                                <td class="chrome-cell">Resource-heavy</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-cell">Decentralized Focus</td>
-                                <td class="rush-cell"><i class="fas fa-check check-icon"></i> Core philosophy</td>
-                                <td class="brave-cell">Add-on features</td>
-                                <td class="chrome-cell">Centralized model</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-cell">Multi-Tab Efficiency</td>
-                                <td class="rush-cell"><i class="fas fa-check check-icon"></i> Streamlined</td>
-                                <td class="brave-cell">Standard</td>
-                                <td class="chrome-cell">Standard</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-cell">Open Source</td>
-                                <td class="rush-cell"><i class="fas fa-check check-icon"></i> Yes</td>
-                                <td class="brave-cell"><i class="fas fa-check check-icon"></i> Yes</td>
-                                <td class="chrome-cell">Partial</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th><img src="rush_logo.svg" alt="Rush" width="32"></th>
+                            <th><img src="brave.svg" alt="Brave" width="32"></th>
+                            <th><img src="chrome.svg" alt="Chrome" width="32"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Native HNS Resolution</td>
+                            <td class="check"><i class="fas fa-check"></i></td>
+                            <td class="cross"><i class="fas fa-times"></i></td>
+                            <td class="cross"><i class="fas fa-times"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Native ENS Resolution</td>
+                            <td class="check"><i class="fas fa-check"></i></td>
+                            <td class="partial">Via Extension</td>
+                            <td class="partial">Via Extension</td>
+                        </tr>
+                        <tr>
+                            <td>Built on Electron</td>
+                            <td class="check"><i class="fas fa-check"></i></td>
+                            <td class="cross"><i class="fas fa-times"></i></td>
+                            <td class="cross"><i class="fas fa-times"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Absolute Zero Tracking</td>
+                            <td class="check"><i class="fas fa-check"></i></td>
+                            <td class="partial">Some</td>
+                            <td class="cross">Extensive</td>
+                        </tr>
+                        <tr>
+                            <td>Lightweight & Focused</td>
+                            <td class="check"><i class="fas fa-check"></i></td>
+                            <td class="cross">Heavy</td>
+                            <td class="cross">Heavy</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
+    <!-- Download -->
     <section class="download" id="download">
         <div class="container">
             <div class="section-title">
-                <h2>DOWNLOAD RUSH BROWSER v1.0.0</h2>
-                <p>Professional-grade browser for Windows, macOS, and Linux</p>
+                <h2>DOWNLOAD RUSH v1.0.0</h2>
+                <p>For professionals who value precision and privacy.</p>
             </div>
-            <div class="download-options">
-                <div class="download-card" data-aos="zoom-in">
-                    <div class="download-icon">
-                        <i class="fab fa-windows"></i>
-                    </div>
-                    <h3>WINDOWS</h3>
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="os-icon"><i class="fab fa-windows"></i></div>
+                    <h3>Windows</h3>
                     <p>64-bit Installer</p>
                     <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.Setup.1.0.0.exe" target="_blank" class="download-link">DOWNLOAD</a>
                 </div>
-                <div class="download-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="download-icon">
-                        <i class="fab fa-windows"></i>
-                    </div>
-                    <h3>WINDOWS</h3>
-                    <p>Portable 64-bit</p>
+                <div class="download-card">
+                    <div class="os-icon"><i class="fab fa-windows"></i></div>
+                    <h3>Windows</h3>
+                    <p>Portable</p>
                     <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.1.0.0.exe" target="_blank" class="download-link">DOWNLOAD</a>
                 </div>
-                <div class="download-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="download-icon">
-                        <i class="fab fa-apple"></i>
-                    </div>
+                <div class="download-card">
+                    <div class="os-icon"><i class="fab fa-apple"></i></div>
                     <h3>macOS</h3>
-                    <p>Universal Build</p>
+                    <p>Universal</p>
                     <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0-arm64.dmg" target="_blank" class="download-link">DOWNLOAD</a>
                 </div>
-                <div class="download-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="download-icon">
-                        <i class="fab fa-linux"></i>
-                    </div>
-                    <h3>LINUX</h3>
-                    <p>AppImage 64-bit</p>
+                <div class="download-card">
+                    <div class="os-icon"><i class="fab fa-linux"></i></div>
+                    <h3>Linux</h3>
+                    <p>AppImage</p>
                     <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0.AppImage" target="_blank" class="download-link">DOWNLOAD</a>
                 </div>
             </div>
-            <p class="download-note">
-                All downloads are direct from GitHub — no login required.
-            </p>
+            <p class="download-note">Direct from GitHub. No login. No tracking.</p>
         </div>
     </section>
 
-    <!-- Support Section -->
+    <!-- Support -->
     <section class="support" id="support">
         <div class="container">
             <div class="section-title">
-                <h2>SUPPORT THE MISSION</h2>
-                <p>Rush is a critical piece of infrastructure for Web3. Your contribution directly funds development and helps build a truly decentralized internet.</p>
+                <h2>SUPPORT DEVELOPMENT</h2>
+                <p>Rush is privately built. Your contribution funds core development until we open-source it.</p>
             </div>
-            <div class="donation-options">
-                <div class="donation-option" data-aos="fade-up">
-                    <div class="donation-icon">
-                        <i class="fab fa-btc"></i>
-                    </div>
-                    <div class="donation-details">
-                        <h3>BITCOIN (BTC)</h3>
-                        <p class="crypto-address">bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
+            <div class="donation-list">
+                <div class="donation-row">
+                    <div class="crypto-icon"><i class="fab fa-btc"></i></div>
+                    <div class="crypto-address">bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt</div>
+                    <button class="copy-btn" data-clipboard="bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt">COPY</button>
                 </div>
-                <div class="donation-option" data-aos="fade-up" data-aos-delay="100">
-                    <div class="donation-icon">
-                        <i class="fab fa-ethereum"></i>
-                    </div>
-                    <div class="donation-details">
-                        <h3>ETHEREUM (ETH)</h3>
-                        <p class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
+                <div class="donation-row">
+                    <div class="crypto-icon"><i class="fab fa-ethereum"></i></div>
+                    <div class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</div>
+                    <button class="copy-btn" data-clipboard="0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238">COPY</button>
                 </div>
-                <div class="donation-option" data-aos="fade-up" data-aos-delay="200">
-                    <div class="donation-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <div class="donation-details">
-                        <h3>HANDSHAKE (HNS)</h3>
-                        <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
+                <div class="donation-row">
+                    <div class="crypto-icon"><img src="hns.svg" alt="HNS" width="20"></div>
+                    <div class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</div>
+                    <button class="copy-btn" data-clipboard="hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49">COPY</button>
                 </div>
             </div>
-            
-            <div class="partnership-section">
-                <div class="partnership-note">
-                    <h4>PARTNERSHIP OPPORTUNITIES</h4>
-                    <p>We invite leading organizations, DAOs, and visionary investors to partner with us in shaping the future of decentralized browsing.</p>
-                    <p>For contributions of <strong>$1M or more</strong>, partners will receive official partnership status with prominent recognition across our platform, community, and ecosystem initiatives.</p>
-                    <p>As a partner, you will play a pivotal role in advancing a critical piece of Web3 infrastructure while helping accelerate innovation for ENS, HNS, and the broader decentralized internet.</p>
-                </div>
+
+            <div class="partnership-cta">
+                <h3>Seeking Development Grants</h3>
+                <p>Contact us for partnership opportunities to accelerate the roadmap and open-source release.</p>
+                <a href="mailto:team@rushbrowser.com" class="primary-btn small">CONTACT FOR GRANTS</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2>ABOUT RUSH</h2>
-                    <p>Rush represents the next evolution in web browsing — engineered for professionals who demand precision, performance, and privacy.</p>
-                    <p>Our architecture combines enterprise-grade security with native support for decentralized protocols, eliminating complexity while maximizing capability.</p>
-                    <p>Built for developers, researchers, and forward-thinking organizations, Rush provides uncompromising access to both traditional and decentralized web infrastructure.</p>
-                    <p>Rush Browser is developed and maintained by Rahul Sutariya, with a vision to make decentralized web access seamless for everyone.</p>
+                    <p>Rush is a focused, no-nonsense browser built on Electron. It does one thing exceptionally well: resolve HNS and ENS domains natively.</p>
+                    <p>Developed by Rahul Sutariya, Rush emerged from the need for a truly private, extension-free way to access the decentralized web.</p>
+                    <p>This is not a full Web3 dApp browser. It’s a precision tool for decentralized domain resolution — and that’s its strength.</p>
                 </div>
                 <div class="about-image">
-                    <img src="preview.png" alt="Rush Browser Interface Preview" class="about-logo">
+                    <img src="preview.png" alt="Rush Browser Interface" class="about-logo">
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- License Section -->
-    <section class="license" id="license">
-        <div class="container">
-            <div class="license-content">
-                <h2>LICENSE</h2>
-                <p class="highlight">PROPRIETARY COMMERCIAL LICENSE</p>
-                <p>Rush Browser is protected under a proprietary commercial license. All rights reserved.</p>
-                <p>Unauthorized copying, modification, distribution, reverse engineering, or exploitation is strictly prohibited.</p>
-                <p>This software and its associated documentation are the exclusive property of Rahul Sutariya. Use is granted only under explicit written agreement with the copyright holder.</p>
-                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.</p>
-                <p>© 2025 Rush Browser. All rights reserved.</p>
             </div>
         </div>
     </section>
@@ -343,91 +272,48 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
-                    <p>Professional-grade browsing for the decentralized era.</p>
-                </div>
+            <div class="footer-logo">
+                <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                <p>Native HNS & ENS Resolution. Built on Electron.</p>
             </div>
             <div class="footer-links">
                 <a href="#features">Features</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#download">Download</a>
                 <a href="#support">Support</a>
-                <a href="#license">License</a>
             </div>
             <div class="copyright">
-                <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
+                <p>© 2025 Rush Browser. Privately Built. Future Open Source.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Script for copy buttons
+        // Copy to clipboard
         document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const addressText = this.parentElement.querySelector('.crypto-address').innerText;
-                
-                navigator.clipboard.writeText(addressText).then(() => {
-                    const originalText = this.innerText;
-                    this.innerText = 'COPIED!';
-                    
-                    setTimeout(() => {
-                        this.innerText = originalText;
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
+            button.addEventListener('click', function() {
+                const text = this.getAttribute('data-clipboard');
+                navigator.clipboard.writeText(text).then(() => {
+                    const original = this.innerText;
+                    this.innerText = 'COPIED';
+                    setTimeout(() => this.innerText = original, 2000);
                 });
             });
         });
-
-        // Simple AOS-like animation
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('[data-aos]');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    const animation = element.getAttribute('data-aos');
-                    const delay = element.getAttribute('data-aos-delay') || '0';
-                    
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                    element.style.transition = `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`;
-                }
-            });
-        }
-
-        // Initialize elements with animation properties
-        document.querySelectorAll('[data-aos]').forEach(el => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(20px)";
-        });
-
-        // Run on scroll
-        window.addEventListener('scroll', animateOnScroll);
-        // Run on load
-        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
