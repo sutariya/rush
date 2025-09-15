@@ -18,8 +18,9 @@
 body {
     background-color: var(--black);
     color: var(--white);
-    line-height: 1.6;
+    line-height: 1.7; /* Increased line-height for better readability */
     overflow-x: hidden;
+    font-size: 16px; /* Set a base font size */
 }
 
 .container {
@@ -77,7 +78,7 @@ nav {
     color: var(--light-gray);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjusted font size */
     transition: color 0.3s;
     letter-spacing: 0.5px;
 }
@@ -93,7 +94,7 @@ nav {
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjusted font size */
     letter-spacing: 0.5px;
     transition: all 0.3s;
     border: 1px solid var(--white);
@@ -117,7 +118,7 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.2rem;
+    font-size: 3.5rem; /* Increased font size */
     font-weight: 800;
     margin-bottom: 24px;
     letter-spacing: -1px;
@@ -125,11 +126,11 @@ nav {
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.25rem; /* Increased font size */
     color: var(--light-gray);
     max-width: 700px;
     margin: 0 auto 40px;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 .hero-buttons {
@@ -144,7 +145,7 @@ nav {
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.05rem; /* Adjusted font size */
     letter-spacing: 0.5px;
     transition: all 0.3s;
 }
@@ -187,7 +188,7 @@ nav {
 }
 
 .section-title h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Increased font size */
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--white);
@@ -198,7 +199,7 @@ nav {
     color: var(--medium-gray);
     max-width: 600px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.15rem; /* Increased font size */
 }
 
 .features-grid {
@@ -240,7 +241,7 @@ nav {
 }
 
 .feature-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem; /* Increased font size */
     margin-bottom: 18px;
     color: var(--white);
     font-weight: 600;
@@ -248,8 +249,8 @@ nav {
 
 .feature-card p {
     color: var(--medium-gray);
-    line-height: 1.7;
-    font-size: 0.98rem;
+    line-height: 1.8;
+    font-size: 1rem; /* Adjusted font size */
 }
 
 /* Download Section */
@@ -297,7 +298,7 @@ nav {
 .download-card p {
     color: var(--medium-gray);
     margin-bottom: 20px;
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjusted font size */
 }
 
 .download-card a {
@@ -309,7 +310,7 @@ nav {
     text-decoration: none;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjusted font size */
     letter-spacing: 0.5px;
     transition: all 0.3s;
     border: 1px solid var(--white);
@@ -349,7 +350,7 @@ nav {
     color: var(--light-gray);
     margin-bottom: 20px;
     line-height: 1.8;
-    font-size: 1.05rem;
+    font-size: 1.1rem; /* Adjusted font size */
 }
 
 .about-image {
@@ -381,19 +382,28 @@ nav {
 }
 
 .license-content h2 {
-    font-size: 2rem;
+    font-size: 2.2rem; /* Adjusted font size */
     margin-bottom: 28px;
     color: var(--white);
     font-weight: 700;
     letter-spacing: -0.5px;
 }
 
-.license-content p {
+.license-content p, .license-content ul {
     color: var(--light-gray);
     margin-bottom: 22px;
     line-height: 1.8;
     text-align: left; /* Keep paragraphs left-aligned for readability */
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjusted font size */
+}
+
+.license-content ul {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.license-content li {
+    margin-bottom: 10px;
 }
 
 .license-content .highlight {
@@ -439,7 +449,7 @@ footer {
 .footer-logo p {
     color: var(--medium-gray);
     line-height: 1.7;
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjusted font size */
     margin: 0;
     text-align: center;
     padding: 0 20px;
@@ -450,14 +460,14 @@ footer {
     padding-top: 24px;
     border-top: 1px solid var(--border-gray);
     color: var(--medium-gray);
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Adjusted font size */
     letter-spacing: 0.5px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.4rem;
+        font-size: 2.8rem; /* Adjusted for mobile */
         line-height: 1.2;
     }
 
@@ -475,7 +485,7 @@ footer {
     }
 
     .section-title h2 {
-        font-size: 2rem;
+        font-size: 2.2rem; /* Adjusted for mobile */
     }
 
     .logo-svg-wrapper {
@@ -502,14 +512,14 @@ footer {
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem; /* Adjusted for small mobile */
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1.15rem; /* Adjusted for small mobile */
     }
 
-    .download-card {
+    .download-card, .donation-card {
         width: 100%;
         max-width: 280px;
     }
@@ -604,4 +614,30 @@ footer {
     background: transparent;
     color: var(--white);
     transform: translateY(-3px);
+}
+
+.partnership-section {
+    background: var(--black);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 80px;
+    text-align: left;
+}
+
+.partnership-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--white);
+}
+
+.partnership-section p {
+    color: var(--light-gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+.partnership-section a {
+    color: var(--white);
+    text-decoration: underline;
 }
