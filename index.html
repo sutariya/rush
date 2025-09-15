@@ -15,9 +15,736 @@
 
     <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC8LNHP06J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BC8LNHP06J');
+    </script>
+    
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #e0e0e0;
+            --medium-gray: #a0a0a0;
+            --dark-gray: #303030;
+            --darker-gray: #1a1a1a;
+            --border-gray: #404040;
+            --accent: #ff3131;
+            --accent-light: #ff6b6b;
+            --gradient: linear-gradient(135deg, #ff3131 0%, #ff6b6b 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-svg-wrapper {
+            width: auto;
+            height: 48px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .download-btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+            letter-spacing: -1px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--light-gray);
+            max-width: 800px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 36px;
+        }
+
+        .hero-buttons a {
+            padding: 18px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .primary-btn {
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+        }
+
+        .secondary-btn {
+            border: 2px solid var(--light-gray);
+            color: var(--white);
+            background: transparent;
+        }
+
+        .hero-buttons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .primary-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+        }
+
+        .secondary-btn:hover {
+            background: var(--light-gray);
+            color: var(--black);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: var(--darker-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-title p {
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 36px;
+        }
+
+        .feature-card {
+            background: var(--black);
+            border-radius: 16px;
+            padding: 42px 32px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-icon, .feature-icon-svg {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--accent);
+        }
+
+        .feature-icon-svg img {
+            height: 80px;
+            width: auto;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 120px 0;
+            text-align: center;
+            background: var(--black);
+        }
+
+        .download-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .download-card {
+            background: var(--darker-gray);
+            border-radius: 16px;
+            padding: 42px 32px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-gray);
+        }
+
+        .download-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .download-icon {
+            font-size: 3.2rem;
+            margin-bottom: 28px;
+            color: var(--accent);
+        }
+
+        .download-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .download-card p {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .download-card a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            background: var(--gradient);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+        }
+
+        .download-card a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background: var(--darker-gray);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 28px;
+            color: var(--white);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            color: var(--light-gray);
+            margin-bottom: 24px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-logo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-gray);
+        }
+
+        /* Support / Donate Section */
+        .support {
+            padding: 120px 0;
+            background: var(--black);
+            text-align: center;
+        }
+
+        .donation-options {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .donation-option {
+            display: flex;
+            align-items: center;
+            background: var(--darker-gray);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-gray);
+            transition: all 0.3s;
+        }
+
+        .donation-option:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .donation-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            color: var(--accent);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .donation-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .donation-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .crypto-address {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            word-break: break-all;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .copy-btn {
+            padding: 10px 20px;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 49, 49, 0.4);
+        }
+
+        .support-text {
+            text-align: center;
+            color: var(--light-gray);
+            margin-top: 48px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .partnership-note {
+            background: linear-gradient(135deg, rgba(255, 49, 49, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
+            border-left: 4px solid var(--accent);
+            padding: 24px;
+            margin-top: 40px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .partnership-note h4 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .partnership-note p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* License Section */
+        .license {
+            padding: 120px 0;
+            background: var(--darker-gray);
+        }
+
+        .license-content {
+            background: var(--black);
+            padding: 48px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-gray);
+            text-align: left;
+            position: relative;
+        }
+
+        .license-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .license-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 32px;
+            color: var(--white);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .license-content p {
+            color: var(--light-gray);
+            margin-bottom: 24px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .license-content .highlight {
+            font-weight: 700;
+            color: var(--accent);
+            margin: 32px 0 20px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-gray);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .footer-logo .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 16px;
+        }
+
+        .footer-logo p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+            font-size: 1rem;
+            margin: 0;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-gray);
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .download-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .logo-svg-wrapper {
+                height: 40px;
+            }
+
+            .about-logo {
+                max-width: 90%;
+            }
+
+            .footer-logo {
+                min-width: 100%;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .download-card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .license-content {
+                padding: 32px 24px;
+            }
+            
+            .donation-option {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .donation-icon {
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+            
+            .donation-details {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 160px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1.1rem;
+            }
+            
+            .feature-card,
+            .download-card {
+                padding: 32px 24px;
+            }
+            
+            .download-card a {
+                padding: 12px 24px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -84,50 +811,50 @@
     </section>
 
     <section class="download" id="download">
-    <div class="container">
-        <div class="section-title">
-            <h2>DOWNLOAD RUSH BROWSER v1.0.0</h2>
-            <p>Professional-grade browser for Windows, macOS, and Linux</p>
+        <div class="container">
+            <div class="section-title">
+                <h2>DOWNLOAD RUSH BROWSER v1.0.0</h2>
+                <p>Professional-grade browser for Windows, macOS, and Linux</p>
+            </div>
+            <div class="download-options">
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3>WINDOWS</h3>
+                    <p>64-bit Installer</p>
+                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.Setup.1.0.0.exe" target="_blank">DOWNLOAD</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3>WINDOWS</h3>
+                    <p>Portable 64-bit</p>
+                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.1.0.0.exe" target="_blank">DOWNLOAD</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3>macOS</h3>
+                    <p>Universal Build</p>
+                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0-arm64.dmg" target="_blank">DOWNLOAD</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <h3>LINUX</h3>
+                    <p>AppImage 64-bit</p>
+                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0.AppImage" target="_blank">DOWNLOAD</a>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:32px;color:#777;font-size:16px;">
+                All downloads are direct from GitHub — no login required.
+            </p>
         </div>
-        <div class="download-options">
-            <div class="download-card">
-                <div class="download-icon">
-                    <i class="fab fa-windows"></i>
-                </div>
-                <h3>WINDOWS</h3>
-                <p>64-bit Installer</p>
-                <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.Setup.1.0.0.exe" target="_blank">DOWNLOAD</a>
-            </div>
-            <div class="download-card">
-                <div class="download-icon">
-                    <i class="fab fa-windows"></i>
-                </div>
-                <h3>WINDOWS</h3>
-                <p>Portable 64-bit</p>
-                <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.1.0.0.exe" target="_blank">DOWNLOAD</a>
-            </div>
-            <div class="download-card">
-                <div class="download-icon">
-                    <i class="fab fa-apple"></i>
-                </div>
-                <h3>macOS (ARM64)</h3>
-                <p>Universal Build</p>
-                <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0-arm64.dmg" target="_blank">DOWNLOAD</a>
-            </div>
-            <div class="download-card">
-                <div class="download-icon">
-                    <i class="fab fa-linux"></i>
-                </div>
-                <h3>LINUX</h3>
-                <p>AppImage 64-bit</p>
-                <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0.AppImage" target="_blank">DOWNLOAD</a>
-            </div>
-        </div>
-        <p style="text-align:center;margin-top:20px;color:#777;font-size:14px;">
-            All downloads are direct from GitHub — no login required.
-        </p>
-    </div>
-</section>
+    </section>
 
     <section class="about" id="about">
         <div class="container">
@@ -137,6 +864,7 @@
                     <p>Rush represents the next evolution in web browsing — engineered for professionals who demand precision, performance, and privacy.</p>
                     <p>Our architecture combines enterprise-grade security with native support for decentralized protocols, eliminating complexity while maximizing capability.</p>
                     <p>Built for developers, researchers, and forward-thinking organizations, Rush provides uncompromising access to both traditional and decentralized web infrastructure.</p>
+                    <p>Rush Browser is developed and maintained by Rahul Sutariya, with a vision to make decentralized web access seamless for everyone.</p>
                 </div>
                 <div class="about-image">
                     <img src="preview.png" alt="Rush Browser Interface Preview" class="about-logo">
@@ -149,94 +877,50 @@
         <div class="container">
             <div class="section-title">
                 <h2>SUPPORT THE MISSION</h2>
-                <p>Rush Browser is the final piece of the puzzle for the decentralized web. It has taken tremendous effort and investment to bring this vision to life. Your contribution directly funds development and helps build a truly open internet for everyone.</p>
-                 <p>Support from the <strong>ENS DAO</strong> and <strong>HNS community</strong> is greatly appreciated and will accelerate future development.</p>
+                <p>Rush is a critical piece of infrastructure for Web3. Your contribution directly funds development and helps build a truly decentralized internet.</p>
             </div>
             <div class="donation-options">
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="btc.png" alt="Bitcoin QR Code" class="qr-code-img">
-                    </div>
+                <div class="donation-option">
                     <div class="donation-icon">
                         <i class="fab fa-btc"></i>
                     </div>
-                    <h3>BITCOIN (BTC)</h3>
-                    <p class="crypto-address">bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt</p>
-                    <button class="copy-btn" data-address="bitcoin:bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt">COPY ADDRESS</button>
-                </div>
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="eth.png" alt="Ethereum QR Code" class="qr-code-img">
+                    <div class="donation-details">
+                        <h3>BITCOIN (BTC)</h3>
+                        <p class="crypto-address">bc1q8m6taupkjmzmspnlgxj48ct4rdnsrj8ue84llt</p>
+                        <button class="copy-btn">COPY ADDRESS</button>
                     </div>
+                </div>
+                <div class="donation-option">
                     <div class="donation-icon">
                         <i class="fab fa-ethereum"></i>
                     </div>
-                    <h3>ETHEREUM (ETH)</h3>
-                    <p class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</p>
-                    <button class="copy-btn" data-address="ethereum:0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238">COPY ADDRESS</button>
+                    <div class="donation-details">
+                        <h3>ETHEREUM (ETH)</h3>
+                        <p class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</p>
+                        <button class="copy-btn">COPY ADDRESS</button>
+                    </div>
                 </div>
-                 <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="bnb.png" alt="BNB QR Code" class="qr-code-img">
-                    </div>
-                    <div class="donation-icon">
-                         <i class="fas fa-bold"></i>
-                    </div>
-                    <h3>BNB (BEP20)</h3>
-                    <p class="crypto-address">0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238</p>
-                    <button class="copy-btn" data-address="bnb:0x6d4A3af7d8e4E36708Ba6E8ed2B9972C52e54238">COPY ADDRESS</button>
-                </div>
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="solana.png" alt="Solana QR Code" class="qr-code-img">
-                    </div>
-                    <div class="donation-icon">
-                       <i class="fas fa-sun"></i>
-                    </div>
-                    <h3>SOLANA (SOL)</h3>
-                    <p class="crypto-address">DN8ZGetP3NGPd9SdBUjxmmB7jD9SepcfTGzuf2YvLaC9</p>
-                    <button class="copy-btn" data-address="DN8ZGetP3NGPd9SdBUjxmmB7jD9SepcfTGzuf2YvLaC9">COPY ADDRESS</button>
-                </div>
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="xrp.png" alt="XRP QR Code" class="qr-code-img">
-                    </div>
-                    <div class="donation-icon">
-                        <i class="fab fa-xing"></i>
-                    </div>
-                    <h3>XRP (RIPPLE)</h3>
-                    <p class="crypto-address">rDRjeqW1MLwiymgq65A2pxvvMs2tS4p5Uv</p>
-                    <button class="copy-btn" data-address="xrpl:rDRjeqW1MLwiymgq65A2pxvvMs2tS4p5Uv">COPY ADDRESS</button>
-                </div>
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="ltc.png" alt="Litecoin QR Code" class="qr-code-img">
-                    </div>
-                    <div class="donation-icon">
-                        <i class="fab fa-litecoin-sign"></i>
-                    </div>
-                    <h3>LITECOIN (LTC)</h3>
-                    <p class="crypto-address">ltc1qdjl5e3fha4aru4g4j6wegcdxev5q0w660y0z8m</p>
-                    <button class="copy-btn" data-address="litecoin:ltc1qdjl5e3fha4aru4g4j6wegcdxev5q0w660y0z8m">COPY ADDRESS</button>
-                </div>
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="hns.png" alt="Handshake QR Code" class="qr-code-img">
-                    </div>
+                <div class="donation-option">
                     <div class="donation-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>HANDSHAKE (HNS)</h3>
-                    <p class="crypto-address">hs1qgx5azuqza6cul6u3fydqauj9f2ck69j3l6xen4</p>
-                    <button class="copy-btn" data-address="hns:hs1qgx5azuqza6cul6u3fydqauj9f2ck69j3l6xen4">COPY ADDRESS</button>
+                    <div class="donation-details">
+                        <h3>HANDSHAKE (HNS)</h3>
+                        <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
+                        <button class="copy-btn">COPY ADDRESS</button>
+                    </div>
                 </div>
             </div>
-             <div class="partnership-section">
-                <h3>Major Contributions & Partnerships</h3>
-                <p>For contributions exceeding $1 million, we offer an official partnership. Your name or company will be featured prominently, and you will receive the entire browser application, including all source code, domains, and associated assets. This is a unique opportunity to own a foundational piece of Web3 infrastructure.</p>
-                <p>To discuss a partnership, please reach out to: <a href="mailto:rahul.sutariya@example.com">rahul.sutariya@example.com</a></p>
+            
+            <div class="support-text">
+                <p>Rush Browser represents the final piece of the puzzle in the Web3 and decentralized domains ecosystem. This project has required significant effort and investment to bring to life. Your support enables further development and innovation in the decentralized web space.</p>
+                
+                <div class="partnership-note">
+                    <h4>PARTNERSHIP OPPORTUNITIES</h4>
+                    <p>For organizations or individuals interested in contributing $1M or more, we offer official partnership status with prominent recognition. Partners will receive the complete browser application with full source code, domains, and all related assets.</p>
+                    <p>We encourage the ENS DAO, HNS community, and other Web3 organizations to support this critical infrastructure project for the future of the decentralized internet.</p>
+                </div>
             </div>
-            <p style="text-align: center; color: var(--medium-gray); margin-top: 40px;">Please ensure you are sending to the correct address and network.</p>
         </div>
     </section>
 
@@ -245,15 +929,11 @@
             <div class="license-content">
                 <h2>LICENSE</h2>
                 <p class="highlight">PROPRIETARY COMMERCIAL LICENSE</p>
-                <p>This license grants you the right to use the Rush Browser software. The software is the intellectual property of <strong>Rahul Sutariya</strong>, the sole developer.</p>
-                <p>You may download and use the software for personal and commercial purposes. However, you are strictly prohibited from doing the following without explicit written permission:</p>
-                <ul>
-                    <li><strong>Redistribution:</strong> You may not redistribute the software installer or package. Please direct users to the official website for downloads.</li>
-                    <li><strong>Modification:</strong> You may not modify, decompile, reverse-engineer, or create derivative works from the software.</li>
-                    <li><strong>Sublicensing:</strong> You may not sublicense, rent, or lease the software to any third party.</li>
-                </ul>
-                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-                <p>© 2025 Rahul Sutariya. All rights reserved.</p>
+                <p>Rush Browser is protected under a proprietary commercial license. All rights reserved.</p>
+                <p>Unauthorized copying, modification, distribution, reverse engineering, or exploitation is strictly prohibited.</p>
+                <p>This software and its associated documentation are the exclusive property of Rahul Sutariya. Use is granted only under explicit written agreement with the copyright holder.</p>
+                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.</p>
+                <p>© 2025 Rush Browser. All rights reserved.</p>
             </div>
         </div>
     </section>
@@ -267,7 +947,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2025 RAHUL SUTARIYA. PROPRIETARY & CONFIDENTIAL.</p>
+                <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
             </div>
         </div>
     </footer>
@@ -308,20 +988,18 @@
         }, observerOptions);
 
         // Initialize elements with animation properties
-        document.querySelectorAll('.feature-card, .download-card, .donation-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .download-card, .donation-option').forEach(el => {
             el.style.opacity = "0";
             el.style.transform = "translateY(20px)";
             el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
             observer.observe(el);
         });
-    </script>
-    
-    <script>
+        
         // Script for copy buttons
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
-                const addressText = this.getAttribute('data-address');
+                const addressText = this.parentElement.querySelector('.crypto-address').innerText;
                 
                 navigator.clipboard.writeText(addressText).then(() => {
                     const originalText = this.innerText;
