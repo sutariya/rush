@@ -156,7 +156,7 @@ nav {
 .hero {
     padding: 180px 0 120px;
     text-align: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('/hero-bg.jpg') center/cover no-repeat;
+    background-color: #f8f9fa; /* Added a fallback background color */
 }
 
 .hero h1 {
