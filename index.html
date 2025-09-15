@@ -36,8 +36,6 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --text-primary: #ffffff;
             --text-secondary: #cccccc;
-            --partnership-bg: rgba(255, 215, 0, 0.1);
-            --partnership-border: rgba(255, 215, 0, 0.3);
         }
 
         * {
@@ -556,6 +554,7 @@
             color: var(--white);
             font-weight: 800;
             letter-spacing: -0.5px;
+            text-align: center;
         }
 
         .about-text p {
@@ -563,6 +562,7 @@
             margin-bottom: 24px;
             line-height: 1.8;
             font-size: 1.1rem;
+            text-align: center;
         }
 
         .about-image {
@@ -667,8 +667,8 @@
         }
 
         .partnership-note {
-            background: var(--partnership-bg);
-            border: 2px solid var(--partnership-border);
+            background: var(--card-bg);
+            border: 1px solid var(--border-gray);
             padding: 32px;
             margin-top: 40px;
             border-radius: 12px;
@@ -684,11 +684,11 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: gold;
+            background: var(--white);
         }
 
         .partnership-note h4 {
-            color: gold;
+            color: var(--white);
             margin-bottom: 16px;
             font-size: 1.5rem;
             font-weight: 700;
@@ -701,7 +701,7 @@
         }
 
         .partnership-note strong {
-            color: gold;
+            color: var(--white);
         }
 
         /* Footer */
@@ -890,7 +890,7 @@
             <nav>
                 <div class="logo">
                     <div class="logo-svg-wrapper">
-                        <img src="rush.svg" alt="Rush Browser Logo" class="logo-img">
+                        <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
                     </div>
                 </div>
                 <div class="nav-links">
@@ -973,7 +973,7 @@
                         </th>
                         <th>
                             <div class="browser-header">
-                                <img src="rush.svg" class="browser-logo" alt="Rush">
+                                <img src="rush_logo.svg" class="browser-logo" alt="Rush">
                                 <span>Rush</span>
                             </div>
                         </th>
@@ -1063,14 +1063,6 @@
                     <div class="roadmap-content">
                         <h3>Web3 Integration</h3>
                         <p>Built-in cryptocurrency wallet, dApp browser, and enhanced support for blockchain-based applications.</p>
-                    </div>
-                </div>
-                
-                <div class="roadmap-item">
-                    <div class="roadmap-date">2026</div>
-                    <div class="roadmap-content">
-                        <h3>Decentralized Ecosystem</h3>
-                        <p>Development of Rush Network - a fully decentralized peer-to-peer web infrastructure powered by HNS.</p>
                     </div>
                 </div>
             </div>
@@ -1168,7 +1160,7 @@
                 
                 <div class="donation-card">
                     <div class="donation-icon-svg">
-                        <img src="hns.svg" alt="Handshake Logo">
+                        <img src="hns.svg" alt="Handshake Logo" style="height: 40px;">
                     </div>
                     <h3>HANDSHAKE (HNS)</h3>
                     <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
@@ -1193,7 +1185,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="rush.svg" alt="Rush Browser Logo" class="logo-img">
+                    <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
                     <p>Professional-grade browsing for the decentralized era.</p>
                 </div>
             </div>
