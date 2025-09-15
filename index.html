@@ -21,15 +21,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC8LNHP06J"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BC8LNHP06J');
-    </script>
-    
     <style>
         :root {
             --black: #000000;
@@ -45,6 +36,8 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --text-primary: #ffffff;
             --text-secondary: #cccccc;
+            --partnership-bg: rgba(255, 215, 0, 0.1);
+            --partnership-border: rgba(255, 215, 0, 0.3);
         }
 
         * {
@@ -106,7 +99,6 @@
             height: 100%;
             object-fit: contain;
             display: block;
-            filter: invert(1);
         }
 
         .nav-links {
@@ -293,7 +285,6 @@
         .feature-icon-svg img {
             height: 80px;
             width: auto;
-            filter: invert(1);
         }
 
         .feature-card h3 {
@@ -358,7 +349,6 @@
         .browser-logo {
             height: 40px;
             width: auto;
-            filter: invert(1);
         }
 
         .checkmark {
@@ -369,6 +359,35 @@
         .cross {
             color: var(--medium-gray);
             font-size: 1.2rem;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* Roadmap Section */
@@ -593,6 +612,12 @@
             color: var(--white);
         }
 
+        .donation-icon-svg {
+            height: 40px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
         .donation-card h3 {
             font-size: 1.4rem;
             margin-bottom: 16px;
@@ -642,74 +667,41 @@
         }
 
         .partnership-note {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--white);
-            padding: 24px;
+            background: var(--partnership-bg);
+            border: 2px solid var(--partnership-border);
+            padding: 32px;
             margin-top: 40px;
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .partnership-note h4 {
-            color: var(--white);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-
-        .partnership-note p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 8px;
-        }
-
-        /* License Section */
-        .license {
-            padding: 120px 0;
-            background: var(--darker-gray);
-        }
-
-        .license-content {
-            background: var(--card-bg);
-            padding: 48px 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-gray);
+            border-radius: 12px;
             text-align: left;
             position: relative;
+            overflow: hidden;
         }
 
-        .license-content::before {
+        .partnership-note::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--white);
+            background: gold;
         }
 
-        .license-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 32px;
-            color: var(--white);
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            text-align: center;
-        }
-
-        .license-content p {
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .license-content .highlight {
+        .partnership-note h4 {
+            color: gold;
+            margin-bottom: 16px;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--white);
-            margin: 32px 0 20px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-gray);
-            font-size: 1.2rem;
+        }
+
+        .partnership-note p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .partnership-note strong {
+            color: gold;
         }
 
         /* Footer */
@@ -741,7 +733,6 @@
             object-fit: contain;
             display: block;
             margin: 0 auto 16px;
-            filter: invert(1);
         }
 
         .footer-logo p {
@@ -847,10 +838,6 @@
                 max-width: 100%;
             }
             
-            .license-content {
-                padding: 32px 24px;
-            }
-            
             .donation-grid {
                 grid-template-columns: 1fr;
             }
@@ -890,6 +877,10 @@
             .comparison-table td {
                 padding: 16px 12px;
             }
+
+            .partnership-note {
+                padding: 24px;
+            }
         }
     </style>
 </head>
@@ -899,7 +890,7 @@
             <nav>
                 <div class="logo">
                     <div class="logo-svg-wrapper">
-                        <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                        <img src="rush.svg" alt="Rush Browser Logo" class="logo-img">
                     </div>
                 </div>
                 <div class="nav-links">
@@ -970,19 +961,19 @@
                         <th>Feature</th>
                         <th>
                             <div class="browser-header">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTEyIDBDMTguNjMgMCAyNCA1LjM3IDI0IDEyYzAgNi42My01LjM3IDEyLTEyIDEyQzUuMzggMjQgMCAxOC42MyAwIDEyQzAgNS4zNyA1LjM4IDAgMTIgMHgiLz48cGF0aCBmaWxsPSJibGFjayIgZD0iTTEyIDE1LjMxQTEuMzEgMS4zMSAwIDAgMCAxMy4zMSAxNEEzLjY5IDMuNjkgMCAwIDAgMTcgMTBhMy42OSAzLjY5IDAgMCAwLTMuNjktNEEzLjY5IDMuNjkgMCAwIDAgMTAgMTBhMy42OSAzLjY5IDAgMCAwIDMuNjkgNGMwIC43Mi0uMjYgMS4zOC0uNjkgMS44OUE1LjUgNS41IDAgMCAxIDcgMTBhNSA1IDAgMCAxIDUtNSA1IDUgMCAwIDEgNSA1YTUgNSAwIDAgMS01IDVjLTEuNjMgMC0zLjA2LS43OC00LTEuOTlBNy4wNiA3LjA2IDAgMCAwIDEyIDE1LjMxeiIvPjwvc3ZnPg==" class="browser-logo" alt="Chrome">
+                                <img src="chrome.svg" class="browser-logo" alt="Chrome">
                                 <span>Chrome</span>
                             </div>
                         </th>
                         <th>
                             <div class="browser-header">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTEyIDBDMTguNjMgMCAyNCA1LjM3IDI0IDEyYzAgNi42My01LjM3IDEyLTEyIDEyQzUuMzggMjQgMCAxOC42MyAwIDEyQzAgNS4zNyA1LjM4IDAgMTIgMHgiLz48cGF0aCBmaWxsPSJibGFjayIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDIgMC04LTMuNTgtOC04czMuNTgtOCA4LTggOCAzLjU4IDggOC0zLjU4IDgtOCA4eiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNMTIgNmMtMy4zMSAwLTYgMi42OS02IDZzMi42OSA2IDYgNiA2LTIuNjkgNi02LTItNi02LTZ6Ii8+PC9zdmc+" class="browser-logo" alt="Brave">
+                                <img src="brave.svg" class="browser-logo" alt="Brave">
                                 <span>Brave</span>
                             </div>
                         </th>
                         <th>
                             <div class="browser-header">
-                                <img src="rush_logo.svg" class="browser-logo" alt="Rush" style="filter: invert(1);">
+                                <img src="rush.svg" class="browser-logo" alt="Rush">
                                 <span>Rush</span>
                             </div>
                         </th>
@@ -1008,12 +999,6 @@
                         <td><i class="fas fa-check checkmark"></i></td>
                     </tr>
                     <tr>
-                        <td>Built-in Ad Blocker</td>
-                        <td><i class="fas fa-times cross"></i></td>
-                        <td><i class="fas fa-check checkmark"></i></td>
-                        <td><i class="fas fa-check checkmark"></i></td>
-                    </tr>
-                    <tr>
                         <td>Web3 Focused</td>
                         <td><i class="fas fa-times cross"></i></td>
                         <td><i class="fas fa-check checkmark"></i></td>
@@ -1029,7 +1014,12 @@
                         <td>Open Source</td>
                         <td><i class="fas fa-check checkmark"></i></td>
                         <td><i class="fas fa-check checkmark"></i></td>
-                        <td><i class="fas fa-times cross"></i></td>
+                        <td>
+                            <div class="tooltip">
+                                <i class="fas fa-times cross"></i>
+                                <span class="tooltiptext">Will be open source soon</span>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -1045,7 +1035,7 @@
             
             <div class="roadmap-timeline">
                 <div class="roadmap-item">
-                    <div class="roadmap-date">Q1 2024</div>
+                    <div class="roadmap-date">Q1 2025</div>
                     <div class="roadmap-content">
                         <h3>Initial Release</h3>
                         <p>Launch of Rush Browser v1.0 with native HNS and ENS resolution, multi-tab support, and basic privacy features.</p>
@@ -1053,15 +1043,15 @@
                 </div>
                 
                 <div class="roadmap-item">
-                    <div class="roadmap-date">Q2 2024</div>
+                    <div class="roadmap-date">Q2 2025</div>
                     <div class="roadmap-content">
-                        <h3>Enhanced Privacy Features</h3>
-                        <p>Implementation of advanced fingerprinting protection, enhanced cookie management, and built-in VPN options.</p>
+                        <h3>Enhanced Protocol Support</h3>
+                        <p>Implementation of DANE support for HNS and integration of additional browser rendering engines with UI improvements.</p>
                     </div>
                 </div>
                 
                 <div class="roadmap-item">
-                    <div class="roadmap-date">Q3 2024</div>
+                    <div class="roadmap-date">Q3 2025</div>
                     <div class="roadmap-content">
                         <h3>Mobile Version</h3>
                         <p>Release of Rush Browser for iOS and Android, bringing decentralized browsing to mobile devices.</p>
@@ -1069,7 +1059,7 @@
                 </div>
                 
                 <div class="roadmap-item">
-                    <div class="roadmap-date">Q4 2024</div>
+                    <div class="roadmap-date">Q4 2025</div>
                     <div class="roadmap-content">
                         <h3>Web3 Integration</h3>
                         <p>Built-in cryptocurrency wallet, dApp browser, and enhanced support for blockchain-based applications.</p>
@@ -1077,7 +1067,7 @@
                 </div>
                 
                 <div class="roadmap-item">
-                    <div class="roadmap-date">2025</div>
+                    <div class="roadmap-date">2026</div>
                     <div class="roadmap-content">
                         <h3>Decentralized Ecosystem</h3>
                         <p>Development of Rush Network - a fully decentralized peer-to-peer web infrastructure powered by HNS.</p>
@@ -1177,8 +1167,8 @@
                 </div>
                 
                 <div class="donation-card">
-                    <div class="donation-icon">
-                        <i class="fas fa-handshake"></i>
+                    <div class="donation-icon-svg">
+                        <img src="hns.svg" alt="Handshake Logo">
                     </div>
                     <h3>HANDSHAKE (HNS)</h3>
                     <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
@@ -1199,25 +1189,11 @@
         </div>
     </section>
 
-    <section class="license" id="license">
-        <div class="container">
-            <div class="license-content">
-                <h2>LICENSE</h2>
-                <p class="highlight">PROPRIETARY COMMERCIAL LICENSE</p>
-                <p>Rush Browser is protected under a proprietary commercial license. All rights reserved.</p>
-                <p>Unauthorized copying, modification, distribution, reverse engineering, or exploitation is strictly prohibited.</p>
-                <p>This software and its associated documentation are the exclusive property of Rahul Sutariya. Use is granted only under explicit written agreement with the copyright holder.</p>
-                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.</p>
-                <p>© 2025 Rush Browser. All rights reserved.</p>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                    <img src="rush.svg" alt="Rush Browser Logo" class="logo-img">
                     <p>Professional-grade browsing for the decentralized era.</p>
                 </div>
             </div>
