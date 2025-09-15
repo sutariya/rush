@@ -705,9 +705,10 @@
         }
 
 /* --- Footer Styling --- */
+/* --- Footer Styling --- */
 footer {
     background: var(--black);
-    padding: 40px 0 20px; /* Reduced from 60px top / 30px bottom */
+    padding: 40px 0 20px; /* Tight top/bottom padding */
     border-top: 1px solid var(--border-gray);
 }
 .footer-content {
@@ -716,7 +717,7 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
-    margin-bottom: 20px; /* Reduced from 32px */
+    margin-bottom: 20px;
     text-align: center;
 }
 .footer-logo {
@@ -725,29 +726,34 @@ footer {
     text-align: center;
 }
 .footer-logo .logo-img {
-    height: 32px; /* Slightly smaller, more proportional */
+    height: 32px;
     width: auto;
     object-fit: contain;
     display: block;
-    margin: 0 auto 8px; /* Reduced bottom margin from 16px to 8px */
+    margin: 0 auto 8px;
 }
 .footer-logo p {
     color: var(--medium-gray);
-    line-height: 1.5; /* Tighter line height */
-    font-size: 0.95rem; /* Slightly smaller text */
+    line-height: 1.5;
+    font-size: 0.95rem;
     margin: 0;
-    padding: 0 10px; /* Reduced side padding */
-    text-align: center; /* Ensures text is centered */
+    padding: 0 10px;
+    text-align: center;
 }
 .copyright {
     text-align: center;
-    padding-top: 20px; /* Reduced from 32px */
+    padding-top: 20px;
     border-top: 1px solid var(--border-gray);
     color: var(--medium-gray);
     font-size: 0.95rem;
     letter-spacing: 0.5px;
 }
-
+.copyright img {
+    display: inline-block !important;
+    vertical-align: middle;
+    margin: 0 !important;
+    border: none !important;
+}
         /* Responsive Design */
         @media (max-width: 1024px) {
             .about-content {
@@ -1186,12 +1192,12 @@ footer {
         </div>
         <div class="copyright">
             <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
-            <p style="margin-top: 16px; color: var(--medium-gray); font-size: 0.95rem; text-align: center;">
-                Follow us on 
-                <a href="https://x.com/rushbrowser" target="_blank" style="color: var(--white); text-decoration: none; margin-left: 8px;">
-                    <i class="fa-brands fa-x-twitter" style="font-size: 1.4rem;"></i>
+            <div style="margin-top: 16px; text-align: center; color: var(--medium-gray); font-size: 0.95rem;">
+                Follow us on
+                <a href="https://x.com/rushbrowser" target="_blank" style="display: inline-block; margin-left: 8px; vertical-align: middle;">
+                    <img src="x.svg" alt="Follow on X" style="height: 24px; width: auto; display: inline-block; vertical-align: middle; margin: 0; border: none;">
                 </a>
-            </p>
+            </div>
         </div>
     </div>
 </footer>
