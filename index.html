@@ -704,54 +704,49 @@
             color: var(--white);
         }
 
-        /* Footer */
-        footer {
-            background: var(--black);
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--border-gray);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-
-        .footer-logo .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 16px;
-        }
-
-        .footer-logo p {
-            color: var(--medium-gray);
-            line-height: 1.7;
-            font-size: 1rem;
-            margin: 0;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-gray);
-            color: var(--medium-gray);
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
+/* --- Footer Styling --- */
+footer {
+    background: var(--black);
+    padding: 40px 0 20px; /* Reduced from 60px top / 30px bottom */
+    border-top: 1px solid var(--border-gray);
+}
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 20px; /* Reduced from 32px */
+    text-align: center;
+}
+.footer-logo {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+.footer-logo .logo-img {
+    height: 32px; /* Slightly smaller, more proportional */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 8px; /* Reduced bottom margin from 16px to 8px */
+}
+.footer-logo p {
+    color: var(--medium-gray);
+    line-height: 1.5; /* Tighter line height */
+    font-size: 0.95rem; /* Slightly smaller text */
+    margin: 0;
+    padding: 0 10px; /* Reduced side padding */
+    text-align: center; /* Ensures text is centered */
+}
+.copyright {
+    text-align: center;
+    padding-top: 20px; /* Reduced from 32px */
+    border-top: 1px solid var(--border-gray);
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
 
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -1121,12 +1116,12 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>ABOUT RUSH</h2>
-                    <p>Rush represents the next evolution in web browsing — engineered for professionals who demand precision, performance, and privacy.</p>
-                    <p>Our architecture combines enterprise-grade security with native support for decentralized protocols, eliminating complexity while maximizing capability.</p>
-                    <p>Built for developers, researchers, and forward-thinking organizations, Rush provides uncompromising access to both traditional and decentralized web infrastructure.</p>
-                    <p>Rush Browser is developed and maintained by Rahul Sutariya, with a vision to make decentralized web access seamless for everyone.</p>
-                </div>
+    <h2>ABOUT RUSH</h2>
+    <p>Rush represents the next evolution in web browsing — engineered for pioneers of the decentralized internet who demand precision, performance, and uncompromising privacy.</p>
+    <p>Our architecture combines enterprise-grade security with native, zero-configuration support for decentralized naming protocols like Handshake (HNS) and Ethereum Name Service (ENS). We eliminate the complexity of extensions and gateways, providing direct, seamless access to the dWeb.</p>
+    <p>Built for developers, researchers, and forward-thinking organizations, Rush is your dedicated gateway to the decentralized web. It’s not a general-purpose browser; it’s a precision tool for exploring and building the future of the internet.</p>
+    <p>Rush Browser is developed and maintained by Rahul Sutariya, with a singular vision: to make accessing the decentralized web as simple, fast, and secure as possible. Support for additional blockchain protocols is coming soon.</p>
+</div>
                 <div class="about-image">
                     <img src="preview.png" alt="Rush Browser Interface Preview" class="about-logo">
                 </div>
@@ -1181,19 +1176,25 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
-                    <p>Professional-grade browsing for the decentralized era.</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                <p>Professional-grade browsing for the decentralized era.</p>
             </div>
         </div>
-    </footer>
+        <div class="copyright">
+            <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
+            <p style="margin-top: 16px; color: var(--medium-gray); font-size: 0.95rem; text-align: center;">
+                Follow us on 
+                <a href="https://x.com/rushbrowser" target="_blank" style="color: var(--white); text-decoration: none; margin-left: 8px;">
+                    <i class="fa-brands fa-x-twitter" style="font-size: 1.4rem;"></i>
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
 
     <script>
         // Smooth scrolling for navigation links
