@@ -476,12 +476,12 @@
             background: var(--black);
         }
 
-        .download-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
+.download-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+}
 
         .download-card {
             background: var(--card-bg);
@@ -1071,50 +1071,63 @@ footer {
     </section>
 
     <section class="download" id="download">
-        <div class="container">
-            <div class="section-title">
-                <h2>DOWNLOAD RUSH BROWSER v1.0.0</h2>
-                <p>Professional-grade browser for Windows, macOS, and Linux</p>
-            </div>
-            <div class="download-options">
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fab fa-windows"></i>
-                    </div>
-                    <h3>WINDOWS</h3>
-                    <p>64-bit Installer</p>
-                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.Setup.1.0.0.exe" target="_blank">DOWNLOAD</a>
-                </div>
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fab fa-windows"></i>
-                    </div>
-                    <h3>WINDOWS</h3>
-                    <p>Portable 64-bit</p>
-                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.1.0.0.exe" target="_blank">DOWNLOAD</a>
-                </div>
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fab fa-apple"></i>
-                    </div>
-                    <h3>macOS</h3>
-                    <p>Universal Build</p>
-                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0-arm64.dmg" target="_blank">DOWNLOAD</a>
-                </div>
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fab fa-linux"></i>
-                    </div>
-                    <h3>LINUX</h3>
-                    <p>AppImage 64-bit</p>
-                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0.AppImage" target="_blank">DOWNLOAD</a>
-                </div>
-            </div>
-            <p style="text-align:center;margin-top:32px;color:#777;font-size:16px;">
-                All downloads are direct from GitHub — no login required.
-            </p>
+    <div class="container">
+        <div class="section-title">
+            <h2>DOWNLOAD RUSH BROWSER v1.0.0</h2>
+            <p>Professional-grade browser for Windows, macOS, and Linux</p>
         </div>
-    </section>
+        <div class="download-options">
+            <div class="download-card">
+                <div class="download-icon">
+                    <i class="fab fa-windows"></i>
+                </div>
+                <h3>WINDOWS</h3>
+                <p>Choose your preferred version</p>
+                <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                    <div class="tooltip" style="display: inline-block;">
+                        <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.Setup.1.0.0.exe" target="_blank" style="padding: 14px 28px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s; border: none; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); display: inline-block; width: 100%; text-align: center;">INSTALLER</a>
+                        <span class="tooltiptext" style="width: 220px; font-size: 14px; line-height: 1.4;">Standard installation with automatic updates and system integration</span>
+                    </div>
+                    <div class="tooltip" style="display: inline-block;">
+                        <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser.1.0.0.exe" target="_blank" style="padding: 14px 28px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s; border: none; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); display: inline-block; width: 100%; text-align: center;">PORTABLE</a>
+                        <span class="tooltiptext" style="width: 220px; font-size: 14px; line-height: 1.4;">Run without installation - perfect for USB drives or restricted systems</span>
+                    </div>
+                </div>
+            </div>
+            <div class="download-card">
+                <div class="download-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>macOS</h3>
+                <p>Choose your preferred version</p>
+                <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                    <div class="tooltip" style="display: inline-block;">
+                        <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0-arm64.dmg" target="_blank" style="padding: 14px 28px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s; border: none; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); display: inline-block; width: 100%; text-align: center;">ARM64</a>
+                        <span class="tooltiptext" style="width: 220px; font-size: 14px; line-height: 1.4;">Optimized for Apple Silicon (M1, M2, M3 chips)</span>
+                    </div>
+                    <div class="tooltip" style="display: inline-block;">
+                        <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0.dmg" target="_blank" style="padding: 14px 28px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s; border: none; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); display: inline-block; width: 100%; text-align: center;">INTEL</a>
+                        <span class="tooltiptext" style="width: 220px; font-size: 14px; line-height: 1.4;">For Intel-based Mac computers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="download-card">
+                <div class="download-icon">
+                    <i class="fab fa-linux"></i>
+                </div>
+                <h3>LINUX</h3>
+                <p>AppImage 64-bit</p>
+                <div class="tooltip" style="display: inline-block; margin-top: 20px;">
+                    <a href="https://github.com/sutariya/rush/releases/download/1.0.0/Rush.Browser-1.0.0.AppImage" target="_blank" style="display: inline-block; padding: 14px 28px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: all 0.3s; border: none; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);">DOWNLOAD</a>
+                    <span class="tooltiptext" style="width: 220px; font-size: 14px; line-height: 1.4;">AppImage format - runs on most Linux distributions without installation</span>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center;margin-top:32px;color:#777;font-size:16px;">
+            All downloads are direct from GitHub — no login required.
+        </p>
+    </div>
+</section>
 
     <section class="about" id="about">
         <div class="container">
