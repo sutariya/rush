@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to Rush Browser</title>
+    <meta name="description" content="Support the development of Rush Browser. Your contribution helps build a truly decentralized internet.">
+    <link rel="icon" href="assets/images/favicon.ico?v=2" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .donation-section { padding: 180px 0 120px; background: var(--black); }
+        .form-wrapper { max-width: 600px; margin: 60px auto 0; background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--border-gray); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 10px; color: var(--text-secondary); font-weight: 500; }
+        .form-group input { width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gray); border-radius: 8px; color: var(--white); font-size: 16px; }
+        .submit-btn { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.3s; margin-top: 10px; min-width: 170px; text-align: center; }
+        .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+        .submit-btn:disabled { background: var(--medium-gray); cursor: not-allowed; transform: none; }
+        .optional-note { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-top: 24px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                     <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <div class="logo-svg-wrapper">
+                            <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html#features">FEATURES</a>
+                    <a href="index.html#comparison">COMPARE</a>
+                    <a href="index.html#roadmap">ROADMAP</a>
+                    <a href="index.html#download">DOWNLOAD</a>
+                    <a href="donate.html">DONATE</a>
+                    <a href="contact.html">CONTACT</a>
+                </div>
+                <a href="index.html#download" class="download-btn">DOWNLOAD</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="donation-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>SUPPORT THE MISSION</h2>
+                <p>Your contribution directly funds development and helps build a truly decentralized internet.</p>
+            </div>
+            
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <div class="donation-icon"><i class="fab fa-btc"></i></div>
+                    <h3>BITCOIN (BTC)</h3>
+                    <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+                <div class="donation-card">
+                    <div class="donation-icon"><i class="fab fa-ethereum"></i></div>
+                    <h3>ETHEREUM (ETH)</h3>
+                    <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+                <div class="donation-card">
+                    <div class="donation-icon" style="display: flex; align-items: center; justify-content: center; height: 64px;">
+                        <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo" style="height: 60px; margin: 0;">
+                    </div>
+                    <h3>HANDSHAKE (HNS)</h3>
+                    <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <div class="section-title" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.8rem; color: var(--white);">LET US KNOW YOU DONATED (OPTIONAL)</h3>
+                </div>
+                <form id="donationForm" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount Donated (e.g., 0.1 ETH)</label>
+                        <input type="text" id="amount" name="amount">
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit Details</button>
+                    <p class="optional-note">This information is completely optional. Feel free to donate anonymously.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Script for Copy Buttons ---
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const addressText = this.parentElement.querySelector('.crypto-address').innerText;
+                navigator.clipboard.writeText(addressText).then(() => {
+                    const originalText = this.innerText;
+                    this.innerText = 'COPIED!';
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+
+        // --- Script for Form Submission ---
+        const donationForm = document.getElementById('donationForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        donationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Submitting...';
+
+            const formData = new FormData(donationForm);
+            const data = Object.fromEntries(formData.entries());
+            data.formType = 'donation'; // Add form identifier
+
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    submitBtn.innerText = 'Details Sent!';
+                    donationForm.reset();
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Something went wrong.');
+                }
+
+            } catch (error) {
+                submitBtn.innerText = 'Submit Failed';
+                console.error('Form submission error:', error);
+                alert('There was an error submitting your details. Please try again.');
+            } finally {
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
