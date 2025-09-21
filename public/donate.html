@@ -13,22 +13,34 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .donation-section { padding: 180px 0 120px; background: var(--black); }
-        .form-wrapper { max-width: 600px; margin: 60px auto 0; background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--border-gray); }
+        .form-wrapper { max-width: 800px; margin: 60px auto 0; background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--border-gray); text-align: center; }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 10px; color: var(--text-secondary); font-weight: 500; }
-        .form-group input { width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gray); border-radius: 8px; color: var(--white); font-size: 16px; }
-        .submit-btn { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.3s; margin-top: 10px; min-width: 170px; text-align: center; }
+        .form-group label { display: block; margin-bottom: 10px; color: var(--text-secondary); font-weight: 500; white-space: nowrap; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gray); border-radius: 8px; color: var(--white); font-size: 16px; }
+        .submit-btn { display: block; margin: 10px auto; padding: 14px 32px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.3s; min-width: 170px; text-align: center; }
         .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
         .submit-btn:disabled { background: var(--medium-gray); cursor: not-allowed; transform: none; }
-        .optional-note { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-top: 24px; }
+        .optional-note { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-top: 24px; white-space: nowrap; }
+        .benefits { margin: 40px 0; color: var(--white); text-align: center; }
+        .benefits p { margin: 10px 0; font-size: 1.1rem; white-space: nowrap; }
+        .benefits a { color: var(--accent-light); text-decoration: underline; }
+        .qr-code { text-align: center; margin-top: 10px; }
+        .donation-card { text-align: center; }
+        .donation-card h3, .donation-card p { white-space: nowrap; }
+        .section-title { text-align: center; }
+        .section-title h2, .section-title p { white-space: nowrap; }
+        .message { padding: 10px; margin-top: 10px; border-radius: 8px; text-align: center; white-space: nowrap; }
+        .message.success { background: rgba(0, 255, 0, 0.1); color: var(--white); }
+        .message.error { background: rgba(255, 0, 0, 0.1); color: var(--white); }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
                 <div class="logo">
-                     <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
                         <div class="logo-svg-wrapper">
                             <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
                         </div>
@@ -51,21 +63,31 @@
         <div class="container">
             <div class="section-title">
                 <h2>SUPPORT THE MISSION</h2>
-                <p>Your contribution directly funds development and helps build a truly decentralized internet.</p>
+                <p>Every penny fuels Rush Browser’s mission to build a secure, decentralized internet.</p>
             </div>
-            
+
+            <div class="benefits">
+                <h3>Why Donate?</h3>
+                <p>Drive Development: 100% of your donation funds our open-source work for a private, secure web.</p>
+                <p>Become a Premium Donor: Donations over $5000 earn you a spot on our <a href="/donors">Official Donors Page</a>.</p>
+                <p>Get Recognized: Share your X handle for a shoutout on our website and socials.</p>
+                <p>Tax Benefits: Crypto donations may be tax-deductible (consult a tax advisor).</p>
+            </div>
+
             <div class="donation-grid">
                 <div class="donation-card">
                     <div class="donation-icon"><i class="fab fa-btc"></i></div>
                     <h3>BITCOIN (BTC)</h3>
                     <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
                     <button class="copy-btn">COPY ADDRESS</button>
+                    <div class="qr-code" id="qr-btc"></div>
                 </div>
                 <div class="donation-card">
                     <div class="donation-icon"><i class="fab fa-ethereum"></i></div>
                     <h3>ETHEREUM (ETH)</h3>
                     <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
                     <button class="copy-btn">COPY ADDRESS</button>
+                    <div class="qr-code" id="qr-eth"></div>
                 </div>
                 <div class="donation-card">
                     <div class="donation-icon" style="display: flex; align-items: center; justify-content: center; height: 64px;">
@@ -74,32 +96,52 @@
                     <h3>HANDSHAKE (HNS)</h3>
                     <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
                     <button class="copy-btn">COPY ADDRESS</button>
+                    <div class="qr-code" id="qr-hns"></div>
                 </div>
             </div>
 
             <div class="form-wrapper">
                 <div class="section-title" style="margin-bottom: 30px;">
-                    <h3 style="font-size: 1.8rem; color: var(--white);">LET US KNOW YOU DONATED (OPTIONAL)</h3>
+                    <h3 style="font-size: 1.8rem; color: var(--white);">SUBMIT DONATION DETAILS</h3>
+                    <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
                 </div>
                 <form id="donationForm" method="POST">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name">
+                        <label for="name">Name (Optional)</label>
+                        <input type="text" id="name" name="name" placeholder="Your name">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
+                        <label for="xHandle">X Handle (Optional, e.g., @username)</label>
+                        <input type="text" id="xHandle" name="xHandle" placeholder="Your X handle for recognition">
                     </div>
                     <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" name="company">
+                        <label for="company">Company (Optional)</label>
+                        <input type="text" id="company" name="company" placeholder="Your company">
                     </div>
                     <div class="form-group">
-                        <label for="amount">Amount Donated (e.g., 0.1 ETH)</label>
-                        <input type="text" id="amount" name="amount">
+                        <label for="email">Email (for receipt)</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">Submit Details</button>
-                    <p class="optional-note">This information is completely optional. Feel free to donate anonymously.</p>
+                    <div class="form-group">
+                        <label for="amount">Amount Donated (e.g., 0.1 BTC)</label>
+                        <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="network">Network</label>
+                        <select id="network" name="network" required>
+                            <option value="">Select Network</option>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="HNS">Handshake (HNS)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txHash">Transaction Hash (Tx ID)</label>
+                        <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit & Get Receipt</button>
+                    <p class="optional-note">If you want to donate anonymously, skip filling out the form.</p>
+                    <div id="message" class="message"></div>
                 </form>
             </div>
         </div>
@@ -114,7 +156,12 @@
     </footer>
 
     <script>
-        // --- Script for Copy Buttons ---
+        // Generate QR codes
+        QRCode.toCanvas(document.getElementById('qr-btc'), 'bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2', { width: 150 }, err => { if (err) console.error(err); });
+        QRCode.toCanvas(document.getElementById('qr-eth'), '0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785', { width: 150 }, err => { if (err) console.error(err); });
+        QRCode.toCanvas(document.getElementById('qr-hns'), 'hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49', { width: 150 }, err => { if (err) console.error(err); });
+
+        // Copy buttons
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -122,55 +169,78 @@
                 navigator.clipboard.writeText(addressText).then(() => {
                     const originalText = this.innerText;
                     this.innerText = 'COPIED!';
+                    showMessage('Address copied to clipboard!', 'success');
                     setTimeout(() => {
                         this.innerText = originalText;
                     }, 2000);
                 }).catch(err => {
+                    showMessage('Failed to copy: ' + err.message, 'error');
                     console.error('Failed to copy: ', err);
                 });
             });
         });
 
-        // --- Script for Form Submission ---
+        // Form submission
         const donationForm = document.getElementById('donationForm');
         const submitBtn = document.getElementById('submitBtn');
-
         donationForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const originalBtnText = submitBtn.innerText;
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'none';
             submitBtn.disabled = true;
             submitBtn.innerText = 'Submitting...';
 
-            const formData = new FormData(donationForm);
-            const data = Object.fromEntries(formData.entries());
-            data.formType = 'donation'; // Add form identifier
+            const formData = {
+                name: document.getElementById('name').value || 'Anonymous',
+                xHandle: document.getElementById('xHandle').value || '',
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value || '',
+                amount: document.getElementById('amount').value,
+                network: document.getElementById('network').value,
+                txHash: document.getElementById('txHash').value,
+                formType: 'donation'
+            };
+
+            if (!formData.email || !formData.amount || !formData.network || !formData.txHash) {
+                showMessage('Please fill all required fields.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Submit & Get Receipt';
+                return;
+            }
 
             try {
-                const response = await fetch('/api/send-email', {
+                const response = await fetch('https://www.rushbrowser.com/api/send-email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(formData)
                 });
 
                 if (response.ok) {
-                    submitBtn.innerText = 'Details Sent!';
+                    showMessage('Thank you! Your donation is received. We’ll verify it and list you on our donors page.', 'success');
                     donationForm.reset();
+                    submitBtn.innerText = 'Details Sent!';
                 } else {
                     const errorData = await response.json();
                     throw new Error(errorData.error || 'Something went wrong.');
                 }
-
             } catch (error) {
-                submitBtn.innerText = 'Submit Failed';
+                showMessage('Problem submitting: ' + error.message, 'error');
                 console.error('Form submission error:', error);
-                alert('There was an error submitting your details. Please try again.');
             } finally {
                 setTimeout(() => {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
+                    submitBtn.innerText = 'Submit & Get Receipt';
                 }, 3000);
             }
         });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerText = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => { messageDiv.style.display = 'none'; }, 5000);
+        }
     </script>
 </body>
 </html>

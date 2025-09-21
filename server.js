@@ -1,4 +1,3 @@
-// server.js
 import express from 'express';
 import cors from 'cors';
 import { Resend } from 'resend';
@@ -19,14 +18,14 @@ import 'dotenv/config';
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from /public (for JS, CSS, images, etc.)
+// Serve static files from /public
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Email API endpoint
 app.post('/api/send-email', async (req, res) => {
   try {
     console.log('📥 Received body:', JSON.stringify(req.body, null, 2));
-    const { name, email, subject, message, company, amount, formType } = req.body;
+    const { name, xHandle, email, subject, message, company, amount, network, txHash, formType } = req.body;
 
     // Basic validation
     if (!email || !formType) {
@@ -50,16 +49,24 @@ app.post('/api/send-email', async (req, res) => {
         <p>${(message || '').replace(/\n/g, '<br>')}</p>
       `;
     } else if (formType === 'donation') {
+      let txLink = txHash ? (
+        network === 'BTC' ? `https://blockstream.info/tx/${txHash}` :
+        network === 'ETH' ? `https://etherscan.io/tx/${txHash}` :
+        network === 'HNS' ? `https://explorer.handshake.org/tx/${txHash}` : ''
+      ) : '';
       emailSubject = `New Donation Notification from ${name || 'Anonymous'}`;
       emailHtml = `
         <h1>Donation Notification! 🎉</h1>
         <ul>
           <li><strong>Name:</strong> ${name || 'Not provided'}</li>
+          <li><strong>X Handle:</strong> ${xHandle || 'Not provided'}</li>
           <li><strong>Email:</strong> ${email || 'Not provided'}</li>
           <li><strong>Company:</strong> ${company || 'Not provided'}</li>
-          <li><strong>Amount Donated:</strong> ${amount || 'Not provided'}</li>
+          <li><strong>Amount Donated:</strong> ${amount || 'Not provided'} ${network || ''}</li>
+          <li><strong>Network:</strong> ${network || 'Not provided'}</li>
+          <li><strong>Transaction Hash:</strong> ${txHash ? `<a href="${txLink}" target="_blank">${txHash}</a>` : 'Not provided'}</li>
         </ul>
-        <p>You can verify this on the blockchain.</p>
+        <p>${parseFloat(amount) >= 5000 ? 'Thank you for your generous donation! You will be listed as a Premium Donor on our <a href="https://www.rushbrowser.com/donors">Donors Page</a>.' : 'Thank you for supporting Rush Browser!'}</p>
       `;
     } else {
       console.log('❌ Invalid formType:', formType);
@@ -109,9 +116,13 @@ app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'contact.html'));
 });
 
-// Fallback for other routes (optional, for SPA or 404 handling)
+app.get('/donors', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'donors.html'));
+});
+
+// Fallback for other routes
 app.get('*', (req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html')); // Or a custom 404.html
+  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html')); // Or custom 404.html
 });
 
 // For Vercel serverless compatibility
