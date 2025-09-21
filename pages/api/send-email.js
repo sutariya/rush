@@ -1,41 +1,43 @@
-// Import the Resend library
+// api/send-email.js
 import { Resend } from 'resend';
 
-// Instantiate Resend with your API key
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Log to confirm .env is loaded
+console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? 'Loaded' : 'Missing');
 
-// The default exported function is the serverless function handler
 export default async function handler(req, res) {
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
-    // Extract the form data from the request body
+    console.log('📥 Received body:', req.body);
     const { name, email, subject, message, company, amount, formType } = req.body;
 
-    // --- CONFIGURE YOUR EMAIL DETAILS ---
-    const recipientEmail = 'YOUR_EMAIL@example.com'; // IMPORTANT: Replace with your email address
-    let emailSubject;
-    let emailHtml;
+    // Basic validation
+    if (!email || !formType) {
+      console.log('❌ Missing email or formType');
+      return res.status(400).json({ error: 'Email and form type are required' });
+    }
 
-    // Customize email content based on which form was submitted
+    let emailSubject, emailHtml;
+
     if (formType === 'contact') {
+      if (!subject || !message) {
+        return res.status(400).json({ error: 'Subject and message are required for contact form' });
+      }
       emailSubject = `New Contact Form Message: ${subject}`;
       emailHtml = `
         <h1>New Contact Inquiry</h1>
-        <p><strong>From:</strong> ${name} (${email})</p>
+        <p><strong>From:</strong> ${name || 'Anonymous'} (${email})</p>
         <p><strong>Subject:</strong> ${subject}</p>
         <hr>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${(message || '').replace(/\n/g, '<br>')}</p>
       `;
     } else if (formType === 'donation') {
       emailSubject = `New Donation Notification from ${name || 'Anonymous'}`;
       emailHtml = `
         <h1>Donation Notification! 🎉</h1>
-        <p>Someone has submitted their donation details.</p>
         <ul>
           <li><strong>Name:</strong> ${name || 'Not provided'}</li>
           <li><strong>Email:</strong> ${email || 'Not provided'}</li>
@@ -45,29 +47,34 @@ export default async function handler(req, res) {
         <p>You can verify this on the blockchain.</p>
       `;
     } else {
+      console.log('❌ Invalid formType:', formType);
       return res.status(400).json({ error: 'Invalid form type' });
     }
 
-    // Send the email using Resend
+    if (!process.env.RESEND_API_KEY) {
+      console.error('❌ Missing RESEND_API_KEY');
+      return res.status(500).json({ error: 'Server configuration error: Missing Resend API key' });
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { data, error } = await resend.emails.send({
-      from: 'Rush Browser Forms <onboarding@resend.dev>', // Can be a custom domain after verification
-      to: [recipientEmail],
+      from: 'Rush Browser Forms <no-reply@updates.rushbrowser.com>',
+      to: [email],
+      replyTo: 'support@rushbrowser.com', // Replace with your support email
       subject: emailSubject,
       html: emailHtml,
     });
 
-    // If there's an error, return it
     if (error) {
-      console.error({ error });
-      return res.status(400).json({ error: 'Failed to send message.' });
+      console.error('❌ Resend error:', JSON.stringify(error, null, 2));
+      return res.status(error.statusCode || 400).json({ error: `Failed to send email: ${error.message}` });
     }
 
-    // On success, return a success message
-    console.log({ data });
+    console.log('✅ Email sent:', data);
     return res.status(200).json({ message: 'Message sent successfully!' });
-
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'An internal server error occurred.' });
+    console.error('💥 Server error:', error);
+    return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
   }
 }

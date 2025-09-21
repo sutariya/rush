@@ -25,19 +25,29 @@ app.use(express.static('public'));
 // Email API endpoint
 app.post('/api/send-email', async (req, res) => {
   try {
+    console.log('📥 Received body:', req.body);
     const { name, email, subject, message, company, amount, formType } = req.body;
+
+    // Basic validation
+    if (!email || !formType) {
+      console.log('❌ Missing email or formType');
+      return res.status(400).json({ error: 'Email and form type are required' });
+    }
 
     let emailSubject, emailHtml;
 
     if (formType === 'contact') {
+      if (!subject || !message) {
+        return res.status(400).json({ error: 'Subject and message are required for contact form' });
+      }
       emailSubject = `New Contact Form Message: ${subject}`;
       emailHtml = `
         <h1>New Contact Inquiry</h1>
-        <p><strong>From:</strong> ${name} (${email})</p>
+        <p><strong>From:</strong> ${name || 'Anonymous'} (${email})</p>
         <p><strong>Subject:</strong> ${subject}</p>
         <hr>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${(message || '').replace(/\n/g, '<br>')}</p>
       `;
     } else if (formType === 'donation') {
       emailSubject = `New Donation Notification from ${name || 'Anonymous'}`;
@@ -52,34 +62,40 @@ app.post('/api/send-email', async (req, res) => {
         <p>You can verify this on the blockchain.</p>
       `;
     } else {
+      console.log('❌ Invalid formType:', formType);
       return res.status(400).json({ error: 'Invalid form type' });
     }
 
-    // Initialize Resend
+    if (!process.env.RESEND_API_KEY) {
+      console.error('❌ Missing RESEND_API_KEY');
+      return res.status(500).json({ error: 'Server configuration error: Missing Resend API key' });
+    }
+
+    console.log('📤 Sending email via Resend...');
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: 'Rush Browser Forms <onboarding@resend.dev>',
-      to: ['YOUR_EMAIL@example.com'], // ⚠️ REPLACE THIS WITH YOUR EMAIL
+      from: 'Rush Browser Forms <no-reply@updates.rushbrowser.com>',
+      to: [email],
+      replyTo: 'support@rushbrowser.com', // Replace with your support email
       subject: emailSubject,
       html: emailHtml,
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return res.status(400).json({ error: 'Failed to send email via Resend.' });
+      console.error('❌ Resend error:', JSON.stringify(error, null, 2));
+      return res.status(error.statusCode || 400).json({ error: `Failed to send email: ${error.message}` });
     }
 
-    console.log('Email sent successfully:', data);
+    console.log('✅ Email sent successfully:', data);
     return res.status(200).json({ message: 'Message sent successfully!' });
-
   } catch (error) {
-    console.error('Server error:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    console.error('💥 Server error:', error);
+    return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
   }
 });
 
-// Fallback: serve index.html for any unknown route (optional, for SPA-like behavior)
+// Fallback: serve index.html for SPA-like behavior
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -89,4 +105,5 @@ app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
   console.log(`📂 Static files served from /public`);
   console.log(`✉️  Email endpoint: POST http://localhost:${PORT}/api/send-email`);
+  console.log('🔑 RESEND_API_KEY loaded:', !!process.env.RESEND_API_KEY);
 });
