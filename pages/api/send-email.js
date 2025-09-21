@@ -1,8 +1,5 @@
-// api/send-email.js
+// File: /api/send-email.js
 import { Resend } from 'resend';
-
-// Log to confirm .env is loaded
-console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? 'Loaded' : 'Missing');
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -10,7 +7,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log('📥 Received body:', req.body);
     const {
       name,
       xHandle,
@@ -24,83 +20,73 @@ export default async function handler(req, res) {
       formType
     } = req.body;
 
-    // Basic validation
-    if (!email || !formType) {
-      console.log('❌ Missing email or formType');
-      return res.status(400).json({ error: 'Email and form type are required' });
+    // Validate essential fields
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
     }
 
     let emailSubject, emailHtml;
 
     if (formType === 'contact') {
       if (!subject || !message) {
-        return res.status(400).json({ error: 'Subject and message are required for contact form' });
+        return res.status(400).json({ error: 'Subject and message are required' });
       }
-      emailSubject = `New Contact Form Message: ${subject}`;
+      emailSubject = `Contact Form: ${subject}`;
       emailHtml = `
-        <h1>New Contact Inquiry</h1>
-        <p><strong>From:</strong> ${name || 'Anonymous'} (${email})</p>
+        <h2>New Contact Message</h2>
+        <p><strong>From:</strong> ${name || 'Anonymous'} <${email}></p>
         <p><strong>Subject:</strong> ${subject}</p>
         <hr>
         <p><strong>Message:</strong></p>
-        <p>${(message || '').replace(/\n/g, '<br>')}</p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
       `;
     } else if (formType === 'donation') {
-      // ✅ Generate correct blockchain explorer link
+      // ✅ Use shakeshift.com for HNS
       let txLink = txHash ? (
         network === 'BTC' ? `https://blockstream.info/tx/${txHash}` :
         network === 'ETH' ? `https://etherscan.io/tx/${txHash}` :
-        network === 'HNS' ? `https://shakeshift.com/tx/${txHash}` : ''
-      ) : '';
+        network === 'HNS' ? `https://shakeshift.com/tx/${txHash}` : 'N/A'
+      ) : 'N/A';
 
-      emailSubject = `New Donation Notification from ${name || 'Anonymous'}`;
+      emailSubject = `Donation Received: ${amount || 'Unknown'} ${network || ''}`;
       emailHtml = `
-        <h1>Donation Notification! 🎉</h1>
+        <h2>🎉 New Donation!</h2>
         <ul>
-          <li><strong>Name:</strong> ${name || 'Not provided'}</li>
-          <li><strong>X Handle:</strong> ${xHandle || 'Not provided'}</li>
-          <li><strong>Email:</strong> ${email || 'Not provided'}</li>
-          <li><strong>Company:</strong> ${company || 'Not provided'}</li>
-          <li><strong>Amount Donated:</strong> ${amount || 'Not provided'} ${network || ''}</li>
-          <li><strong>Network:</strong> ${network || 'Not provided'}</li>
-          <li><strong>Transaction Hash:</strong> ${txHash ? `<a href="${txLink}" target="_blank" style="color: #00ffaa; text-decoration: underline;">View on Explorer</a>` : 'Not provided'}</li>
+          <li><strong>Name:</strong> ${name || 'Anonymous'}</li>
+          <li><strong>X Handle:</strong> ${xHandle || '—'}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Company:</strong> ${company || '—'}</li>
+          <li><strong>Amount:</strong> ${amount || '—'} ${network || ''}</li>
+          <li><strong>Network:</strong> ${network || '—'}</li>
+          <li><strong>Transaction:</strong> ${txHash ? `<a href="${txLink}" target="_blank" style="color: #00ffaa;">View on Explorer</a>` : '—'}</li>
         </ul>
-        <p>${parseFloat(amount) >= 5000 ? '🌟 Thank you for your generous donation! You will be listed as a Premium Donor on our <a href="https://www.rushbrowser.com/donors" target="_blank" style="color: #00ffaa; text-decoration: underline;">Donors Page</a>.' : 'Thank you for supporting Rush Browser!'}</p>
-        <hr>
-        <p style="font-size: 0.9rem; color: #888;">
-          <em>This is an automated message. Please do not reply.</em>
-        </p>
+        <p><em>Donations over $5000 qualify for Premium Donor listing. Verify transaction manually.</em></p>
       `;
     } else {
-      console.log('❌ Invalid formType:', formType);
       return res.status(400).json({ error: 'Invalid form type' });
     }
 
-    if (!process.env.RESEND_API_KEY) {
-      console.error('❌ Missing RESEND_API_KEY');
-      return res.status(500).json({ error: 'Server configuration error: Missing Resend API key' });
-    }
-
+    // Initialize Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    // ✅ SEND EMAIL TO YOU — REPLACE WITH YOUR EMAIL
     const { data, error } = await resend.emails.send({
-      from: 'Rush Browser Forms <no-reply@updates.rushbrowser.com>',
-      to: [email],
-      replyTo: 'support@rushbrowser.com',
+      from: 'Rush Browser <no-reply@updates.rushbrowser.com>',
+      to: ['support@rushbrowser.com'], // 👈 REPLACE THIS WITH YOUR EMAIL
+      replyTo: email,
       subject: emailSubject,
       html: emailHtml,
     });
 
     if (error) {
-      console.error('❌ Resend error:', JSON.stringify(error, null, 2));
-      return res.status(error.statusCode || 400).json({ error: `Failed to send email: ${error.message}` });
+      console.error('Resend Error:', error);
+      return res.status(500).json({ error: 'Failed to send email' });
     }
 
-    console.log('✅ Email sent:', data);
-    return res.status(200).json({ message: 'Message sent successfully!' });
+    return res.status(200).json({ message: 'Email sent successfully!' });
 
   } catch (error) {
-    console.error('💥 Server error:', error);
-    return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
+    console.error('Server Error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
