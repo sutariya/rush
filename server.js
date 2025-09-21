@@ -19,8 +19,8 @@ import 'dotenv/config';
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from /public
-app.use(express.static('public'));
+// Serve static files from /public (for JS, CSS, images, etc.)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Email API endpoint
 app.post('/api/send-email', async (req, res) => {
@@ -96,9 +96,22 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
-// Fallback: serve index.html for SPA-like behavior
-app.get('*', (req, res) => {
+// Specific routes for HTML pages
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/donate', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'donate.html'));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
+
+// Fallback for other routes (optional, for SPA or 404 handling)
+app.get('*', (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html')); // Or a custom 404.html
 });
 
 // For Vercel serverless compatibility
