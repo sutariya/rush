@@ -40,8 +40,6 @@
             text-decoration: underline;
         }
 
-        /* Use your existing .donation-grid from style.css */
-        /* Override only spacing if needed */
         .donation-grid {
             margin: 60px 0;
             gap: 32px;
@@ -79,6 +77,7 @@
             margin: 16px 0;
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
+            word-break: break-all;
         }
 
         .copy-btn {
@@ -187,6 +186,17 @@
             color: #ff4444;
         }
 
+        .explorer-note {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            margin: 8px 0 16px;
+        }
+
+        .explorer-note a {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             .form-wrapper {
                 padding: 30px 20px;
@@ -242,6 +252,7 @@
                     <div class="donation-icon"><i class="fab fa-btc"></i></div>
                     <h3>BITCOIN (BTC)</h3>
                     <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
+                    <p class="explorer-note">View on <a href="https://blockstream.info" target="_blank">Blockstream.info</a></p>
                     <button class="copy-btn">COPY ADDRESS</button>
                     <div class="qr-code" id="qr-btc"></div>
                 </div>
@@ -249,6 +260,7 @@
                     <div class="donation-icon"><i class="fab fa-ethereum"></i></div>
                     <h3>ETHEREUM (ETH)</h3>
                     <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
+                    <p class="explorer-note">View on <a href="https://etherscan.io" target="_blank">Etherscan.io</a></p>
                     <button class="copy-btn">COPY ADDRESS</button>
                     <div class="qr-code" id="qr-eth"></div>
                 </div>
@@ -258,6 +270,7 @@
                     </div>
                     <h3>HANDSHAKE (HNS)</h3>
                     <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
+                    <p class="explorer-note">View on <a href="https://shakeshift.com" target="_blank">ShakeShift.com</a></p>
                     <button class="copy-btn">COPY ADDRESS</button>
                     <div class="qr-code" id="qr-hns"></div>
                 </div>
@@ -266,7 +279,8 @@
             <div class="form-wrapper">
                 <h3>SUBMIT DONATION DETAILS</h3>
                 <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
-                <form id="donationForm" method="POST">
+                <!-- ✅ FIXED: Removed action="/donate.html" — handled by JS -->
+                <form id="donationForm" method="POST" onsubmit="event.preventDefault();">
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
                         <input type="text" id="name" name="name" placeholder="Your name">
@@ -335,7 +349,7 @@
             // Copy buttons
             document.querySelectorAll('.copy-btn').forEach(button => {
                 button.addEventListener('click', function() {
-                    const address = this.previousElementSibling.innerText;
+                    const address = this.parentElement.querySelector('.crypto-address').innerText;
                     navigator.clipboard.writeText(address).then(() => {
                         const original = this.innerText;
                         this.innerText = 'COPIED!';
@@ -352,7 +366,9 @@
             const submitBtn = document.getElementById('submitBtn');
 
             form.addEventListener('submit', async function(e) {
+                // ✅ Already prevented default via onsubmit — but double-safe
                 e.preventDefault();
+
                 const messageDiv = document.getElementById('message');
                 messageDiv.style.display = 'none';
                 submitBtn.disabled = true;

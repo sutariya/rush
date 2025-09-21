@@ -11,7 +11,18 @@ export default async function handler(req, res) {
 
   try {
     console.log('📥 Received body:', req.body);
-    const { name, email, subject, message, company, amount, formType } = req.body;
+    const {
+      name,
+      xHandle,
+      email,
+      subject,
+      message,
+      company,
+      amount,
+      network,
+      txHash,
+      formType
+    } = req.body;
 
     // Basic validation
     if (!email || !formType) {
@@ -35,16 +46,30 @@ export default async function handler(req, res) {
         <p>${(message || '').replace(/\n/g, '<br>')}</p>
       `;
     } else if (formType === 'donation') {
+      // ✅ Generate correct blockchain explorer link
+      let txLink = txHash ? (
+        network === 'BTC' ? `https://blockstream.info/tx/${txHash}` :
+        network === 'ETH' ? `https://etherscan.io/tx/${txHash}` :
+        network === 'HNS' ? `https://shakeshift.com/tx/${txHash}` : ''
+      ) : '';
+
       emailSubject = `New Donation Notification from ${name || 'Anonymous'}`;
       emailHtml = `
         <h1>Donation Notification! 🎉</h1>
         <ul>
           <li><strong>Name:</strong> ${name || 'Not provided'}</li>
+          <li><strong>X Handle:</strong> ${xHandle || 'Not provided'}</li>
           <li><strong>Email:</strong> ${email || 'Not provided'}</li>
           <li><strong>Company:</strong> ${company || 'Not provided'}</li>
-          <li><strong>Amount Donated:</strong> ${amount || 'Not provided'}</li>
+          <li><strong>Amount Donated:</strong> ${amount || 'Not provided'} ${network || ''}</li>
+          <li><strong>Network:</strong> ${network || 'Not provided'}</li>
+          <li><strong>Transaction Hash:</strong> ${txHash ? `<a href="${txLink}" target="_blank" style="color: #00ffaa; text-decoration: underline;">View on Explorer</a>` : 'Not provided'}</li>
         </ul>
-        <p>You can verify this on the blockchain.</p>
+        <p>${parseFloat(amount) >= 5000 ? '🌟 Thank you for your generous donation! You will be listed as a Premium Donor on our <a href="https://www.rushbrowser.com/donors" target="_blank" style="color: #00ffaa; text-decoration: underline;">Donors Page</a>.' : 'Thank you for supporting Rush Browser!'}</p>
+        <hr>
+        <p style="font-size: 0.9rem; color: #888;">
+          <em>This is an automated message. Please do not reply.</em>
+        </p>
       `;
     } else {
       console.log('❌ Invalid formType:', formType);
@@ -61,7 +86,7 @@ export default async function handler(req, res) {
     const { data, error } = await resend.emails.send({
       from: 'Rush Browser Forms <no-reply@updates.rushbrowser.com>',
       to: [email],
-      replyTo: 'support@rushbrowser.com', // Replace with your support email
+      replyTo: 'support@rushbrowser.com',
       subject: emailSubject,
       html: emailHtml,
     });
@@ -73,6 +98,7 @@ export default async function handler(req, res) {
 
     console.log('✅ Email sent:', data);
     return res.status(200).json({ message: 'Message sent successfully!' });
+
   } catch (error) {
     console.error('💥 Server error:', error);
     return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
