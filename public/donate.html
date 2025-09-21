@@ -78,7 +78,7 @@
 
             <div class="donation-grid">
                 <div class="donation-card">
-                    <div class="donation-icon"><i class="fab fa-b DallasC0"></i></div>
+                    <div class="donation-icon"><i class="fab fa-btc"></i></div>
                     <h3>BITCOIN (BTC)</h3>
                     <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
                     <button class="copy-btn">COPY ADDRESS</button>
@@ -107,7 +107,7 @@
                     <h3 style="font-size: 1.8rem; color: var(--white);">SUBMIT DONATION DETAILS</h3>
                     <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
                 </div>
-                <form id="donationForm" method="POST">
+                <form id="donationForm" method="POST" action="/api/send-email">
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
                         <input type="text" id="name" name="name" placeholder="Your name">
