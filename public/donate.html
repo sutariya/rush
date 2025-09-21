@@ -81,7 +81,7 @@
                 <div class="section-title" style="margin-bottom: 30px;">
                     <h3 style="font-size: 1.8rem; color: var(--white);">LET US KNOW YOU DONATED (OPTIONAL)</h3>
                 </div>
-                <form id="donationForm" method="POST">
+                <form id="donationForm">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name">
@@ -112,65 +112,8 @@
             </div>
         </div>
     </footer>
+    
+    <script src="/assets/js/donate.js"></script>
 
-    <script>
-        // --- Script for Copy Buttons ---
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const addressText = this.parentElement.querySelector('.crypto-address').innerText;
-                navigator.clipboard.writeText(addressText).then(() => {
-                    const originalText = this.innerText;
-                    this.innerText = 'COPIED!';
-                    setTimeout(() => {
-                        this.innerText = originalText;
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            });
-        });
-
-        // --- Script for Form Submission ---
-        const donationForm = document.getElementById('donationForm');
-        const submitBtn = document.getElementById('submitBtn');
-
-        donationForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Submitting...';
-
-            const formData = new FormData(donationForm);
-            const data = Object.fromEntries(formData.entries());
-            data.formType = 'donation'; // Add form identifier
-
-            try {
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                });
-
-                if (response.ok) {
-                    submitBtn.innerText = 'Details Sent!';
-                    donationForm.reset();
-                } else {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Something went wrong.');
-                }
-
-            } catch (error) {
-                submitBtn.innerText = 'Submit Failed';
-                console.error('Form submission error:', error);
-                alert('There was an error submitting your details. Please try again.');
-            } finally {
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
-                }, 3000);
-            }
-        });
-    </script>
 </body>
 </html>

@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     const { name, email, subject, message, company, amount, formType } = req.body;
 
     // --- CONFIGURE YOUR EMAIL DETAILS ---
-    const recipientEmail = 'YOUR_EMAIL@example.com'; // IMPORTANT: Replace with your email address
+    const recipientEmail = '[rushbrowser@gmail.com]'; // IMPORTANT: Replace with your email address
     let emailSubject;
     let emailHtml;
 
