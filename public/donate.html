@@ -100,10 +100,6 @@
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
 
-        .qr-code {
-            margin-top: 24px;
-        }
-
         .form-wrapper {
             max-width: 800px;
             margin: 60px auto 0;
@@ -206,7 +202,6 @@
             }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
     <header>
@@ -236,7 +231,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>SUPPORT THE MISSION</h2>
-                <p>Every penny fuels Rush Browser’s mission to build a secure, decentralized internet.</p>
+                <p>Every penny fuels Rush Browser's mission to build a secure, decentralized internet.</p>
             </div>
 
             <div class="benefits">
@@ -254,7 +249,6 @@
                     <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
                     <p class="explorer-note">View on <a href="https://blockstream.info" target="_blank">Blockstream.info</a></p>
                     <button class="copy-btn">COPY ADDRESS</button>
-                    <div class="qr-code" id="qr-btc"></div>
                 </div>
                 <div class="donation-card">
                     <div class="donation-icon"><i class="fab fa-ethereum"></i></div>
@@ -262,7 +256,6 @@
                     <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
                     <p class="explorer-note">View on <a href="https://etherscan.io" target="_blank">Etherscan.io</a></p>
                     <button class="copy-btn">COPY ADDRESS</button>
-                    <div class="qr-code" id="qr-eth"></div>
                 </div>
                 <div class="donation-card">
                     <div class="donation-icon">
@@ -272,14 +265,12 @@
                     <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
                     <p class="explorer-note">View on <a href="https://shakeshift.com" target="_blank">ShakeShift.com</a></p>
                     <button class="copy-btn">COPY ADDRESS</button>
-                    <div class="qr-code" id="qr-hns"></div>
                 </div>
             </div>
 
             <div class="form-wrapper">
                 <h3>SUBMIT DONATION DETAILS</h3>
                 <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
-                <!-- ✅ FIXED: Removed action="/donate.html" — handled by JS -->
                 <form id="donationForm" method="POST" onsubmit="event.preventDefault();">
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
@@ -332,20 +323,6 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Generate QR codes
-        function generateQR(selector, text) {
-            const el = document.querySelector(selector);
-            if (el) {
-                QRCode.toCanvas(el, text, { width: 150 }, function (error) {
-                    if (error) console.error("QR Error:", error);
-                });
-            }
-        }
-
-        generateQR('#qr-btc', 'bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2');
-        generateQR('#qr-eth', '0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785');
-        generateQR('#qr-hns', 'hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49');
-
         // Copy buttons
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', function() {
@@ -373,7 +350,6 @@
             submitBtn.disabled = true;
             submitBtn.innerText = 'Submitting...';
 
-            // ✅ SAFER: Get elements with optional chaining
             const nameEl = document.getElementById('name');
             const xHandleEl = document.getElementById('xHandle');
             const emailEl = document.getElementById('email');
@@ -393,7 +369,7 @@
                 formType: 'donation'
             };
 
-            // ✅ CLIENT-SIDE VALIDATION
+            // Client-side validation
             if (!formData.email) {
                 showMessage('Email is required.', 'error');
                 submitBtn.disabled = false;
@@ -430,7 +406,7 @@
                 });
 
                 if (response.ok) {
-                    showMessage('Thank you! Your donation is received. We’ll verify it and list you on our donors page.', 'success');
+                    showMessage('Thank you! Your donation is received. We'll verify it and list you on our donors page.', 'success');
                     form.reset();
                     submitBtn.innerText = 'Details Sent!';
                 } else {
