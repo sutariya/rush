@@ -25,7 +25,7 @@ app.use(express.static('public'));
 // Email API endpoint
 app.post('/api/send-email', async (req, res) => {
   try {
-    console.log('📥 Received body:', req.body);
+    console.log('📥 Received body:', JSON.stringify(req.body, null, 2));
     const { name, email, subject, message, company, amount, formType } = req.body;
 
     // Basic validation
@@ -77,7 +77,7 @@ app.post('/api/send-email', async (req, res) => {
     const { data, error } = await resend.emails.send({
       from: 'Rush Browser Forms <no-reply@updates.rushbrowser.com>',
       to: [email],
-      replyTo: 'support@rushbrowser.com', // Replace with your support email
+      replyTo: 'support@rushbrowser.com',
       subject: emailSubject,
       html: emailHtml,
     });
@@ -89,8 +89,9 @@ app.post('/api/send-email', async (req, res) => {
 
     console.log('✅ Email sent successfully:', data);
     return res.status(200).json({ message: 'Message sent successfully!' });
+
   } catch (error) {
-    console.error('💥 Server error:', error);
+    console.error('💥 Server error:', JSON.stringify(error, null, 2));
     return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
   }
 });
@@ -100,10 +101,18 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start server
+// For Vercel serverless compatibility
+export default app;
+
+// Start server (for local)
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
   console.log(`📂 Static files served from /public`);
   console.log(`✉️  Email endpoint: POST http://localhost:${PORT}/api/send-email`);
   console.log('🔑 RESEND_API_KEY loaded:', !!process.env.RESEND_API_KEY);
 });
+
+// CommonJS export for Vercel
+if (typeof module !== 'undefined') {
+  module.exports = app;
+}
