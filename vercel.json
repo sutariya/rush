@@ -9,11 +9,12 @@
   "routes": [
     {
       "src": "/api/send-email",
-      "dest": "api/send-email.js"
+      "dest": "/api/send-email.js",
+      "methods": ["POST", "OPTIONS"]
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/public/$1"
     }
   ]
 }
