@@ -9,7 +9,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Load environment variables
 import 'dotenv/config';
@@ -18,14 +17,25 @@ import 'dotenv/config';
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from /public
+// Serve static files from /public (for local dev)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Email API endpoint
 app.post('/api/send-email', async (req, res) => {
   try {
     console.log('📥 Received body:', JSON.stringify(req.body, null, 2));
-    const { name, xHandle, email, subject, message, company, amount, network, txHash, formType } = req.body;
+    const {
+      name,
+      xHandle,
+      email,
+      subject,
+      message,
+      company,
+      amount,
+      network,
+      txHash,
+      formType
+    } = req.body;
 
     // Basic validation
     if (!email || !formType) {
@@ -49,11 +59,13 @@ app.post('/api/send-email', async (req, res) => {
         <p>${(message || '').replace(/\n/g, '<br>')}</p>
       `;
     } else if (formType === 'donation') {
+      // ✅ Fixed: Use shakeshift.com for HNS — no trailing spaces
       let txLink = txHash ? (
         network === 'BTC' ? `https://blockstream.info/tx/${txHash}` :
         network === 'ETH' ? `https://etherscan.io/tx/${txHash}` :
-        network === 'HNS' ? `https://explorer.handshake.org/tx/${txHash}` : ''
+        network === 'HNS' ? `https://shakeshift.com/tx/${txHash}` : ''
       ) : '';
+
       emailSubject = `New Donation Notification from ${name || 'Anonymous'}`;
       emailHtml = `
         <h1>Donation Notification! 🎉</h1>
@@ -66,7 +78,7 @@ app.post('/api/send-email', async (req, res) => {
           <li><strong>Network:</strong> ${network || 'Not provided'}</li>
           <li><strong>Transaction Hash:</strong> ${txHash ? `<a href="${txLink}" target="_blank">${txHash}</a>` : 'Not provided'}</li>
         </ul>
-        <p>${parseFloat(amount) >= 5000 ? 'Thank you for your generous donation! You will be listed as a Premium Donor on our <a href="https://www.rushbrowser.com/donors">Donors Page</a>.' : 'Thank you for supporting Rush Browser!'}</p>
+        <p>${parseFloat(amount) >= 5000 ? 'Thank you for your generous donation! You will be listed as a Premium Donor on our <a href="https://www.rushbrowser.com/donors" target="_blank">Donors Page</a>.' : 'Thank you for supporting Rush Browser!'}</p>
       `;
     } else {
       console.log('❌ Invalid formType:', formType);
@@ -98,12 +110,12 @@ app.post('/api/send-email', async (req, res) => {
     return res.status(200).json({ message: 'Message sent successfully!' });
 
   } catch (error) {
-    console.error('💥 Server error:', JSON.stringify(error, null, 2));
+    console.error('💥 Server error:', error);
     return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
   }
 });
 
-// Specific routes for HTML pages
+// Routes for static pages (for local dev)
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -120,23 +132,10 @@ app.get('/donors', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'donors.html'));
 });
 
-// Fallback for other routes
+// Fallback for SPA or 404
 app.get('*', (req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html')); // Or custom 404.html
+  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// For Vercel serverless compatibility
+// ✅ Vercel Serverless Function Export
 export default app;
-
-// Start server (for local)
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
-  console.log(`📂 Static files served from /public`);
-  console.log(`✉️  Email endpoint: POST http://localhost:${PORT}/api/send-email`);
-  console.log('🔑 RESEND_API_KEY loaded:', !!process.env.RESEND_API_KEY);
-});
-
-// CommonJS export for Vercel
-if (typeof module !== 'undefined') {
-  module.exports = app;
-}

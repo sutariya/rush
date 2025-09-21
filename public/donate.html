@@ -12,28 +12,189 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .donation-section { padding: 180px 0 120px; background: var(--black); }
-        .form-wrapper { max-width: 800px; margin: 60px auto 0; background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--border-gray); text-align: center; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 10px; color: var(--text-secondary); font-weight: 500; white-space: nowrap; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gray); border-radius: 8px; color: var(--white); font-size: 16px; }
-        .submit-btn { display: block; margin: 10px auto; padding: 14px 32px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.3s; min-width: 170px; text-align: center; }
-        .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
-        .submit-btn:disabled { background: var(--medium-gray); cursor: not-allowed; transform: none; }
-        .optional-note { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-top: 24px; white-space: nowrap; }
-        .benefits { margin: 40px 0; color: var(--white); text-align: center; }
-        .benefits p { margin: 10px 0; font-size: 1.1rem; white-space: nowrap; }
-        .benefits a { color: var(--accent-light); text-decoration: underline; }
-        .qr-code { text-align: center; margin-top: 10px; }
-        .donation-card { text-align: center; padding: 20px; }
-        .donation-card h3 { white-space: nowrap; }
-        .donation-card .crypto-address { word-break: break-all; font-size: 0.9rem; margin: 10px 0; padding: 0 10px; }
-        .section-title { text-align: center; }
-        .section-title h2 { white-space: nowrap; }
-        .form-wrapper .section-title p { word-wrap: break-word; max-width: 90%; margin: 0 auto; }
-        .message { padding: 10px; margin-top: 10px; border-radius: 8px; text-align: center; white-space: nowrap; }
-        .message.success { background: rgba(0, 255, 0, 0.1); color: var(--white); }
-        .message.error { background: rgba(255, 0, 0, 0.1); color: var(--white); }
+        .donation-section {
+            padding: 120px 0 80px;
+        }
+
+        .benefits {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .benefits h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .benefits p {
+            margin: 16px 0;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .benefits a {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
+        /* Use your existing .donation-grid from style.css */
+        /* Override only spacing if needed */
+        .donation-grid {
+            margin: 60px 0;
+            gap: 32px;
+        }
+
+        .donation-card {
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .donation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .donation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 64px;
+        }
+
+        .donation-icon img {
+            height: 40px;
+            width: auto;
+        }
+
+        .crypto-address {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            padding: 10px 20px;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            background: var(--accent-light);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .qr-code {
+            margin-top: 24px;
+        }
+
+        .form-wrapper {
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+        }
+
+        .form-wrapper h3 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .form-wrapper p {
+            max-width: 90%;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            display: block;
+            margin: 24px auto 16px;
+            padding: 14px 32px;
+            min-width: 180px;
+        }
+
+        .optional-note {
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            margin-top: 24px;
+        }
+
+        .message {
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+        }
+
+        .message.error {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4444;
+        }
+
+        @media (max-width: 768px) {
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+            .benefits h3 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
@@ -92,8 +253,8 @@
                     <div class="qr-code" id="qr-eth"></div>
                 </div>
                 <div class="donation-card">
-                    <div class="donation-icon" style="display: flex; align-items: center; justify-content: center; height: 64px;">
-                        <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo" style="height: 60px; margin: 0;">
+                    <div class="donation-icon">
+                        <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo">
                     </div>
                     <h3>HANDSHAKE (HNS)</h3>
                     <p class="crypto-address">hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49</p>
@@ -103,11 +264,9 @@
             </div>
 
             <div class="form-wrapper">
-                <div class="section-title" style="margin-bottom: 30px;">
-                    <h3 style="font-size: 1.8rem; color: var(--white);">SUBMIT DONATION DETAILS</h3>
-                    <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
-                </div>
-                <form id="donationForm" method="POST" action="/api/send-email">
+                <h3>SUBMIT DONATION DETAILS</h3>
+                <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
+                <form id="donationForm" method="POST">
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
                         <input type="text" id="name" name="name" placeholder="Your name">
@@ -158,91 +317,100 @@
     </footer>
 
     <script>
-        // Generate QR codes
-        QRCode.toCanvas(document.getElementById('qr-btc'), 'bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2', { width: 150 }, err => { if (err) console.error(err); });
-        QRCode.toCanvas(document.getElementById('qr-eth'), '0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785', { width: 150 }, err => { if (err) console.error(err); });
-        QRCode.toCanvas(document.getElementById('qr-hns'), 'hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49', { width: 150 }, err => { if (err) console.error(err); });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate QR codes
+            function generateQR(selector, text) {
+                const el = document.querySelector(selector);
+                if (el) {
+                    QRCode.toCanvas(el, text, { width: 150 }, function (error) {
+                        if (error) console.error("QR Error:", error);
+                    });
+                }
+            }
 
-        // Copy buttons
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const addressText = this.parentElement.querySelector('.crypto-address').innerText;
-                navigator.clipboard.writeText(addressText).then(() => {
-                    const originalText = this.innerText;
-                    this.innerText = 'COPIED!';
-                    showMessage('Address copied to clipboard!', 'success');
-                    setTimeout(() => {
-                        this.innerText = originalText;
-                    }, 2000);
-                }).catch(err => {
-                    showMessage('Failed to copy: ' + err.message, 'error');
-                    console.error('Failed to copy: ', err);
+            generateQR('#qr-btc', 'bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2');
+            generateQR('#qr-eth', '0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785');
+            generateQR('#qr-hns', 'hs1qtpuathajfnhnfv6gnzqqpx5tkkcrga6lpaja49');
+
+            // Copy buttons
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const address = this.previousElementSibling.innerText;
+                    navigator.clipboard.writeText(address).then(() => {
+                        const original = this.innerText;
+                        this.innerText = 'COPIED!';
+                        showMessage('Address copied to clipboard!', 'success');
+                        setTimeout(() => this.innerText = original, 2000);
+                    }).catch(err => {
+                        showMessage('Failed to copy: ' + err.message, 'error');
+                    });
                 });
             });
-        });
 
-        // Form submission
-        const donationForm = document.getElementById('donationForm');
-        const submitBtn = document.getElementById('submitBtn');
-        donationForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const messageDiv = document.getElementById('message');
-            messageDiv.style.display = 'none';
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Submitting...';
+            // Form submission
+            const form = document.getElementById('donationForm');
+            const submitBtn = document.getElementById('submitBtn');
 
-            const formData = {
-                name: document.getElementById('name').value || 'Anonymous',
-                xHandle: document.getElementById('xHandle').value || '',
-                email: document.getElementById('email').value,
-                company: document.getElementById('company').value || '',
-                amount: document.getElementById('amount').value,
-                network: document.getElementById('network').value,
-                txHash: document.getElementById('txHash').value,
-                formType: 'donation'
-            };
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const messageDiv = document.getElementById('message');
+                messageDiv.style.display = 'none';
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Submitting...';
 
-            if (!formData.email || !formData.amount || !formData.network || !formData.txHash) {
-                showMessage('Please fill all required fields.', 'error');
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Submit & Get Receipt';
-                return;
-            }
+                const formData = {
+                    name: document.getElementById('name').value || 'Anonymous',
+                    xHandle: document.getElementById('xHandle').value || '',
+                    email: document.getElementById('email').value.trim(),
+                    company: document.getElementById('company').value || '',
+                    amount: document.getElementById('amount').value.trim(),
+                    network: document.getElementById('network').value,
+                    txHash: document.getElementById('txHash').value.trim(),
+                    formType: 'donation'
+                };
 
-            try {
-                const response = await fetch('https://www.rushbrowser.com/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    showMessage('Thank you! Your donation is received. We’ll verify it and list you on our donors page.', 'success');
-                    donationForm.reset();
-                    submitBtn.innerText = 'Details Sent!';
-                } else {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Something went wrong.');
-                }
-            } catch (error) {
-                showMessage('Problem submitting: ' + error.message, 'error');
-                console.error('Form submission error:', error);
-            } finally {
-                setTimeout(() => {
+                // Client-side validation
+                if (!formData.email || !formData.amount || !formData.network || !formData.txHash) {
+                    showMessage('Please fill all required fields.', 'error');
                     submitBtn.disabled = false;
                     submitBtn.innerText = 'Submit & Get Receipt';
-                }, 3000);
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        showMessage('Thank you! Your donation is received. We’ll verify it and list you on our donors page.', 'success');
+                        form.reset();
+                        submitBtn.innerText = 'Details Sent!';
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Something went wrong.');
+                    }
+                } catch (error) {
+                    showMessage('Problem submitting: ' + error.message, 'error');
+                    console.error('Form submission error:', error);
+                } finally {
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Submit & Get Receipt';
+                    }, 3000);
+                }
+            });
+
+            function showMessage(text, type) {
+                const messageDiv = document.getElementById('message');
+                messageDiv.innerText = text;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                setTimeout(() => { messageDiv.style.display = 'none'; }, 5000);
             }
         });
-
-        function showMessage(text, type) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.innerText = text;
-            messageDiv.className = `message ${type}`;
-            messageDiv.style.display = 'block';
-            setTimeout(() => { messageDiv.style.display = 'none'; }, 5000);
-        }
     </script>
 </body>
 </html>

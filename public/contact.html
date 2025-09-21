@@ -12,16 +12,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .contact-section { padding: 180px 0 120px; background: var(--black); min-height: 100vh; }
-        .contact-form-wrapper { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 48px; border-radius: 16px; border: 1px solid var(--border-gray); }
-        .form-group { margin-bottom: 24px; }
-        .form-group label { display: block; margin-bottom: 12px; color: var(--text-secondary); font-weight: 500; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gray); border-radius: 8px; color: var(--white); font-size: 16px; }
-        .form-group select option { background: var(--darker-gray); color: var(--white); }
-        .form-group textarea { min-height: 150px; resize: vertical; }
-        .submit-btn { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.3s; min-width: 170px; text-align: center; }
-        .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
-        .submit-btn:disabled { background: var(--medium-gray); cursor: not-allowed; transform: none; }
+        .contact-section {
+            padding: 120px 0 80px;
+        }
+
+        .contact-form-wrapper {
+            max-width: 800px;
+            margin: 60px auto 0;
+            padding: 48px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .form-group select option {
+            background: var(--darker-gray);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 14px 32px;
+            min-width: 180px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-wrapper {
+                padding: 30px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,44 +140,53 @@
     </footer>
 
     <script>
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
 
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Sending...';
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Sending...';
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
-            data.formType = 'contact'; // Add form identifier
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData.entries());
+                data.formType = 'contact';
 
-            try {
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                });
-
-                if (response.ok) {
-                    submitBtn.innerText = 'Message Sent!';
-                    contactForm.reset();
-                } else {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Something went wrong.');
-                }
-
-            } catch (error) {
-                submitBtn.innerText = 'Send Failed';
-                console.error('Form submission error:', error);
-                alert('There was an error sending your message. Please try again.');
-            } finally {
-                setTimeout(() => {
+                // Validate
+                if (!data.name || !data.email || !data.subject || !data.message) {
+                    alert('Please fill out all fields.');
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;
-                }, 3000);
-            }
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+
+                    if (response.ok) {
+                        submitBtn.innerText = 'Message Sent!';
+                        contactForm.reset();
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Something went wrong.');
+                    }
+                } catch (error) {
+                    submitBtn.innerText = 'Send Failed';
+                    console.error('Form submission error:', error);
+                    alert('There was an error sending your message. Please try again.');
+                } finally {
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                    }, 3000);
+                }
+            });
         });
     </script>
 </body>
