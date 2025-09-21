@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "serve public -p 3000",
-    "start": "serve public -p 3000",
+    "dev": "serve . -p 3000",
+    "start": "serve . -p 3000",
     "vercel:dev": "vercel dev",
     "build": "echo 'No build step required for static site'",
     "deploy": "vercel --prod"
