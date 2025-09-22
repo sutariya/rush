@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rush Browser Donors</title>
+    <meta name="description" content="Our generous donors supporting Rush Browser's mission for a decentralized internet.">
+    <link rel="icon" href="assets/images/favicon.ico?v=2" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <div class="logo-svg-wrapper">
+                            <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <div class="menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="nav-links" id="navLinks">
+                        <a href="index.html#features">FEATURES</a>
+                        <a href="index.html#comparison">COMPARE</a>
+                        <a href="index.html#roadmap">ROADMAP</a>
+                        <a href="index.html#download">DOWNLOAD</a>
+                        <a href="donate.html">DONATE</a>
+                        <a href="contact.html">CONTACT</a>
+                    </div>
+                    <a href="index.html#download" class="download-btn">DOWNLOAD</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="donation-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Donors</h2>
+                <p>Thank you to everyone supporting Rush Browser! Donations over $5000 earn a spot as our Premium Donors below.</p>
+            </div>
+            <div class="donor-list">
+                <p>Your name, website, and X handle can shine here! Donate over $5000 to become a Premium Donor.</p>
+            </div>
+            <p class="optional-note">Want to join? <a href="donate.html">Donate now</a> and contribute to a decentralized web!</p>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (navLinks) {
+                    navLinks.classList.remove('active'); // Close mobile menu when clicking a link
+                }
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
