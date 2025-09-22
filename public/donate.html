@@ -42,7 +42,6 @@
             </nav>
         </div>
     </header>
-
     <main>
         <section class="donation-section">
             <div class="container">
@@ -70,28 +69,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="donation-grid">
-                    <div class="donation-card">
-                        <div class="donation-icon"><i class="fab fa-btc" aria-hidden="true"></i></div>
-                        <h3>BITCOIN (BTC)</h3>
-                        <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
-                    <div class="donation-card">
-                        <div class="donation-icon"><i class="fab fa-ethereum" aria-hidden="true"></i></div>
-                        <h3>ETHEREUM (ETH)</h3>
-                        <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
-                    </div>
-                    <div class="donation-card">
-                        <div class="donation-icon">
-                            <img src="assets/images/hns.svg" alt="Handshake HNS Logo">
+                
+                <div class="donation-selector">
+                    <h3>CHOOSE YOUR PAYMENT METHOD</h3>
+                    <select id="paymentMethod" class="payment-select">
+                        <option value="">Select a payment method</option>
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                        <option value="HNS">Handshake (HNS)</option>
+                        <option value="USDT">USDT (TRC20)</option>
+                        <option value="USDC">USDC (TRC20)</option>
+                        <option value="XMR">Monero (XMR)</option>
+                        <option value="SOL">Solana (SOL)</option>
+                        <option value="LTC">Litecoin (LTC)</option>
+                        <option value="BNB">BNB Smart Chain</option>
+                        <option value="PAYPAL">PayPal</option>
+                    </select>
+                    
+                    <div id="addressDisplay" class="address-display" style="display: none;">
+                        <div class="payment-icon" id="paymentIcon"></div>
+                        <div class="payment-info">
+                            <h4 id="paymentName"></h4>
+                            <p class="crypto-address" id="paymentAddress"></p>
+                            <button class="copy-btn" id="copyAddressBtn">COPY ADDRESS</button>
+                            <div id="explorerNote" class="explorer-note"></div>
                         </div>
-                        <h3>HANDSHAKE (HNS)</h3>
-                        <p class="crypto-address">hs1qzhxp6uvthtnd7sa9uk6d4s8qpq0entj3cdgj88</p>
-                        <button class="copy-btn">COPY ADDRESS</button>
                     </div>
                 </div>
+                
                 <div class="form-wrapper">
                     <h3>SUBMIT DONATION DETAILS</h3>
                     <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
@@ -123,6 +128,13 @@
                                 <option value="BTC">Bitcoin (BTC)</option>
                                 <option value="ETH">Ethereum (ETH)</option>
                                 <option value="HNS">Handshake (HNS)</option>
+                                <option value="USDT">USDT (TRC20)</option>
+                                <option value="USDC">USDC (TRC20)</option>
+                                <option value="XMR">Monero (XMR)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="LTC">Litecoin (LTC)</option>
+                                <option value="BNB">BNB Smart Chain</option>
+                                <option value="PAYPAL">PayPal</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -130,6 +142,7 @@
                             <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required autocomplete="off"></textarea>
                         </div>
                         <button type="submit" class="submit-btn" id="submitBtn">Submit & Get Receipt</button>
+                        <div class="button-spacing"></div>
                         <p class="optional-note">If you want to donate anonymously, skip filling out the form.</p>
                         <div id="message" class="message"></div>
                     </form>
@@ -137,7 +150,6 @@
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <div class="copyright">
@@ -145,18 +157,15 @@
             </div>
         </div>
     </footer>
-
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
-        
         if (mobileMenuToggle && navLinks) {
             mobileMenuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
-                
                 // Add mobile download button if needed
                 if (navLinks.classList.contains('active') && !document.querySelector('.mobile-download-container')) {
                     const mobileDownloadContainer = document.createElement('div');
@@ -167,18 +176,118 @@
             });
         }
         
-        // Copy buttons
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const address = this.parentElement.querySelector('.crypto-address').innerText;
-                navigator.clipboard.writeText(address).then(() => {
-                    const original = this.innerText;
-                    this.innerText = 'COPIED!';
-                    showMessage('Address copied to clipboard!', 'success');
-                    setTimeout(() => this.innerText = original, 2000);
-                }).catch(err => {
-                    showMessage('Failed to copy: ' + err.message, 'error');
-                });
+        // Payment method selector
+        const paymentMethodSelect = document.getElementById('paymentMethod');
+        const addressDisplay = document.getElementById('addressDisplay');
+        const paymentIcon = document.getElementById('paymentIcon');
+        const paymentName = document.getElementById('paymentName');
+        const paymentAddress = document.getElementById('paymentAddress');
+        const copyAddressBtn = document.getElementById('copyAddressBtn');
+        const explorerNote = document.getElementById('explorerNote');
+        
+        // Define payment methods with their addresses and icons using your SVG files
+        const paymentMethods = {
+            BTC: {
+                name: "Bitcoin (BTC)",
+                address: "bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2",
+                icon: '<img src="assets/images/bitcoin-btc-logo.svg" alt="Bitcoin BTC Logo" class="crypto-logo">',
+                explorer: "https://blockstream.info/tx/"
+            },
+            ETH: {
+                name: "Ethereum (ETH)",
+                address: "0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785",
+                icon: '<img src="assets/images/ethereum-eth-logo.svg" alt="Ethereum ETH Logo" class="crypto-logo">',
+                explorer: "https://etherscan.io/tx/"
+            },
+            HNS: {
+                name: "Handshake (HNS)",
+                address: "hs1qec7f67exw4zzfhshka442gtscpcumr5s4x647q",
+                icon: '<img src="assets/images/hns.svg" alt="Handshake HNS Logo" class="crypto-logo">',
+                explorer: "https://shakeshift.com/tx/"
+            },
+            USDT: {
+                name: "USDT (TRC20)",
+                address: "TDsyTq1HCCT4Spqmf9hD1qwGVkyNiShLrN",
+                icon: '<img src="assets/images/tether-usdt-logo.svg" alt="Tether USDT Logo" class="crypto-logo">',
+                explorer: "https://tronscan.org/#/transaction/"
+            },
+            USDC: {
+                name: "USDC (TRC20)",
+                address: "TDsyTq1HCCT4Spqmf9hD1qwGVkyNiShLrN",
+                icon: '<img src="assets/images/usd-coin-usdc-logo.svg" alt="USD Coin USDC Logo" class="crypto-logo">',
+                explorer: "https://tronscan.org/#/transaction/"
+            },
+            XMR: {
+                name: "Monero (XMR)",
+                address: "467PfMrBzSmdhzqQSYqyXKYaSQLS2MDUDShxtcQxTFvUTTxL1UJf54eecTueXwA68DFPUNu3HEZwSQxWh2FthUTR8FrMeSd",
+                icon: '<img src="assets/images/monero-xmr-logo.svg" alt="Monero XMR Logo" class="crypto-logo">',
+                explorer: "https://xmrchain.net/search?value="
+            },
+            SOL: {
+                name: "Solana (SOL)",
+                address: "4epfhUwLaqRWPvRX13HZwghRnpohb2aHpnTVWEWPELTk",
+                icon: '<img src="assets/images/solana-sol-logo.svg" alt="Solana SOL Logo" class="crypto-logo">',
+                explorer: "https://solscan.io/tx/"
+            },
+            LTC: {
+                name: "Litecoin (LTC)",
+                address: "ltc1qhal7j2j7tw3hq0klp7enh6txnypchamdcau8pm",
+                icon: '<img src="assets/images/litecoin-ltc-logo.svg" alt="Litecoin LTC Logo" class="crypto-logo">',
+                explorer: "https://blockchair.com/litecoin/transaction/"
+            },
+            BNB: {
+                name: "BNB Smart Chain",
+                address: "0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785",
+                icon: '<img src="assets/images/bnb-bnb-logo.svg" alt="BNB BNB Logo" class="crypto-logo">',
+                explorer: "https://bscscan.com/tx/"
+            },
+            PAYPAL: {
+                name: "PayPal",
+                address: "sutariyar@gmail.com",
+                icon: '<img src="assets/images/paypal-logo.svg" alt="PayPal Logo" class="crypto-logo">',
+                explorer: ""
+            }
+        };
+        
+        // Handle payment method selection
+        paymentMethodSelect.addEventListener('change', function() {
+            const selectedMethod = this.value;
+            
+            if (selectedMethod && paymentMethods[selectedMethod]) {
+                const method = paymentMethods[selectedMethod];
+                
+                paymentName.textContent = method.name;
+                paymentAddress.textContent = method.address;
+                paymentIcon.innerHTML = method.icon;
+                
+                // Hide the explorer note (as requested)
+                explorerNote.style.display = 'none';
+                
+                addressDisplay.style.display = 'block';
+                
+                // Update the network field in the form
+                const networkSelect = document.getElementById('network');
+                for (let i = 0; i < networkSelect.options.length; i++) {
+                    if (networkSelect.options[i].value === selectedMethod) {
+                        networkSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            } else {
+                addressDisplay.style.display = 'none';
+            }
+        });
+        
+        // Copy address functionality
+        copyAddressBtn.addEventListener('click', function() {
+            const address = paymentAddress.textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                const original = this.innerText;
+                this.innerText = 'COPIED!';
+                showMessage('Address copied to clipboard!', 'success');
+                setTimeout(() => this.innerText = original, 2000);
+            }).catch(err => {
+                showMessage('Failed to copy: ' + err.message, 'error');
             });
         });
         
@@ -191,6 +300,7 @@
             messageDiv.style.display = 'none';
             submitBtn.disabled = true;
             submitBtn.innerText = 'Submitting...';
+            
             const nameEl = document.getElementById('name');
             const xHandleEl = document.getElementById('xHandle');
             const emailEl = document.getElementById('email');
@@ -198,6 +308,7 @@
             const amountEl = document.getElementById('amount');
             const networkEl = document.getElementById('network');
             const txHashEl = document.getElementById('txHash');
+            
             const formData = {
                 name: nameEl?.value || 'Anonymous',
                 xHandle: xHandleEl?.value || '',
@@ -245,6 +356,9 @@
                 if (response.ok) {
                     showMessage('Thank you! Your donation is received. We will verify it and list you on our donors page.', 'success');
                     form.reset();
+                    // Reset payment method selection
+                    paymentMethodSelect.selectedIndex = 0;
+                    addressDisplay.style.display = 'none';
                     submitBtn.innerText = 'Details Sent!';
                 } else {
                     const errorData = await response.json();
@@ -270,5 +384,127 @@
         }
     });
     </script>
+    
+    <style>
+    .donation-selector {
+        margin: 50px 0;
+        text-align: center;
+    }
+    
+    .donation-selector h3 {
+        font-size: 1.6rem;
+        color: var(--white);
+        margin-bottom: 24px;
+        font-weight: 700;
+    }
+    
+    /* Ensure both dropdowns have consistent black background */
+    .payment-select,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.3) !important;
+        border: 1px solid var(--border-gray) !important;
+        border-radius: 6px !important;
+        color: var(--white) !important;
+        font-size: 15px !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Special styling for payment select with red border */
+    .payment-select {
+        max-width: 400px;
+        margin: 0 auto 24px;
+        display: block;
+        border: 2px solid #ff3366 !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 12px center !important;
+        background-size: 12px !important;
+        padding-right: 30px !important;
+    }
+    
+    .address-display {
+        background: var(--card-bg);
+        border: 1px solid var(--border-gray);
+        border-radius: 16px;
+        padding: 24px;
+        margin: 0 auto;
+        max-width: 600px;
+        text-align: center;
+    }
+    
+    .payment-icon {
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+    }
+    
+    .payment-icon img {
+        height: 35px;
+        width: auto;
+    }
+    
+    .crypto-logo {
+        height: 35px;
+        width: auto;
+    }
+    
+    .payment-info h4 {
+        color: var(--white);
+        margin-bottom: 12px;
+        font-size: 1.3rem;
+    }
+    
+    .crypto-address {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 12px;
+        border-radius: 6px;
+        margin: 12px 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        word-break: break-all;
+        overflow-wrap: break-word;
+        color: var(--medium-gray);
+        line-height: 1.4;
+    }
+    
+    .copy-btn {
+        padding: 8px 16px;
+        background: var(--white);
+        color: var(--black);
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 8px;
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+    
+    .copy-btn:hover {
+        transform: translateY(-2px);
+        background: var(--accent-light);
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    }
+    
+    .explorer-note {
+        display: none;
+    }
+    
+    .button-spacing {
+        height: 20px;
+    }
+    </style>
 </body>
 </html>
