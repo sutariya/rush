@@ -22,6 +22,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Fix for button styling issues */
+        .download-btn, .primary-btn, .secondary-btn, .submit-btn, .copy-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .primary-btn {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 14px 28px;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+        
+        .primary-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            padding: 12px 26px;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile menu button fix */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        /* Tooltip fix */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 180px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .download-btn {
+                display: none;
+            }
+            
+            .mobile-download-container {
+                display: block;
+                margin-top: 15px;
+            }
+            
+            .mobile-download-btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                color: white;
+                border-radius: 6px;
+                font-weight: 600;
+                text-decoration: none;
+                box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -230,6 +363,7 @@
             if (mobileMenuToggle && navLinks) {
                 mobileMenuToggle.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
+                    mobileMenuToggle.classList.toggle('active');
                 });
             }
             
@@ -238,7 +372,8 @@
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     if (navLinks) {
-                        navLinks.classList.remove('active'); // Close mobile menu when clicking a link
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.classList.remove('active');
                     }
                     
                     const targetId = this.getAttribute('href');
@@ -252,4 +387,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
