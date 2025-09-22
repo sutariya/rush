@@ -38,9 +38,6 @@
                         <a href="contact.html">CONTACT</a>
                     </div>
                     <a href="index.html#download" class="download-btn">DOWNLOAD</a>
-                    <div class="mobile-download-container">
-                        <a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -54,7 +51,7 @@
             <div class="donor-list">
                 <p>Your name, website, and X handle can shine here! Donate over $5000 to become a Premium Donor.</p>
             </div>
-            <p class="optional-note">Want to join? <a href="/donate">Donate now</a> and contribute to a decentralized web!</p>
+            <p class="optional-note">Want to join? <a href="donate.html">Donate now</a> and contribute to a decentralized web!</p>
         </div>
     </section>
     <footer>
@@ -75,6 +72,23 @@
                 navLinks.classList.toggle('active');
             });
         }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (navLinks) {
+                    navLinks.classList.remove('active'); // Close mobile menu when clicking a link
+                }
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
     });
     </script>
 </body>

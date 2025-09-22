@@ -38,9 +38,6 @@
                         <a href="contact.html">CONTACT</a>
                     </div>
                     <a href="index.html#download" class="download-btn">DOWNLOAD</a>
-                    <div class="mobile-download-container">
-                        <a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -98,6 +95,23 @@
                     navLinks.classList.toggle('active');
                 });
             }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (navLinks) {
+                        navLinks.classList.remove('active'); // Close mobile menu when clicking a link
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
+            });
             
             const contactForm = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
