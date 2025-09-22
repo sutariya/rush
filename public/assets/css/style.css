@@ -13,14 +13,12 @@
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-
 body {
     background-color: var(--black);
     color: var(--white);
@@ -28,14 +26,12 @@ body {
     overflow-x: hidden;
     font-size: 18px;
 }
-
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
 }
-
 /* Header & Navigation */
 header {
     background: rgba(0, 0, 0, 0.98);
@@ -47,20 +43,17 @@ header {
     z-index: 1000;
     border-bottom: 1px solid var(--border-gray);
 }
-
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
-
 .logo {
     display: flex;
     align-items: center;
     gap: 16px;
 }
-
 .logo-svg-wrapper {
     width: auto;
     height: 48px;
@@ -68,25 +61,21 @@ nav {
     display: flex;
     align-items: center;
 }
-
 .logo-img {
     width: auto;
     height: 100%;
     object-fit: contain;
     display: block;
 }
-
 .nav-right {
     display: flex;
     align-items: center;
     gap: 24px;
 }
-
 .nav-links {
     display: flex;
     gap: 32px;
 }
-
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -95,11 +84,11 @@ nav {
     transition: color 0.3s;
     letter-spacing: 0.5px;
 }
-
 .nav-links a:hover {
     color: var(--white);
 }
 
+/* Updated to match donate/contact pages */
 .download-btn {
     background: var(--white);
     color: var(--black);
@@ -114,14 +103,13 @@ nav {
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     white-space: nowrap;
 }
-
 .download-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
     background: var(--accent-light);
 }
 
-/* Mobile Menu */
+/* Mobile Menu (Legacy - now primarily handled in index.html <style> block) */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -129,7 +117,6 @@ nav {
     padding: 5px;
     z-index: 1001;
 }
-
 .menu-toggle span {
     width: 25px;
     height: 3px;
@@ -138,7 +125,6 @@ nav {
     transition: 0.3s;
     border-radius: 2px;
 }
-
 /* Hero Section */
 .hero {
     padding: 180px 0 120px;
@@ -147,7 +133,6 @@ nav {
     background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.97)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="black"/><path d="M0 50 L100 50" stroke="grey" stroke-width="0.5" stroke-opacity="0.2"/><path d="M50 0 L50 100" stroke="grey" stroke-width="0.5" stroke-opacity="0.2"/></svg>');
     background-size: 30px;
 }
-
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 800;
@@ -156,7 +141,6 @@ nav {
     color: var(--white);
     line-height: 1.2;
 }
-
 .hero p {
     font-size: 1.35rem;
     color: var(--text-secondary);
@@ -164,14 +148,12 @@ nav {
     margin: 0 auto 48px;
     line-height: 1.7;
 }
-
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 24px;
     margin-top: 36px;
 }
-
 .hero-buttons a {
     padding: 18px 36px;
     border-radius: 30px;
@@ -181,45 +163,37 @@ nav {
     letter-spacing: 0.5px;
     transition: all 0.3s;
 }
-
 .primary-btn {
     background: var(--white);
     color: var(--black);
     border: none;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .secondary-btn {
     border: 2px solid var(--white);
     color: var(--white);
     background: transparent;
 }
-
 .hero-buttons a:hover {
     transform: translateY(-3px);
 }
-
 .primary-btn:hover {
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 .secondary-btn:hover {
     background: var(--white);
     color: var(--black);
 }
-
 /* Features Section */
 .features {
     padding: 120px 0;
     background: var(--darker-gray);
 }
-
 .section-title {
     text-align: center;
     margin-bottom: 72px;
 }
-
 .section-title h2 {
     font-size: 2.8rem;
     font-weight: 800;
@@ -227,7 +201,6 @@ nav {
     color: var(--white);
     letter-spacing: -0.5px;
 }
-
 .section-title p {
     color: var(--medium-gray);
     max-width: 700px;
@@ -235,13 +208,11 @@ nav {
     font-size: 1.2rem;
     line-height: 1.6;
 }
-
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 36px;
 }
-
 .feature-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -253,7 +224,6 @@ nav {
     overflow: hidden;
     backdrop-filter: blur(10px);
 }
-
 .feature-card::before {
     content: '';
     position: absolute;
@@ -263,12 +233,10 @@ nav {
     height: 4px;
     background: var(--white);
 }
-
 .feature-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
-
 .feature-icon, .feature-icon-svg {
     height: 100px;
     display: flex;
@@ -276,36 +244,30 @@ nav {
     justify-content: center;
     margin-bottom: 28px;
 }
-
 .feature-icon {
     font-size: 2.8rem;
     color: var(--white);
 }
-
 .feature-icon-svg img {
     height: 80px;
     width: auto;
 }
-
 .feature-card h3 {
     font-size: 1.6rem;
     margin-bottom: 20px;
     color: var(--white);
     font-weight: 700;
 }
-
 .feature-card p {
     color: var(--medium-gray);
     line-height: 1.7;
     font-size: 1.05rem;
 }
-
 /* Comparison Section */
 .comparison {
     padding: 120px 0;
     background: var(--black);
 }
-
 .comparison-table {
     width: 100%;
     border-collapse: collapse;
@@ -315,57 +277,47 @@ nav {
     overflow: hidden;
     border: 1px solid var(--border-gray);
 }
-
 .comparison-table th, .comparison-table td {
     padding: 24px;
     text-align: center;
     border-bottom: 1px solid var(--border-gray);
 }
-
 .comparison-table th {
     background: rgba(255, 255, 255, 0.05);
     font-weight: 600;
     color: var(--white);
     font-size: 1.1rem;
 }
-
 .comparison-table tr:last-child td {
     border-bottom: none;
 }
-
 .comparison-table td:first-child {
     text-align: left;
     font-weight: 500;
     color: var(--white);
 }
-
 .browser-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
 }
-
 .browser-logo {
     height: 40px;
     width: auto;
 }
-
 .checkmark {
     color: var(--white);
     font-size: 1.2rem;
 }
-
 .cross {
     color: var(--medium-gray);
     font-size: 1.2rem;
 }
-
 .tooltip {
     position: relative;
     display: inline-block;
 }
-
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 200px;
@@ -384,24 +336,20 @@ nav {
     font-size: 14px;
     border: 1px solid var(--border-gray);
 }
-
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
-
 /* Roadmap Section */
 .roadmap {
     padding: 120px 0;
     background: var(--darker-gray);
 }
-
 .roadmap-timeline {
     position: relative;
     max-width: 900px;
     margin: 60px auto 0;
 }
-
 .roadmap-timeline::before {
     content: '';
     position: absolute;
@@ -411,20 +359,17 @@ nav {
     height: 100%;
     background: var(--border-gray);
 }
-
 .roadmap-item {
     width: 50%;
     padding: 0 40px 60px 0;
     position: relative;
     text-align: right;
 }
-
 .roadmap-item:nth-child(even) {
     margin-left: 50%;
     padding: 0 0 60px 40px;
     text-align: left;
 }
-
 .roadmap-item::before {
     content: '';
     position: absolute;
@@ -435,51 +380,43 @@ nav {
     background: var(--white);
     border-radius: 50%;
 }
-
 .roadmap-item:nth-child(even)::before {
     left: -10px;
     right: auto;
 }
-
 .roadmap-content {
     background: var(--card-bg);
     padding: 24px;
     border-radius: 12px;
     border: 1px solid var(--border-gray);
 }
-
 .roadmap-content h3 {
     color: var(--white);
     margin-bottom: 12px;
     font-size: 1.4rem;
 }
-
 .roadmap-content p {
     color: var(--medium-gray);
     line-height: 1.6;
 }
-
 .roadmap-date {
     color: var(--white);
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 1.1rem;
 }
-
 /* Download Section */
 .download {
     padding: 120px 0;
     text-align: center;
     background: var(--black);
 }
-
 .download-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     margin-top: 60px;
 }
-
 .download-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -487,31 +424,26 @@ nav {
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid var(--border-gray);
 }
-
 .download-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
-
 .download-icon {
     font-size: 3.2rem;
     margin-bottom: 28px;
     color: var(--white);
 }
-
 .download-card h3 {
     font-size: 1.6rem;
     margin-bottom: 20px;
     color: var(--white);
     font-weight: 700;
 }
-
 .download-card p {
     color: var(--medium-gray);
     margin-bottom: 24px;
     font-size: 1rem;
 }
-
 .download-card a {
     display: inline-block;
     margin-top: 20px;
@@ -527,29 +459,24 @@ nav {
     border: none;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .download-card a:hover {
     transform: translateY(-3px);
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 /* About Section */
 .about {
     padding: 120px 0;
     background: var(--darker-gray);
 }
-
 .about-content {
     display: flex;
     align-items: center;
     gap: 60px;
 }
-
 .about-text {
     flex: 1;
 }
-
 .about-text h2 {
     font-size: 2.8rem;
     margin-bottom: 28px;
@@ -558,7 +485,6 @@ nav {
     letter-spacing: -0.5px;
     text-align: center;
 }
-
 .about-text p {
     color: var(--text-secondary);
     margin-bottom: 24px;
@@ -566,12 +492,10 @@ nav {
     font-size: 1.1rem;
     text-align: center;
 }
-
 .about-image {
     flex: 1;
     text-align: center;
 }
-
 .about-logo {
     max-width: 100%;
     height: auto;
@@ -579,21 +503,18 @@ nav {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-gray);
 }
-
 /* Support / Donate Section */
 .support {
     padding: 120px 0;
     background: var(--black);
     text-align: center;
 }
-
 .donation-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
     margin-top: 60px;
 }
-
 .donation-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -602,30 +523,25 @@ nav {
     transition: all 0.3s;
     text-align: center;
 }
-
 .donation-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
-
 .donation-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: var(--white);
 }
-
 .donation-icon-svg {
     height: 40px;
     width: auto;
     margin-bottom: 20px;
 }
-
 .donation-card h3 {
     font-size: 1.4rem;
     margin-bottom: 16px;
     color: var(--white);
 }
-
 .crypto-address {
     color: var(--medium-gray);
     font-size: 0.9rem;
@@ -637,7 +553,6 @@ nav {
     padding: 12px;
     border-radius: 8px;
 }
-
 .copy-btn {
     padding: 10px 20px;
     background: var(--white);
@@ -650,13 +565,11 @@ nav {
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .copy-btn:hover {
     transform: translateY(-2px);
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 .support-text {
     text-align: center;
     color: var(--text-secondary);
@@ -667,7 +580,6 @@ nav {
     margin-left: auto;
     margin-right: auto;
 }
-
 .partnership-note {
     background: var(--card-bg);
     border: 1px solid var(--border-gray);
@@ -678,7 +590,6 @@ nav {
     position: relative;
     overflow: hidden;
 }
-
 .partnership-note::before {
     content: '';
     position: absolute;
@@ -688,31 +599,26 @@ nav {
     height: 4px;
     background: var(--white);
 }
-
 .partnership-note h4 {
     color: var(--white);
     margin-bottom: 16px;
     font-size: 1.5rem;
     font-weight: 700;
 }
-
 .partnership-note p {
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 16px;
 }
-
 .partnership-note strong {
     color: var(--white);
 }
-
 /* --- Footer Styling --- */
 footer {
     background: var(--black);
     padding: 40px 0 20px;
     border-top: 1px solid var(--border-gray);
 }
-
 .footer-content {
     display: flex;
     justify-content: center;
@@ -722,13 +628,11 @@ footer {
     margin-bottom: 20px;
     text-align: center;
 }
-
 .footer-logo {
     flex: 1;
     min-width: 250px;
     text-align: center;
 }
-
 .footer-logo .logo-img {
     height: 32px;
     width: auto;
@@ -736,7 +640,6 @@ footer {
     display: block;
     margin: 0 auto 8px;
 }
-
 .footer-logo p {
     color: var(--medium-gray);
     line-height: 1.5;
@@ -745,7 +648,6 @@ footer {
     padding: 0 10px;
     text-align: center;
 }
-
 .copyright {
     text-align: center;
     padding-top: 20px;
@@ -754,31 +656,26 @@ footer {
     font-size: 0.95rem;
     letter-spacing: 0.5px;
 }
-
 /* Donation Page Specific Styles */
 .donation-section {
     padding: 120px 0 80px;
 }
-
 .benefits-cards {
     margin: 60px 0;
     text-align: center;
 }
-
 .benefits-cards h3 {
     font-size: 2rem;
     margin-bottom: 40px;
     color: var(--white);
     font-weight: 700;
 }
-
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
-
 .benefit-card {
     background: var(--card-bg);
     padding: 30px 24px;
@@ -787,51 +684,42 @@ footer {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .benefit-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
-
 .benefit-icon {
     font-size: 2.5rem;
     color: var(--accent-light);
     margin-bottom: 20px;
 }
-
 .benefit-card h4 {
     font-size: 1.3rem;
     color: var(--white);
     margin-bottom: 16px;
     font-weight: 600;
 }
-
 .benefit-card p {
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1rem;
 }
-
 .benefit-card a {
     color: var(--accent-light);
     text-decoration: underline;
 }
-
 .donation-grid {
     margin: 60px 0;
     gap: 32px;
 }
-
 .donation-card {
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .donation-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
-
 .donation-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -841,12 +729,10 @@ footer {
     justify-content: center;
     height: 64px;
 }
-
 .donation-icon img {
     height: 40px;
     width: auto;
 }
-
 .crypto-address {
     background: rgba(0, 0, 0, 0.3);
     padding: 12px;
@@ -856,7 +742,6 @@ footer {
     font-size: 0.9rem;
     word-break: break-all;
 }
-
 .copy-btn {
     padding: 10px 20px;
     background: var(--white);
@@ -870,13 +755,11 @@ footer {
     margin-top: 10px;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .copy-btn:hover {
     transform: translateY(-2px);
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 .form-wrapper {
     max-width: 800px;
     margin: 60px auto 0;
@@ -886,33 +769,28 @@ footer {
     border: 1px solid var(--border-gray);
     text-align: center;
 }
-
 .form-wrapper h3 {
     font-size: 1.8rem;
     color: var(--white);
     margin-bottom: 16px;
     font-weight: 700;
 }
-
 .form-wrapper p {
     max-width: 90%;
     margin: 0 auto 30px;
     color: var(--text-secondary);
     line-height: 1.6;
 }
-
 .form-group {
     margin-bottom: 24px;
     text-align: left;
 }
-
 .form-group label {
     display: block;
     margin-bottom: 8px;
     color: var(--text-secondary);
     font-weight: 500;
 }
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -925,14 +803,12 @@ footer {
     font-size: 16px;
     box-sizing: border-box;
 }
-
 .submit-btn {
     display: block;
     margin: 24px auto 16px;
     padding: 14px 32px;
     min-width: 180px;
 }
-
 .optional-note {
     text-align: center;
     color: var(--medium-gray);
@@ -941,7 +817,6 @@ footer {
     padding: 0 15px;
     word-wrap: break-word;
 }
-
 .message {
     padding: 12px;
     margin-top: 20px;
@@ -950,51 +825,42 @@ footer {
     font-weight: 500;
     display: none;
 }
-
 .message.success {
     background: rgba(0, 255, 0, 0.1);
     color: #00ff00;
 }
-
 .message.error {
     background: rgba(255, 0, 0, 0.1);
     color: #ff4444;
 }
-
 .explorer-note {
     font-size: 0.85rem;
     color: var(--medium-gray);
     margin: 8px 0 16px;
 }
-
 .explorer-note a {
     color: var(--accent-light);
     text-decoration: underline;
 }
-
 /* Contact Page Specific Styles */
 .contact-section {
     padding: 120px 0 80px;
 }
-
 .contact-form-wrapper {
     max-width: 800px;
     margin: 60px auto 0;
     padding: 48px;
 }
-
 .form-group {
     margin-bottom: 24px;
     text-align: left;
 }
-
 .form-group label {
     display: block;
     margin-bottom: 12px;
     color: var(--text-secondary);
     font-weight: 500;
 }
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -1007,35 +873,29 @@ footer {
     font-size: 16px;
     box-sizing: border-box;
 }
-
 .form-group select option {
     background: var(--darker-gray);
     color: var(--white);
 }
-
 .form-group textarea {
     min-height: 150px;
     resize: vertical;
 }
-
 .submit-btn {
     display: block;
     margin: 30px auto 0;
     padding: 14px 32px;
     min-width: 180px;
 }
-
 /* Donors Page Specific Styles */
 .donation-section { 
     padding: 180px 0 120px; 
     background: var(--black); 
 }
-
 .donor-list { 
     margin-top: 40px; 
     text-align: center; 
 }
-
 .donor-list p { 
     color: var(--white); 
     font-size: 1.2rem; 
@@ -1043,7 +903,6 @@ footer {
     max-width: 90%; 
     margin: 0 auto; 
 }
-
 .donation-card { 
     background: var(--card-bg); 
     padding: 20px; 
@@ -1052,18 +911,15 @@ footer {
     margin-bottom: 20px; 
     text-align: center; 
 }
-
 .donation-card h3 { 
     color: var(--white); 
     font-size: 1.5rem; 
     white-space: nowrap; 
 }
-
 .donation-card p { 
     color: var(--text-secondary); 
     white-space: nowrap; 
 }
-
 .optional-note { 
     text-align: center; 
     color: var(--medium-gray); 
@@ -1072,32 +928,26 @@ footer {
     padding: 0 15px;
     word-wrap: break-word;
 }
-
 .optional-note a { 
     color: var(--accent-light); 
     text-decoration: underline; 
 }
-
 .section-title { 
     text-align: center; 
 }
-
 .section-title h2 { 
     white-space: nowrap; 
 }
-
 .section-title p { 
     word-wrap: break-word; 
     max-width: 90%; 
     margin: 0 auto; 
 }
-
-/* Mobile Navigation */
+/* Mobile Navigation (Legacy - now primarily handled in index.html <style> block) */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
     }
-    
     .nav-links {
         display: none;
         position: absolute;
@@ -1111,28 +961,23 @@ footer {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         z-index: 999;
     }
-    
     .nav-links.active {
         display: flex;
     }
-    
     /* Hide the original download button on mobile */
     .download-btn {
         display: none;
     }
-    
     /* Show download button inside mobile menu */
     .mobile-download-container {
         display: none;
     }
-    
     .nav-links.active + .mobile-download-container {
         display: block;
         padding: 10px 20px;
         border-top: 1px solid var(--border-gray);
         margin-top: 15px;
     }
-    
     .mobile-download-btn {
         display: block;
         width: 100%;
@@ -1149,17 +994,14 @@ footer {
         border: none;
         box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     }
-    
     .mobile-download-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         background: var(--accent-light);
     }
-    
     body {
         font-size: 16px;
     }
-    
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -1198,7 +1040,6 @@ footer {
     .donation-grid {
         grid-template-columns: 1fr;
     }
-    
     /* For donate and contact pages */
     .form-wrapper,
     .contact-form-wrapper {
@@ -1208,7 +1049,6 @@ footer {
         font-size: 1.6rem;
     }
 }
-
 @media (max-width: 1024px) {
     .about-content {
         flex-direction: column;
@@ -1233,7 +1073,6 @@ footer {
         right: auto;
     }
 }
-
 @media (max-width: 480px) {
     .hero {
         padding: 160px 0 80px;
@@ -1265,18 +1104,15 @@ footer {
         padding: 24px;
     }
 }
-
 /* Extra spacing for donate form elements */
 @media (max-width: 768px) {
     .form-wrapper {
         padding: 30px 20px;
     }
 }
-
 .form-wrapper .submit-btn {
     margin: 32px auto 24px; /* Increased spacing above and below button */
 }
-
 .form-wrapper .optional-note {
     margin-top: 32px; /* Increased spacing above the note */
     margin-bottom: 24px; /* Added spacing below the note */

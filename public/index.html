@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rush Browser | Native HNS & ENS Support for Decentralized Web</title>
     <meta name="description" content="Rush Browser natively resolves Handshake (HNS) and Ethereum Name Service (ENS) domains — eliminating the need for extensions or third-party services. Access the decentralized web with enterprise-grade speed, security, and zero tracking.">
@@ -40,71 +39,57 @@
             position: relative;
             overflow: hidden;
         }
-        
+
+        /* Updated to match donate/contact pages */
         .download-btn {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            background: var(--white);
+            color: var(--black);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
         }
-        
         .download-btn:hover {
-            background: linear-gradient(135deg, #1d4ed8, #1e40af);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            background: var(--accent-light);
         }
-        
+
         .primary-btn {
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: white;
             padding: 14px 28px;
             box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
         }
-        
         .primary-btn:hover {
             background: linear-gradient(135deg, #1d4ed8, #1e40af);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
         }
-        
         .secondary-btn {
             background: transparent;
             color: #2563eb;
             border: 2px solid #2563eb;
             padding: 12px 26px;
         }
-        
         .secondary-btn:hover {
             background: rgba(37, 99, 235, 0.1);
             transform: translateY(-2px);
         }
-        
-        /* Mobile menu button fix */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 2px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-        
         /* Tooltip fix */
         .tooltip {
             position: relative;
             display: inline-block;
         }
-        
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 180px;
@@ -123,36 +108,115 @@
             font-size: 14px;
             font-weight: normal;
         }
-        
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
-        
+        /* Enhanced Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            position: relative;
+        }
+        /* Animation for active state (X icon) */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
         /* Responsive fixes */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
             }
-            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                bottom: 0; /* Fills screen height */
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 40px 24px;
+                gap: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+                overflow-y: auto; /* Allows scrolling if content is long */
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                color: var(--white);
+                font-size: 18px;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border-gray);
+                text-align: center;
+            }
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            /* Hide the original download button on mobile */
             .download-btn {
                 display: none;
             }
-            
+            /* Show download button inside mobile menu */
             .mobile-download-container {
-                display: block;
-                margin-top: 15px;
+                display: none;
+                padding: 20px 0;
+                border-top: 1px solid var(--border-gray);
+                margin-top: 20px;
             }
-            
+            .nav-links.active + .mobile-download-container {
+                display: block;
+            }
             .mobile-download-btn {
-                display: inline-block;
-                padding: 10px 20px;
-                background: linear-gradient(135deg, #2563eb, #1d4ed8);
-                color: white;
-                border-radius: 6px;
-                font-weight: 600;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 16px 0;
+                background: var(--white);
+                color: var(--black);
+                border-radius: 30px;
                 text-decoration: none;
-                box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+                font-weight: 600;
+                font-size: 18px;
+                letter-spacing: 0.5px;
+                transition: all 0.3s;
+                border: none;
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            }
+            .mobile-download-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+                background: var(--accent-light);
             }
         }
     </style>
@@ -360,14 +424,12 @@
             // Mobile menu toggle
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const navLinks = document.getElementById('navLinks');
-            
             if (mobileMenuToggle && navLinks) {
                 mobileMenuToggle.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     mobileMenuToggle.classList.toggle('active');
                 });
             }
-            
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -376,7 +438,6 @@
                         navLinks.classList.remove('active');
                         mobileMenuToggle.classList.remove('active');
                     }
-                    
                     const targetId = this.getAttribute('href');
                     if(targetId === '#') return;
                     const targetElement = document.querySelector(targetId);
