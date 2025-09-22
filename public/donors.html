@@ -17,14 +17,14 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <a href="index.html" style="text-decoration: none; color: inherit;" aria-label="Rush Browser Home">
                         <div class="logo-svg-wrapper">
                             <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
                         </div>
                     </a>
                 </div>
                 <div class="nav-right">
-                    <div class="menu-toggle" id="mobileMenuToggle">
+                    <div class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -42,18 +42,22 @@
             </nav>
         </div>
     </header>
-    <section class="donation-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Premium Donors</h2>
-                <p>Thank you to everyone supporting Rush Browser! Donations over $5000 earn a spot as our Premium Donors below.</p>
+
+    <main>
+        <section class="donation-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Premium Donors</h2>
+                    <p>Thank you to everyone supporting Rush Browser! Donations over $5000 earn a spot as our Premium Donors below.</p>
+                </div>
+                <div class="donor-list">
+                    <p>Your name, website, and X handle can shine here! Donate over $5000 to become a Premium Donor.</p>
+                </div>
+                <p class="optional-note">Want to join? <a href="donate.html">Donate now</a> and contribute to a decentralized web!</p>
             </div>
-            <div class="donor-list">
-                <p>Your name, website, and X handle can shine here! Donate over $5000 to become a Premium Donor.</p>
-            </div>
-            <p class="optional-note">Want to join? <a href="donate.html">Donate now</a> and contribute to a decentralized web!</p>
-        </div>
-    </section>
+        </section>
+    </main>
+
     <footer>
         <div class="container">
             <div class="copyright">
@@ -61,6 +65,7 @@
             </div>
         </div>
     </footer>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Mobile menu toggle
@@ -70,6 +75,15 @@
         if (mobileMenuToggle && navLinks) {
             mobileMenuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+                
+                // Add mobile download button if needed
+                if (navLinks.classList.contains('active') && !document.querySelector('.mobile-download-container')) {
+                    const mobileDownloadContainer = document.createElement('div');
+                    mobileDownloadContainer.className = 'mobile-download-container';
+                    mobileDownloadContainer.innerHTML = '<a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>';
+                    navLinks.parentNode.insertBefore(mobileDownloadContainer, navLinks.nextSibling);
+                }
             });
         }
         
@@ -78,7 +92,8 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 if (navLinks) {
-                    navLinks.classList.remove('active'); // Close mobile menu when clicking a link
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
                 }
                 
                 const targetId = this.getAttribute('href');

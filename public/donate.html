@@ -17,14 +17,14 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <a href="index.html" style="text-decoration: none; color: inherit;" aria-label="Rush Browser Home">
                         <div class="logo-svg-wrapper">
                             <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
                         </div>
                     </a>
                 </div>
                 <div class="nav-right">
-                    <div class="menu-toggle" id="mobileMenuToggle">
+                    <div class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -42,98 +42,102 @@
             </nav>
         </div>
     </header>
-    <section class="donation-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>SUPPORT THE MISSION</h2>
-                <p>Every penny fuels Rush Browser's mission to build a secure, decentralized internet.</p>
-            </div>
-            <div class="benefits-cards">
-                <h3>Why Support Rush Browser?</h3>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-code"></i></div>
-                        <h4>Fund Development</h4>
-                        <p>100% of your donation directly funds Rush Browser development - the first browser with native HNS and ENS domain resolution.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-unlock"></i></div>
-                        <h4>Enable Open Source</h4>
-                        <p>Help us reach our funding goal to open source Rush Browser and make decentralized web browsing accessible to everyone.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-star"></i></div>
-                        <h4>Premium Recognition</h4>
-                        <p>Donations over $5000 earn you a spot on our <a href="donors.html">Official Donors Page</a> with optional social media recognition.</p>
+
+    <main>
+        <section class="donation-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>SUPPORT THE MISSION</h2>
+                    <p>Every penny fuels Rush Browser's mission to build a secure, decentralized internet.</p>
+                </div>
+                <div class="benefits-cards">
+                    <h3>Why Support Rush Browser?</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                            <h4>Fund Development</h4>
+                            <p>100% of your donation directly funds Rush Browser development - the first browser with native HNS and ENS domain resolution.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-unlock" aria-hidden="true"></i></div>
+                            <h4>Enable Open Source</h4>
+                            <p>Help us reach our funding goal to open source Rush Browser and make decentralized web browsing accessible to everyone.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+                            <h4>Premium Recognition</h4>
+                            <p>Donations over $5000 earn you a spot on our <a href="donors.html">Official Donors Page</a> with optional social media recognition.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="donation-grid">
-                <div class="donation-card">
-                    <div class="donation-icon"><i class="fab fa-btc"></i></div>
-                    <h3>BITCOIN (BTC)</h3>
-                    <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
-                    <button class="copy-btn">COPY ADDRESS</button>
+                <div class="donation-grid">
+                    <div class="donation-card">
+                        <div class="donation-icon"><i class="fab fa-btc" aria-hidden="true"></i></div>
+                        <h3>BITCOIN (BTC)</h3>
+                        <p class="crypto-address">bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2</p>
+                        <button class="copy-btn">COPY ADDRESS</button>
+                    </div>
+                    <div class="donation-card">
+                        <div class="donation-icon"><i class="fab fa-ethereum" aria-hidden="true"></i></div>
+                        <h3>ETHEREUM (ETH)</h3>
+                        <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
+                        <button class="copy-btn">COPY ADDRESS</button>
+                    </div>
+                    <div class="donation-card">
+                        <div class="donation-icon">
+                            <img src="assets/images/hns.svg" alt="Handshake HNS Logo">
+                        </div>
+                        <h3>HANDSHAKE (HNS)</h3>
+                        <p class="crypto-address">hs1qzhxp6uvthtnd7sa9uk6d4s8qpq0entj3cdgj88</p>
+                        <button class="copy-btn">COPY ADDRESS</button>
+                    </div>
                 </div>
-                <div class="donation-card">
-                    <div class="donation-icon"><i class="fab fa-ethereum"></i></div>
-                    <h3>ETHEREUM (ETH)</h3>
-                    <p class="crypto-address">0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785</p>
-                    <button class="copy-btn">COPY ADDRESS</button>
-                </div>
-                <div class="donation-card">
-                    <div class="donation-icon">
-                        <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo">
-                    </div>
-                    <h3>HANDSHAKE (HNS)</h3>
-                    <p class="crypto-address">hs1qzhxp6uvthtnd7sa9uk6d4s8qpq0entj3cdgj88</p>
-                    <button class="copy-btn">COPY ADDRESS</button>
+                <div class="form-wrapper">
+                    <h3>SUBMIT DONATION DETAILS</h3>
+                    <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
+                    <form id="donationForm" method="POST" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="name">Name (Optional)</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="xHandle">X Handle (Optional, e.g., @username)</label>
+                            <input type="text" id="xHandle" name="xHandle" placeholder="Your X handle for recognition" autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company (Optional)</label>
+                            <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email (for receipt)</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount Donated (e.g., 0.1 BTC)</label>
+                            <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="network">Network</label>
+                            <select id="network" name="network" required autocomplete="off">
+                                <option value="">Select Network</option>
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="HNS">Handshake (HNS)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txHash">Transaction Hash (Tx ID)</label>
+                            <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required autocomplete="off"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn">Submit & Get Receipt</button>
+                        <p class="optional-note">If you want to donate anonymously, skip filling out the form.</p>
+                        <div id="message" class="message"></div>
+                    </form>
                 </div>
             </div>
-            <div class="form-wrapper">
-                <h3>SUBMIT DONATION DETAILS</h3>
-                <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
-                <form id="donationForm" method="POST" onsubmit="event.preventDefault();">
-                    <div class="form-group">
-                        <label for="name">Name (Optional)</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="xHandle">X Handle (Optional, e.g., @username)</label>
-                        <input type="text" id="xHandle" name="xHandle" placeholder="Your X handle for recognition" autocomplete="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company (Optional)</label>
-                        <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email (for receipt)</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount Donated (e.g., 0.1 BTC)</label>
-                        <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="network">Network</label>
-                        <select id="network" name="network" required autocomplete="off">
-                            <option value="">Select Network</option>
-                            <option value="BTC">Bitcoin (BTC)</option>
-                            <option value="ETH">Ethereum (ETH)</option>
-                            <option value="HNS">Handshake (HNS)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="txHash">Transaction Hash (Tx ID)</label>
-                        <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required autocomplete="off"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">Submit & Get Receipt</button>
-                    <p class="optional-note">If you want to donate anonymously, skip filling out the form.</p>
-                    <div id="message" class="message"></div>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
     <footer>
         <div class="container">
             <div class="copyright">
@@ -141,6 +145,7 @@
             </div>
         </div>
     </footer>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Mobile menu toggle
@@ -150,6 +155,15 @@
         if (mobileMenuToggle && navLinks) {
             mobileMenuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+                
+                // Add mobile download button if needed
+                if (navLinks.classList.contains('active') && !document.querySelector('.mobile-download-container')) {
+                    const mobileDownloadContainer = document.createElement('div');
+                    mobileDownloadContainer.className = 'mobile-download-container';
+                    mobileDownloadContainer.innerHTML = '<a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>';
+                    navLinks.parentNode.insertBefore(mobileDownloadContainer, navLinks.nextSibling);
+                }
             });
         }
         
