@@ -11,65 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .contact-section {
-            padding: 120px 0 80px;
-        }
-
-        .contact-form-wrapper {
-            max-width: 800px;
-            margin: 60px auto 0;
-            padding: 48px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-gray);
-            border-radius: 8px;
-            color: var(--white);
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        .form-group select option {
-            background: var(--darker-gray);
-            color: var(--white);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            display: block;
-            margin: 30px auto 0;
-            padding: 14px 32px;
-            min-width: 180px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-form-wrapper {
-                padding: 30px 20px;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -82,19 +23,28 @@
                         </div>
                     </a>
                 </div>
-                <div class="nav-links">
-                    <a href="index.html#features">FEATURES</a>
-                    <a href="index.html#comparison">COMPARE</a>
-                    <a href="index.html#roadmap">ROADMAP</a>
-                    <a href="index.html#download">DOWNLOAD</a>
-                    <a href="donate.html">DONATE</a>
-                    <a href="contact.html">CONTACT</a>
+                <div class="nav-right">
+                    <div class="menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="nav-links" id="navLinks">
+                        <a href="index.html#features">FEATURES</a>
+                        <a href="index.html#comparison">COMPARE</a>
+                        <a href="index.html#roadmap">ROADMAP</a>
+                        <a href="index.html#download">DOWNLOAD</a>
+                        <a href="donate.html">DONATE</a>
+                        <a href="contact.html">CONTACT</a>
+                    </div>
+                    <a href="index.html#download" class="download-btn">DOWNLOAD</a>
+                    <div class="mobile-download-container">
+                        <a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>
+                    </div>
                 </div>
-                <a href="index.html#download" class="download-btn">DOWNLOAD</a>
             </nav>
         </div>
     </header>
-
     <section class="contact-section">
         <div class="container">
             <div class="section-title">
@@ -102,19 +52,18 @@
                 <p>We'd love to hear from you. Please fill out the form below.</p>
             </div>
             <div class="contact-form-wrapper">
-                <!-- ✅ FIXED: No action attribute — handled by JS -->
                 <form id="contactForm" method="POST" onsubmit="event.preventDefault();">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" required autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <select id="subject" name="subject" required>
+                        <select id="subject" name="subject" required autocomplete="off">
                             <option value="" disabled selected>Select a reason...</option>
                             <option value="Investor Inquiry">Investor Inquiry</option>
                             <option value="Bug Report">Bug Report</option>
@@ -124,14 +73,13 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="message" required autocomplete="off"></textarea>
                     </div>
                     <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="copyright">
@@ -139,23 +87,28 @@
             </div>
         </div>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
             const contactForm = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
-
             contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
-
                 const originalBtnText = submitBtn.innerText;
                 submitBtn.disabled = true;
                 submitBtn.innerText = 'Sending...';
-
                 const formData = new FormData(contactForm);
                 const data = Object.fromEntries(formData.entries());
                 data.formType = 'contact';
-
                 // Validate
                 if (!data.name || !data.email || !data.subject || !data.message) {
                     alert('Please fill out all fields.');
@@ -163,14 +116,12 @@
                     submitBtn.innerText = originalBtnText;
                     return;
                 }
-
                 try {
                     const response = await fetch('/api/send-email', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data),
                     });
-
                     if (response.ok) {
                         submitBtn.innerText = 'Message Sent!';
                         contactForm.reset();

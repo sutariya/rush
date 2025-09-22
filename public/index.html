@@ -28,25 +28,34 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                     <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
                         <div class="logo-svg-wrapper">
                             <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
                         </div>
                     </a>
                 </div>
-                <div class="nav-links">
-                    <a href="#features">FEATURES</a>
-                    <a href="#comparison">COMPARE</a>
-                    <a href="#roadmap">ROADMAP</a>
-                    <a href="#download">DOWNLOAD</a>
-                    <a href="donate.html">DONATE</a>
-                    <a href="contact.html">CONTACT</a>
+                <div class="nav-right">
+                    <div class="menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="nav-links" id="navLinks">
+                        <a href="#features">FEATURES</a>
+                        <a href="#comparison">COMPARE</a>
+                        <a href="#roadmap">ROADMAP</a>
+                        <a href="#download">DOWNLOAD</a>
+                        <a href="donate.html">DONATE</a>
+                        <a href="contact.html">CONTACT</a>
+                    </div>
+                    <a href="#download" class="download-btn">DOWNLOAD</a>
+                    <div class="mobile-download-container">
+                        <a href="#download" class="mobile-download-btn">DOWNLOAD</a>
+                    </div>
                 </div>
-                <a href="#download" class="download-btn">DOWNLOAD</a>
             </nav>
         </div>
     </header>
-
     <section class="hero">
         <div class="container">
             <h1>DECENTRALIZED BROWSING. REDEFINED.</h1>
@@ -57,7 +66,6 @@
             </div>
         </div>
     </section>
-
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
@@ -66,10 +74,10 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon-svg" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
-                        <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo" style="height: 60px;">
-                        <span style="color: var(--white); font-size: 2rem;">+</span>
-                        <img src="assets/images/ens.svg" alt="Ethereum Name Service (ENS) Logo" style="height: 60px;">
+                    <div class="feature-icon-svg">
+                        <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo">
+                        <span>+</span>
+                        <img src="assets/images/ens.svg" alt="Ethereum Name Service (ENS) Logo">
                     </div>
                     <h3>NATIVE HNS & ENS RESOLUTION</h3>
                     <p>Unlock the decentralized web. Rush provides native resolution for Handshake's millions of TLDs and SLDs, alongside seamless support for Ethereum Name Service (.eth) domains. No extensions, no proxies, just direct access.</p>
@@ -87,7 +95,6 @@
             </div>
         </div>
     </section>
-
     <section class="comparison" id="comparison">
         <div class="container">
             <div class="section-title">
@@ -134,7 +141,6 @@
             </table>
         </div>
     </section>
-
     <section class="roadmap" id="roadmap">
         <div class="container">
             <div class="section-title">
@@ -149,7 +155,6 @@
             </div>
         </div>
     </section>
-
     <section class="download" id="download">
         <div class="container">
             <div class="section-title">
@@ -161,33 +166,32 @@
                     <div class="download-icon"><i class="fab fa-windows"></i></div>
                     <h3>WINDOWS</h3>
                     <p>Choose your preferred version</p>
-                    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
-                        <div class="tooltip" style="display: inline-block;"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/Rush.Browser.Setup.1.0.1.exe" target="_blank" class="download-link">INSTALLER</a><span class="tooltiptext">Standard installation with automatic updates</span></div>
-                        <div class="tooltip" style="display: inline-block;"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/Rush.Browser.1.0.1.exe" target="_blank" class="download-link">PORTABLE</a><span class="tooltiptext">Run without installation</span></div>
+                    <div>
+                        <div class="tooltip"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/Rush.Browser.Setup.1.0.1.exe" target="_blank" class="download-link">INSTALLER</a><span class="tooltiptext">Standard installation with automatic updates</span></div>
+                        <div class="tooltip"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/Rush.Browser.1.0.1.exe" target="_blank" class="download-link">PORTABLE</a><span class="tooltiptext">Run without installation</span></div>
                     </div>
                 </div>
                 <div class="download-card">
                     <div class="download-icon"><i class="fab fa-apple"></i></div>
                     <h3>macOS</h3>
                     <p>Universal Build</p>
-                    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
-                        <div class="tooltip" style="display: inline-block;"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/RushBrowser-macOS-1.0.1.dmg" target="_blank" class="download-link">UNIVERSAL</a><span class="tooltiptext">Compatible with Intel and Apple Silicon</span></div>
+                    <div>
+                        <div class="tooltip"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/RushBrowser-macOS-1.0.1.dmg" target="_blank" class="download-link">UNIVERSAL</a><span class="tooltiptext">Compatible with Intel and Apple Silicon</span></div>
                     </div>
                 </div>
                 <div class="download-card">
                     <div class="download-icon"><i class="fab fa-linux"></i></div>
                     <h3>LINUX</h3>
                     <p>Choose your distribution format</p>
-                    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
-                        <div class="tooltip" style="display: inline-block;"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/Rush.Browser-1.0.1.AppImage" target="_blank" class="download-link">APPIMAGE</a><span class="tooltiptext">Runs on most Linux distributions (e.g., Fedora, Arch)</span></div>
-                        <div class="tooltip" style="display: inline-block;"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/rush-browser_1.0.1_amd64.deb" target="_blank" class="download-link">DEBIAN</a><span class="tooltiptext">For Debian-based systems (e.g., Ubuntu, Mint)</span></div>
+                    <div>
+                        <div class="tooltip"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/Rush.Browser-1.0.1.AppImage" target="_blank" class="download-link">APPIMAGE</a><span class="tooltiptext">Runs on most Linux distributions (e.g., Fedora, Arch)</span></div>
+                        <div class="tooltip"><a href="https://github.com/sutariya/rush/releases/download/1.0.1/rush-browser_1.0.1_amd64.deb" target="_blank" class="download-link">DEBIAN</a><span class="tooltiptext">For Debian-based systems (e.g., Ubuntu, Mint)</span></div>
                     </div>
                 </div>
             </div>
             <p style="text-align:center;margin-top:32px;color:#777;font-size:16px;">All downloads are direct from GitHub — no login required.</p>
         </div>
     </section>
-
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
@@ -201,7 +205,6 @@
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -221,17 +224,33 @@
             </div>
         </div>
     </footer>
-
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
-                }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (navLinks) {
+                        navLinks.classList.remove('active'); // Close mobile menu when clicking a link
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
             });
         });
     </script>

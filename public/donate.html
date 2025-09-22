@@ -11,230 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .donation-section {
-            padding: 120px 0 80px;
-        }
-
-        .benefits-cards {
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .benefits-cards h3 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--white);
-            font-weight: 700;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .benefit-card {
-            background: var(--card-bg);
-            padding: 30px 24px;
-            border-radius: 16px;
-            border: 1px solid var(--border-gray);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--accent-light);
-            margin-bottom: 20px;
-        }
-
-        .benefit-card h4 {
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .benefit-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        .benefit-card a {
-            color: var(--accent-light);
-            text-decoration: underline;
-        }
-
-        .donation-grid {
-            margin: 60px 0;
-            gap: 32px;
-        }
-
-        .donation-card {
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .donation-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .donation-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 64px;
-        }
-
-        .donation-icon img {
-            height: 40px;
-            width: auto;
-        }
-
-        .crypto-address {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 16px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            word-break: break-all;
-        }
-
-        .copy-btn {
-            padding: 10px 20px;
-            background: var(--white);
-            color: var(--black);
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            background: var(--accent-light);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-        }
-
-        .form-wrapper {
-            max-width: 800px;
-            margin: 60px auto 0;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-gray);
-            text-align: center;
-        }
-
-        .form-wrapper h3 {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .form-wrapper p {
-            max-width: 90%;
-            margin: 0 auto 30px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-gray);
-            border-radius: 8px;
-            color: var(--white);
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        .submit-btn {
-            display: block;
-            margin: 24px auto 16px;
-            padding: 14px 32px;
-            min-width: 180px;
-        }
-
-        .optional-note {
-            text-align: center;
-            color: var(--medium-gray);
-            font-size: 0.95rem;
-            margin-top: 24px;
-        }
-
-        .message {
-            padding: 12px;
-            margin-top: 20px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 500;
-            display: none;
-        }
-
-        .message.success {
-            background: rgba(0, 255, 0, 0.1);
-            color: #00ff00;
-        }
-
-        .message.error {
-            background: rgba(255, 0, 0, 0.1);
-            color: #ff4444;
-        }
-
-        .explorer-note {
-            font-size: 0.85rem;
-            color: var(--medium-gray);
-            margin: 8px 0 16px;
-        }
-
-        .explorer-note a {
-            color: var(--accent-light);
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .form-wrapper {
-                padding: 30px 20px;
-            }
-            .benefits h3 {
-                font-size: 1.6rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -247,26 +23,34 @@
                         </div>
                     </a>
                 </div>
-                <div class="nav-links">
-                    <a href="index.html#features">FEATURES</a>
-                    <a href="index.html#comparison">COMPARE</a>
-                    <a href="index.html#roadmap">ROADMAP</a>
-                    <a href="index.html#download">DOWNLOAD</a>
-                    <a href="donate.html">DONATE</a>
-                    <a href="contact.html">CONTACT</a>
+                <div class="nav-right">
+                    <div class="menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="nav-links" id="navLinks">
+                        <a href="index.html#features">FEATURES</a>
+                        <a href="index.html#comparison">COMPARE</a>
+                        <a href="index.html#roadmap">ROADMAP</a>
+                        <a href="index.html#download">DOWNLOAD</a>
+                        <a href="donate.html">DONATE</a>
+                        <a href="contact.html">CONTACT</a>
+                    </div>
+                    <a href="index.html#download" class="download-btn">DOWNLOAD</a>
+                    <div class="mobile-download-container">
+                        <a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>
+                    </div>
                 </div>
-                <a href="index.html#download" class="download-btn">DOWNLOAD</a>
             </nav>
         </div>
     </header>
-
     <section class="donation-section">
         <div class="container">
             <div class="section-title">
                 <h2>SUPPORT THE MISSION</h2>
                 <p>Every penny fuels Rush Browser's mission to build a secure, decentralized internet.</p>
             </div>
-
             <div class="benefits-cards">
                 <h3>Why Support Rush Browser?</h3>
                 <div class="benefits-grid">
@@ -287,7 +71,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="donation-grid">
                 <div class="donation-card">
                     <div class="donation-icon"><i class="fab fa-btc"></i></div>
@@ -306,38 +89,37 @@
                         <img src="assets/images/hns.svg" alt="Handshake (HNS) Logo">
                     </div>
                     <h3>HANDSHAKE (HNS)</h3>
-                    <p class="crypto-address">hs1qgx5azuqza6cul6u3fydqauj9f2ck69j3l6xen4</p>
+                    <p class="crypto-address">hs1qzhxp6uvthtnd7sa9uk6d4s8qpq0entj3cdgj88</p>
                     <button class="copy-btn">COPY ADDRESS</button>
                 </div>
             </div>
-
             <div class="form-wrapper">
                 <h3>SUBMIT DONATION DETAILS</h3>
                 <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
                 <form id="donationForm" method="POST" onsubmit="event.preventDefault();">
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
-                        <input type="text" id="name" name="name" placeholder="Your name">
+                        <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="xHandle">X Handle (Optional, e.g., @username)</label>
-                        <input type="text" id="xHandle" name="xHandle" placeholder="Your X handle for recognition">
+                        <input type="text" id="xHandle" name="xHandle" placeholder="Your X handle for recognition" autocomplete="username">
                     </div>
                     <div class="form-group">
                         <label for="company">Company (Optional)</label>
-                        <input type="text" id="company" name="company" placeholder="Your company">
+                        <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization">
                     </div>
                     <div class="form-group">
                         <label for="email">Email (for receipt)</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="amount">Amount Donated (e.g., 0.1 BTC)</label>
-                        <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required>
+                        <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="network">Network</label>
-                        <select id="network" name="network" required>
+                        <select id="network" name="network" required autocomplete="off">
                             <option value="">Select Network</option>
                             <option value="BTC">Bitcoin (BTC)</option>
                             <option value="ETH">Ethereum (ETH)</option>
@@ -346,7 +128,7 @@
                     </div>
                     <div class="form-group">
                         <label for="txHash">Transaction Hash (Tx ID)</label>
-                        <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required></textarea>
+                        <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required autocomplete="off"></textarea>
                     </div>
                     <button type="submit" class="submit-btn" id="submitBtn">Submit & Get Receipt</button>
                     <p class="optional-note">If you want to donate anonymously, skip filling out the form.</p>
@@ -355,7 +137,6 @@
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="copyright">
@@ -363,9 +144,18 @@
             </div>
         </div>
     </footer>
-
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
         // Copy buttons
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', function() {
@@ -380,19 +170,16 @@
                 });
             });
         });
-
+        
         // Form submission
         const form = document.getElementById('donationForm');
         const submitBtn = document.getElementById('submitBtn');
-
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const messageDiv = document.getElementById('message');
             messageDiv.style.display = 'none';
             submitBtn.disabled = true;
             submitBtn.innerText = 'Submitting...';
-
             const nameEl = document.getElementById('name');
             const xHandleEl = document.getElementById('xHandle');
             const emailEl = document.getElementById('email');
@@ -400,7 +187,6 @@
             const amountEl = document.getElementById('amount');
             const networkEl = document.getElementById('network');
             const txHashEl = document.getElementById('txHash');
-
             const formData = {
                 name: nameEl?.value || 'Anonymous',
                 xHandle: xHandleEl?.value || '',
@@ -411,7 +197,7 @@
                 txHash: txHashEl?.value?.trim() || '',
                 formType: 'donation'
             };
-
+            
             // Client-side validation
             if (!formData.email) {
                 showMessage('Email is required.', 'error');
@@ -419,35 +205,32 @@
                 submitBtn.innerText = 'Submit & Get Receipt';
                 return;
             }
-
             if (!formData.amount) {
                 showMessage('Donation amount is required.', 'error');
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Submit & Get Receipt';
                 return;
             }
-
             if (!formData.network) {
                 showMessage('Please select a network.', 'error');
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Submit & Get Receipt';
                 return;
             }
-
             if (!formData.txHash) {
                 showMessage('Transaction hash is required.', 'error');
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Submit & Get Receipt';
                 return;
             }
-
+            
             try {
                 const response = await fetch('/api/send-email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
-
+                
                 if (response.ok) {
                     showMessage('Thank you! Your donation is received. We will verify it and list you on our donors page.', 'success');
                     form.reset();
@@ -466,7 +249,7 @@
                 }, 3000);
             }
         });
-
+        
         function showMessage(text, type) {
             const messageDiv = document.getElementById('message');
             messageDiv.innerText = text;
@@ -475,6 +258,6 @@
             setTimeout(() => { messageDiv.style.display = 'none'; }, 5000);
         }
     });
-</script>
+    </script>
 </body>
 </html>

@@ -11,19 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .donation-section { padding: 180px 0 120px; background: var(--black); }
-        .donor-list { margin-top: 40px; text-align: center; }
-        .donor-list p { color: var(--white); font-size: 1.2rem; word-wrap: break-word; max-width: 90%; margin: 0 auto; }
-        .donation-card { background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border-gray); margin-bottom: 20px; text-align: center; }
-        .donation-card h3 { color: var(--white); font-size: 1.5rem; white-space: nowrap; }
-        .donation-card p { color: var(--text-secondary); white-space: nowrap; }
-        .optional-note { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-top: 24px; white-space: nowrap; }
-        .optional-note a { color: var(--accent-light); text-decoration: underline; }
-        .section-title { text-align: center; }
-        .section-title h2 { white-space: nowrap; }
-        .section-title p { word-wrap: break-word; max-width: 90%; margin: 0 auto; }
-    </style>
 </head>
 <body>
     <header>
@@ -36,19 +23,28 @@
                         </div>
                     </a>
                 </div>
-                <div class="nav-links">
-                    <a href="index.html#features">FEATURES</a>
-                    <a href="index.html#comparison">COMPARE</a>
-                    <a href="index.html#roadmap">ROADMAP</a>
-                    <a href="index.html#download">DOWNLOAD</a>
-                    <a href="donate.html">DONATE</a>
-                    <a href="contact.html">CONTACT</a>
+                <div class="nav-right">
+                    <div class="menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="nav-links" id="navLinks">
+                        <a href="index.html#features">FEATURES</a>
+                        <a href="index.html#comparison">COMPARE</a>
+                        <a href="index.html#roadmap">ROADMAP</a>
+                        <a href="index.html#download">DOWNLOAD</a>
+                        <a href="donate.html">DONATE</a>
+                        <a href="contact.html">CONTACT</a>
+                    </div>
+                    <a href="index.html#download" class="download-btn">DOWNLOAD</a>
+                    <div class="mobile-download-container">
+                        <a href="index.html#download" class="mobile-download-btn">DOWNLOAD</a>
+                    </div>
                 </div>
-                <a href="index.html#download" class="download-btn">DOWNLOAD</a>
             </nav>
         </div>
     </header>
-
     <section class="donation-section">
         <div class="container">
             <div class="section-title">
@@ -61,7 +57,6 @@
             <p class="optional-note">Want to join? <a href="/donate">Donate now</a> and contribute to a decentralized web!</p>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="copyright">
@@ -69,5 +64,18 @@
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+    });
+    </script>
 </body>
 </html>
