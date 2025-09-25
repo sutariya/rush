@@ -1,11 +1,10 @@
-// File: /api/send-email.js
 import { Resend } from 'resend';
 
-// 🔗 Explorer URL map — validated against live explorer behavior
+// 🔗 Explorer URL map — validated and cleaned (no trailing spaces)
 const explorers = {
   BTC: 'https://blockstream.info/tx/',
   ETH: 'https://etherscan.io/tx/',
-  HNS: 'https://shakeshift.com/transaction/', // ✅ Correct path for HNS
+  HNS: 'https://shakeshift.com/transaction/',
   USDT: 'https://tronscan.org/#/transaction/',
   USDC: 'https://tronscan.org/#/transaction/',
   XMR: 'https://xmrchain.net/search?value=',
@@ -81,9 +80,8 @@ export default async function handler(req, res) {
       let txLink = null;
       if (cleanTxHash && explorers.hasOwnProperty(cleanNetwork)) {
         if (cleanNetwork === 'PAYPAL') {
-          txLink = null; // No explorer
+          txLink = null;
         } else {
-          // For XMR, the hash is used as a search value — encoding is safe
           txLink = explorers[cleanNetwork] + encodeURIComponent(cleanTxHash);
         }
       }
@@ -112,7 +110,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid form type' });
     }
 
-    // Resend setup
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY environment variable is not set');
       return res.status(500).json({ error: 'Server configuration error' });
