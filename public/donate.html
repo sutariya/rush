@@ -55,7 +55,7 @@
                         <div class="benefit-card">
                             <div class="benefit-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                             <h4>Fund Development</h4>
-                            <p>100% of your donation directly funds Rush Browser development - the first browser with native HNS and ENS domain resolution.</p>
+                            <p>100% of your donation directly funds Rush Browser development — the first browser with native HNS and ENS domain resolution.</p>
                         </div>
                         <div class="benefit-card">
                             <div class="benefit-icon"><i class="fas fa-unlock" aria-hidden="true"></i></div>
@@ -90,7 +90,6 @@
                             <h4 id="paymentName"></h4>
                             <p class="crypto-address" id="paymentAddress"></p>
                             <button class="copy-btn" id="copyAddressBtn">COPY ADDRESS</button>
-                            <div id="explorerNote" class="explorer-note"></div>
                         </div>
                     </div>
                 </div>
@@ -119,22 +118,6 @@
                             <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="network">Network</label>
-                            <select id="network" name="network" required autocomplete="off">
-                                <option value="">Select Network</option>
-                                <option value="BTC">Bitcoin (BTC)</option>
-                                <option value="ETH">Ethereum (ETH)</option>
-                                <option value="HNS">Handshake (HNS)</option>
-                                <option value="USDT">USDT (TRC20)</option>
-                                <option value="USDC">USDC (TRC20)</option>
-                                <option value="XMR">Monero (XMR)</option>
-                                <option value="SOL">Solana (SOL)</option>
-                                <option value="LTC">Litecoin (LTC)</option>
-                                <option value="BNB">BNB Smart Chain</option>
-                                <option value="PAYPAL">PayPal</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="txHash">Transaction Hash (Tx ID)</label>
                             <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required autocomplete="off"></textarea>
                         </div>
@@ -157,7 +140,7 @@
             </div>
             <div class="copyright">
                 <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
-                 <div style="margin-top: 16px; text-align: center; color: var(--medium-gray); font-size: 0.95rem;">
+                <div style="margin-top: 16px; text-align: center; color: var(--medium-gray); font-size: 0.95rem;">
                     Follow us on
                     <a href="https://x.com/rushbrowser" target="_blank" style="display: inline-block; margin-left: 8px; vertical-align: middle; line-height: 1; color: var(--white); text-decoration: none;" aria-label="Follow Rush Browser on X">
                         <svg width="15" height="15" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"/></svg>
@@ -204,19 +187,19 @@
         const paymentName = document.getElementById('paymentName');
         const paymentAddress = document.getElementById('paymentAddress');
         const copyAddressBtn = document.getElementById('copyAddressBtn');
-        const explorerNote = document.getElementById('explorerNote');
         const paymentMethods = {
-            BTC: { name: "Bitcoin (BTC)", address: "bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2", icon: '<img src="assets/images/bitcoin-btc-logo.svg" alt="Bitcoin BTC Logo" class="crypto-logo">', explorer: "https://blockstream.info/tx/" },
-            ETH: { name: "Ethereum (ETH)", address: "0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785", icon: '<img src="assets/images/ethereum-eth-logo.svg" alt="Ethereum ETH Logo" class="crypto-logo">', explorer: "https://etherscan.io/tx/" },
-            HNS: { name: "Handshake (HNS)", address: "hs1qec7f67exw4zzfhshka442gtscpcumr5s4x647q", icon: '<img src="assets/images/hns.svg" alt="Handshake HNS Logo" class="crypto-logo">', explorer: "https://shakeshift.com/transaction/" },
-            USDT: { name: "USDT (TRC20)", address: "TDsyTq1HCCT4Spqmf9hD1qwGVkyNiShLrN", icon: '<img src="assets/images/tether-usdt-logo.svg" alt="Tether USDT Logo" class="crypto-logo">', explorer: "https://tronscan.org/#/transaction/" },
-            USDC: { name: "USDC (TRC20)", address: "TDsyTq1HCCT4Spqmf9hD1qwGVkyNiShLrN", icon: '<img src="assets/images/usd-coin-usdc-logo.svg" alt="USD Coin USDC Logo" class="crypto-logo">', explorer: "https://tronscan.org/#/transaction/" },
-            XMR: { name: "Monero (XMR)", address: "467PfMrBzSmdhzqQSYqyXKYaSQLS2MDUDShxtcQxTFvUTTxL1UJf54eecTueXwA68DFPUNu3HEZwSQxWh2FthUTR8FrMeSd", icon: '<img src="assets/images/monero-xmr-logo.svg" alt="Monero XMR Logo" class="crypto-logo">', explorer: "https://xmrchain.net/search?value=" },
-            SOL: { name: "Solana (SOL)", address: "4epfhUwLaqRWPvRX13HZwghRnpohb2aHpnTVWEWPELTk", icon: '<img src="assets/images/solana-sol-logo.svg" alt="Solana SOL Logo" class="crypto-logo">', explorer: "https://solscan.io/tx/" },
-            LTC: { name: "Litecoin (LTC)", address: "ltc1qhal7j2j7tw3hq0klp7enh6txnypchamdcau8pm", icon: '<img src="assets/images/litecoin-ltc-logo.svg" alt="Litecoin LTC Logo" class="crypto-logo">', explorer: "https://blockchair.com/litecoin/transaction/" },
-            BNB: { name: "BNB Smart Chain", address: "0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785", icon: '<img src="assets/images/bnb-bnb-logo.svg" alt="BNB BNB Logo" class="crypto-logo">', explorer: "https://bscscan.com/tx/" },
-            PAYPAL: { name: "PayPal", address: "sutariyar@gmail.com", icon: '<img src="assets/images/paypal-logo.svg" alt="PayPal Logo" class="crypto-logo">', explorer: "" }
+            BTC: { name: "Bitcoin (BTC)", address: "bc1q0ck0a6tw968jgxq0wyhtj4hh9x40uwr58pxkk2", icon: '<img src="assets/images/bitcoin-btc-logo.svg" alt="Bitcoin BTC Logo" class="crypto-logo">' },
+            ETH: { name: "Ethereum (ETH)", address: "0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785", icon: '<img src="assets/images/ethereum-eth-logo.svg" alt="Ethereum ETH Logo" class="crypto-logo">' },
+            HNS: { name: "Handshake (HNS)", address: "hs1qec7f67exw4zzfhshka442gtscpcumr5s4x647q", icon: '<img src="assets/images/hns.svg" alt="Handshake HNS Logo" class="crypto-logo">' },
+            USDT: { name: "USDT (TRC20)", address: "TDsyTq1HCCT4Spqmf9hD1qwGVkyNiShLrN", icon: '<img src="assets/images/tether-usdt-logo.svg" alt="Tether USDT Logo" class="crypto-logo">' },
+            USDC: { name: "USDC (TRC20)", address: "TDsyTq1HCCT4Spqmf9hD1qwGVkyNiShLrN", icon: '<img src="assets/images/usd-coin-usdc-logo.svg" alt="USD Coin USDC Logo" class="crypto-logo">' },
+            XMR: { name: "Monero (XMR)", address: "467PfMrBzSmdhzqQSYqyXKYaSQLS2MDUDShxtcQxTFvUTTxL1UJf54eecTueXwA68DFPUNu3HEZwSQxWh2FthUTR8FrMeSd", icon: '<img src="assets/images/monero-xmr-logo.svg" alt="Monero XMR Logo" class="crypto-logo">' },
+            SOL: { name: "Solana (SOL)", address: "4epfhUwLaqRWPvRX13HZwghRnpohb2aHpnTVWEWPELTk", icon: '<img src="assets/images/solana-sol-logo.svg" alt="Solana SOL Logo" class="crypto-logo">' },
+            LTC: { name: "Litecoin (LTC)", address: "ltc1qhal7j2j7tw3hq0klp7enh6txnypchamdcau8pm", icon: '<img src="assets/images/litecoin-ltc-logo.svg" alt="Litecoin LTC Logo" class="crypto-logo">' },
+            BNB: { name: "BNB Smart Chain", address: "0x4Fb2F4832B73317Fd40CaAa239E4bbe372e0B785", icon: '<img src="assets/images/bnb-bnb-logo.svg" alt="BNB BNB Logo" class="crypto-logo">' },
+            PAYPAL: { name: "PayPal", address: "sutariyar@gmail.com", icon: '<img src="assets/images/paypal-logo.svg" alt="PayPal Logo" class="crypto-logo">' }
         };
+
         paymentMethodSelect.addEventListener('change', function() {
             const selectedMethod = this.value;
             if (selectedMethod && paymentMethods[selectedMethod]) {
@@ -224,19 +207,12 @@
                 paymentName.textContent = method.name;
                 paymentAddress.textContent = method.address;
                 paymentIcon.innerHTML = method.icon;
-                explorerNote.style.display = 'none';
                 addressDisplay.style.display = 'block';
-                const networkSelect = document.getElementById('network');
-                for (let i = 0; i < networkSelect.options.length; i++) {
-                    if (networkSelect.options[i].value === selectedMethod) {
-                        networkSelect.selectedIndex = i;
-                        break;
-                    }
-                }
             } else {
                 addressDisplay.style.display = 'none';
             }
         });
+
         copyAddressBtn.addEventListener('click', function() {
             const address = paymentAddress.textContent;
             navigator.clipboard.writeText(address).then(() => {
@@ -248,24 +224,36 @@
                 showMessage('Failed to copy: ' + err.message, 'error');
             });
         });
+
         const form = document.getElementById('donationForm');
         const submitBtn = document.getElementById('submitBtn');
+
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const messageDiv = document.getElementById('message');
             messageDiv.style.display = 'none';
             submitBtn.disabled = true;
             submitBtn.innerText = 'Submitting...';
+
+            // Use paymentMethod as the network
+            const selectedNetwork = document.getElementById('paymentMethod')?.value;
+            if (!selectedNetwork) {
+                showMessage('Please select a payment method.', 'error');
+                resetSubmitBtn();
+                return;
+            }
+
             const formData = {
                 name: document.getElementById('name')?.value || 'Anonymous',
                 xHandle: document.getElementById('xHandle')?.value || '',
                 email: document.getElementById('email')?.value?.trim() || '',
                 company: document.getElementById('company')?.value || '',
                 amount: document.getElementById('amount')?.value?.trim() || '',
-                network: document.getElementById('network')?.value || '',
+                network: selectedNetwork, // ✅ Use payment method as network
                 txHash: document.getElementById('txHash')?.value?.trim() || '',
                 formType: 'donation'
             };
+
             if (!formData.email) {
                 showMessage('Email is required.', 'error');
                 resetSubmitBtn();
@@ -276,22 +264,19 @@
                 resetSubmitBtn();
                 return;
             }
-            if (!formData.network) {
-                showMessage('Please select a network.', 'error');
-                resetSubmitBtn();
-                return;
-            }
             if (!formData.txHash) {
                 showMessage('Transaction hash is required.', 'error');
                 resetSubmitBtn();
                 return;
             }
+
             try {
-                const response = await fetch('/api/send-email, {
+                const response = await fetch('/api/send-email', { // ✅ Fixed quote
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
+
                 if (response.ok) {
                     showMessage('Thank you! Your donation is received. We will verify it and list you on our donors page.', 'success');
                     form.reset();
@@ -312,10 +297,12 @@
                 }, 3000);
             }
         });
+
         function resetSubmitBtn() {
             submitBtn.disabled = false;
             submitBtn.innerText = 'Submit & Get Receipt';
         }
+
         function showMessage(text, type) {
             const messageDiv = document.getElementById('message');
             messageDiv.innerText = text;
@@ -336,32 +323,25 @@
         margin-bottom: 24px;
         font-weight: 700;
     }
-    .payment-select,
-    .form-group select {
-        width: 100%;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.3) !important;
-        border: 1px solid var(--border-gray) !important;
-        border-radius: 6px !important;
-        color: var(--white) !important;
-        font-size: 15px !important;
-        box-sizing: border-box !important;
-    }
     .payment-select {
+        width: 100%;
         max-width: 400px;
         margin: 0 auto 24px;
-        display: block;
-        border: 2px solid #ff3366 !important;
-        padding: 12px !important;
-        font-size: 16px !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        appearance: none !important;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
-        background-repeat: no-repeat !important;
-        background-position: right 12px center !important;
-        background-size: 12px !important;
-        padding-right: 30px !important;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid #ff3366;
+        border-radius: 6px;
+        color: var(--white);
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 12px;
+        padding-right: 30px;
+        box-sizing: border-box;
     }
     .address-display {
         background: var(--card-bg);
@@ -382,10 +362,6 @@
         height: 60px;
     }
     .payment-icon img {
-        height: 35px;
-        width: auto;
-    }
-    .crypto-logo {
         height: 35px;
         width: auto;
     }
@@ -423,9 +399,6 @@
         transform: translateY(-2px);
         background: var(--accent-light);
         box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-    }
-    .explorer-note {
-        display: none;
     }
     .button-spacing {
         height: 20px;

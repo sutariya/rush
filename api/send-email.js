@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-// 🔗 Explorer URL map — validated and cleaned (no trailing spaces)
+// 🔗 Explorer URLs — cleaned (no trailing spaces)
 const explorers = {
   BTC: 'https://blockstream.info/tx/',
   ETH: 'https://etherscan.io/tx/',
@@ -11,7 +11,7 @@ const explorers = {
   SOL: 'https://solscan.io/tx/',
   LTC: 'https://blockchair.com/litecoin/transaction/',
   BNB: 'https://bscscan.com/tx/',
-  PAYPAL: '', // No blockchain explorer
+  PAYPAL: '',
 };
 
 export default async function handler(req, res) {
@@ -21,7 +21,6 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-  // Handle preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -44,7 +43,6 @@ export default async function handler(req, res) {
       formType
     } = req.body;
 
-    // Validate email
     if (!email || !email.trim()) {
       return res.status(400).json({ error: 'Email is required' });
     }
