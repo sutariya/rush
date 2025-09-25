@@ -32,7 +32,6 @@ body {
     margin: 0 auto;
     padding: 0 24px;
 }
-
 /* Header & Navigation */
 header {
     background: rgba(0, 0, 0, 0.98);
@@ -76,8 +75,6 @@ nav {
     gap: 20px;
     flex-shrink: 0;
 }
-
-/* Desktop Navigation */
 .nav-links {
     display: flex;
     gap: 24px;
@@ -96,7 +93,6 @@ nav {
 .nav-links a:hover {
     color: var(--white);
 }
-
 .download-btn {
     background: var(--white);
     color: var(--black);
@@ -117,13 +113,12 @@ nav {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
     background: var(--accent-light);
 }
-
-/* Mobile Menu Toggle */
+/* ✅ Mobile Menu — ONLY ONE DEFINITION */
 .menu-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    padding: 10px;
+    padding: 8px;
     z-index: 1001;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
@@ -131,17 +126,14 @@ nav {
     height: 44px;
     justify-content: center;
     align-items: center;
-    position: relative;
-    transition: all 0.3s ease;
 }
 .menu-toggle span {
     width: 22px;
     height: 2px;
     background-color: var(--white);
     margin: 2px 0;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     border-radius: 2px;
-    display: block;
 }
 .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
@@ -152,36 +144,7 @@ nav {
 .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
-
-/* Mobile Download Button — HIDDEN by default */
-.mobile-download-container {
-    display: none;
-}
-
-/* Prevent body scroll when menu is open */
-body.menu-open {
-    overflow: hidden;
-}
-
-/* Overlay for mobile menu */
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-.menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Hero, Features, etc. — unchanged from your original */
+/* Hero Section */
 .hero {
     padding: 160px 0 100px;
     text-align: center;
@@ -242,6 +205,7 @@ body.menu-open {
     background: var(--white);
     color: var(--black);
 }
+/* Features Section */
 .features {
     padding: 100px 0;
     background: var(--darker-gray);
@@ -319,6 +283,7 @@ body.menu-open {
     line-height: 1.6;
     font-size: 1rem;
 }
+/* Comparison Section */
 .comparison {
     padding: 100px 0;
     background: var(--black);
@@ -395,6 +360,7 @@ body.menu-open {
     visibility: visible;
     opacity: 1;
 }
+/* Roadmap Section */
 .roadmap {
     padding: 100px 0;
     background: var(--darker-gray);
@@ -459,6 +425,7 @@ body.menu-open {
     margin-bottom: 8px;
     font-size: 1rem;
 }
+/* Download Section */
 .download {
     padding: 100px 0;
     text-align: center;
@@ -517,6 +484,7 @@ body.menu-open {
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
+/* About Section */
 .about {
     padding: 100px 0;
     background: var(--darker-gray);
@@ -555,6 +523,7 @@ body.menu-open {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-gray);
 }
+/* Donation Section */
 .donation-section {
     padding: 100px 0;
     background: var(--black);
@@ -629,6 +598,7 @@ body.menu-open {
 .optional-note a:hover {
     color: var(--accent-light);
 }
+/* Contact Form */
 .contact-section {
     padding: 100px 0;
     background: var(--black);
@@ -692,6 +662,7 @@ body.menu-open {
     cursor: not-allowed;
     box-shadow: none;
 }
+/* Footer */
 footer {
     padding: 40px 0;
     background: var(--darker-gray);
@@ -752,91 +723,51 @@ footer {
     border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-/* ✅ MOBILE FIX — NO DUPLICATES */
+/* ✅ MOBILE STYLES — ONLY ONE BLOCK */
 @media screen and (max-width: 768px) {
     .menu-toggle {
-        display: flex;
+        display: flex; /* ✅ This makes the hamburger appear */
     }
-
-    /* Hide desktop download button */
-    .download-btn {
-        display: none !important;
-    }
-
-    /* Show mobile download button INSIDE nav */
-    .mobile-download-container {
-        display: block !important;
-        width: 100%;
-        text-align: center;
-        padding: 20px 0;
-        border-top: 1px solid var(--border-gray);
-        margin-top: 10px;
-    }
-
-    .mobile-download-btn {
-        display: inline-block;
-        padding: 12px 24px;
-        background: var(--white);
-        color: var(--black);
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 15px;
-        letter-spacing: 0.5px;
-        transition: all 0.3s;
-        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-    }
-
-    .mobile-download-btn:hover {
-        transform: translateY(-2px);
-        background: var(--accent-light);
-        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-    }
-
-    /* Mobile nav styles */
     .nav-links {
-        position: fixed;
-        top: 76px;
+        display: none;
+        position: absolute;
+        top: 100%;
         left: 0;
         right: 0;
         background: rgba(0, 0, 0, 0.98);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
         flex-direction: column;
         align-items: center;
-        padding: 30px 20px 20px;
+        padding: 20px 0;
         border-bottom: 1px solid var(--border-gray);
-        z-index: 1001;
-        gap: 0;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
     }
-
     .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+        display: flex;
     }
-
     .nav-links a {
         font-size: 16px;
-        padding: 15px 0;
+        padding: 12px 0;
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         color: var(--white);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-
     .nav-links a:last-child {
         border-bottom: none;
     }
-
     .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255,255,255,0.05);
     }
-
+    .download-btn {
+        display: none !important;
+    }
+    /* ✅ Remove .mobile-download-container completely */
+    .mobile-download-container,
+    .mobile-download-btn {
+        display: none !important;
+    }
     .hero {
         padding: 120px 0 60px;
     }
@@ -878,7 +809,6 @@ footer {
         left: 10px;
     }
 }
-
 @media screen and (max-width: 480px) {
     .container {
         padding: 0 16px;
