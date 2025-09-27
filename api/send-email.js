@@ -48,7 +48,8 @@ export default async function handler(req, res) {
       amount,
       network,
       txHash,
-      formType
+      formType,
+      pastDonor
     } = req.body;
 
     if (!email || !email.trim()) {
@@ -111,6 +112,50 @@ export default async function handler(req, res) {
           }</li>
         </ul>
         <p><em>Donations over $5000 qualify for Premium Donor listing. Verify transaction manually.</em></p>
+      `;
+    } else if (formType === 'license') {
+      // Handle license requests from donate.html
+      const cleanTxHash = txHash?.trim();
+      const cleanNetwork = network?.trim();
+      const cleanAmount = amount?.trim();
+      const isPastDonor = pastDonor === true;
+
+      // Validation for license requests
+      if (!isPastDonor && (!cleanAmount || !cleanNetwork)) {
+        return res.status(400).json({ error: 'Amount and network are required for new donors' });
+      }
+      
+      if (!isPastDonor && !cleanTxHash) {
+        return res.status(400).json({ error: 'Transaction hash is required for new donors' });
+      }
+
+      let txLink = null;
+      if (cleanTxHash && cleanNetwork && explorers.hasOwnProperty(cleanNetwork)) {
+        if (cleanNetwork === 'PAYPAL') {
+          txLink = null;
+        } else {
+          txLink = cleanExplorerUrl(explorers[cleanNetwork], cleanTxHash);
+        }
+      }
+
+      emailSubject = isPastDonor ? 'Past Donor License Claim' : `License Request: ${cleanAmount} ${cleanNetwork}`;
+      emailHtml = `
+        <h2>🔑 ${isPastDonor ? 'Past Donor License Claim' : 'New License Request'}</h2>
+        <ul>
+          <li><strong>Name:</strong> ${(name || 'Anonymous').trim()}</li>
+          <li><strong>Email:</strong> ${email.trim()}</li>
+          <li><strong>Type:</strong> ${isPastDonor ? 'Past Donor Claim' : 'New License Purchase'}</li>
+          ${cleanAmount ? `<li><strong>Amount:</strong> ${cleanAmount} ${cleanNetwork || ''}</li>` : ''}
+          ${cleanNetwork ? `<li><strong>Network:</strong> ${cleanNetwork}</li>` : ''}
+          <li><strong>Transaction:</strong> ${
+            txLink
+              ? `<a href="${txLink}" target="_blank" style="color: #00ffaa; text-decoration: none;">View on Explorer</a>`
+              : cleanTxHash
+                ? `<code style="color: #aaa; font-size: 0.9em;">${cleanTxHash}</code>`
+                : isPastDonor ? 'Past donor - no transaction required' : 'Not provided'
+          }</li>
+        </ul>
+        <p><em>${isPastDonor ? 'Verify past donation history and issue license.' : 'Verify transaction and issue license key.'}</em></p>
       `;
     } else {
       return res.status(400).json({ error: 'Invalid form type' });
