@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Rush Browser</title>
-    <meta name="description" content="Get in touch with the Rush Browser team for investment opportunities, bug reports, or feature requests.">
+    <meta name="description" content="Get in touch with the Rush Browser team for license issues, bug reports, or feature requests.">
     <link rel="icon" href="assets/images/favicon.ico?v=2" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,11 +33,11 @@
                         <a href="index.html#features">FEATURES</a>
                         <a href="index.html#comparison">COMPARE</a>
                         <a href="index.html#roadmap">ROADMAP</a>
-                        <a href="index.html#download">DOWNLOAD</a>
+                        <a href="index.html#license">LICENSE</a>
                         <a href="donate.html">DONATE</a>
                         <a href="contact.html">CONTACT</a>
                     </div>
-                    <a href="index.html#download" class="download-btn">DOWNLOAD</a>
+                    <a href="index.html#license" class="download-btn">GET LICENSE</a>
                 </div>
             </nav>
         </div>
@@ -47,7 +47,7 @@
             <div class="container">
                 <div class="section-title">
                     <h2>GET IN TOUCH</h2>
-                    <p>We'd love to hear from you. Please fill out the form below.</p>
+                    <p>We're here to help. For license delivery issues, please include your transaction ID.</p>
                 </div>
                 <div class="contact-form-wrapper">
                     <form id="contactForm" method="POST" onsubmit="event.preventDefault();">
@@ -63,7 +63,8 @@
                             <label for="subject">Subject</label>
                             <select id="subject" name="subject" required autocomplete="off">
                                 <option value="" disabled selected>Select a reason...</option>
-                                <option value="Investor Inquiry">Investor Inquiry</option>
+                                <option value="License Issue">License Issue</option>
+                                <option value="Past Donor Claim">Past Donor Claim</option>
                                 <option value="Bug Report">Bug Report</option>
                                 <option value="Feature Request">Feature Request</option>
                                 <option value="General Question">General Question</option>
@@ -138,7 +139,7 @@
                     return;
                 }
                 try {
-                    const response = await fetch('/api/send-email', { // ✅ Fixed missing quote
+                    const response = await fetch('/api/send-email', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data),
