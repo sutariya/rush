@@ -14,6 +14,14 @@ const explorers = {
   PAYPAL: '',
 };
 
+// Helper function to clean and validate URLs
+const cleanExplorerUrl = (url, txHash) => {
+  if (!url || !txHash) return null;
+  const cleanUrl = url.trim();
+  if (!cleanUrl) return null;
+  return cleanUrl + encodeURIComponent(txHash.trim());
+};
+
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -80,7 +88,7 @@ export default async function handler(req, res) {
         if (cleanNetwork === 'PAYPAL') {
           txLink = null;
         } else {
-          txLink = explorers[cleanNetwork] + encodeURIComponent(cleanTxHash);
+          txLink = cleanExplorerUrl(explorers[cleanNetwork], cleanTxHash);
         }
       }
 
