@@ -831,3 +831,172 @@ footer {
         padding: 24px 20px;
     }
 }
+
+/* Add these new CSS rules to your existing assets/css/style.css file */
+
+/* 🚨 Announcement Banner Styles */
+#rush-announcement {
+    background: var(--darker-gray);
+    border-bottom: 1px solid var(--border-gray);
+    padding: 12px 0;
+    text-align: center;
+    font-weight: 600;
+    color: var(--white);
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1000;
+}
+
+#rush-announcement #countdown-timer {
+    color: #ff6b6b;
+    margin-left: 6px;
+}
+
+/* Updated Offer Highlight */
+.offer-highlight {
+    background: var(--card-bg);
+    border: 1px solid var(--border-gray);
+    padding: 24px;
+    border-radius: 12px;
+    margin: 30px auto;
+    max-width: 700px;
+    text-align: center;
+    color: var(--white);
+    backdrop-filter: blur(10px);
+}
+
+.offer-highlight strong {
+    color: var(--white);
+}
+
+.offer-highlight small {
+    display: block;
+    margin-top: 8px;
+    color: var(--medium-gray);
+}
+
+/* Add hover gray variable to :root if not present */
+:root {
+    --hover-gray: rgba(255, 255, 255, 0.08);
+}
+
+/* Enhanced Feature Cards with Hover */
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    background: var(--hover-gray);
+}
+
+/* Enhanced Comparison Table */
+.comparison-table th {
+    background: var(--hover-gray);
+    font-weight: 600;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.comparison-table tbody tr:hover {
+    background: var(--hover-gray);
+}
+
+/* Enhanced Roadmap Items */
+.roadmap-content {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-gray);
+    transition: all 0.3s ease;
+}
+
+.roadmap-content:hover {
+    background: var(--hover-gray);
+    transform: translateY(-2px);
+}
+
+/* NEW: FAQ Section - Collapsible Design */
+.faq-section {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    background: var(--hover-gray);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--accent-light);
+}
+
+.faq-question .icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: var(--medium-gray);
+}
+
+.faq-item.active .faq-question .icon {
+    transform: rotate(45deg);
+    color: var(--white);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer.active {
+    max-height: 300px;
+}
+
+.faq-answer-content {
+    padding: 0 24px 24px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Mobile FAQ Adjustments */
+@media screen and (max-width: 768px) {
+    .faq-question {
+        padding: 20px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .faq-question {
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+}
