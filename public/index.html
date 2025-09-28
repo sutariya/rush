@@ -305,9 +305,8 @@
 
 <!-- COUNTDOWN SCRIPT -->
 <script>
-    const offerEnd = new Date();
-    offerEnd.setDate(offerEnd.getDate() + 10);
-    offerEnd.setHours(23, 59, 59, 999);
+    // ✅ FIXED END DATE: 9 days after Sept 28, 2025 → Oct 7, 2025 at 23:59:59.999 UTC
+    const offerEnd = new Date('2025-10-07T23:59:59.999Z');
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -317,8 +316,8 @@
         const timerEl = document.getElementById("countdown-timer");
 
         if (distance < 0) {
-            textEl.textContent = "Offer expired! RushBrowser is now available via paid license only.";
-            timerEl.textContent = "";
+            if (textEl) textEl.textContent = "Offer expired! RushBrowser is now available via paid license only.";
+            if (timerEl) timerEl.textContent = "";
             return;
         }
 
@@ -326,19 +325,18 @@
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-        timerEl.textContent = `(${days}d ${hours}h ${minutes}m left)`;
+        if (timerEl) timerEl.textContent = `(${days}d ${hours}h ${minutes}m left)`;
     }
 
     updateCountdown();
     setInterval(updateCountdown, 60000);
 
-    // FAQ Toggle Function
+    // ... rest of your existing JS (FAQ, mobile menu, etc.) remains unchanged ...
     function toggleFaq(button) {
         const faqItem = button.parentElement;
         const answer = faqItem.querySelector('.faq-answer');
         const icon = button.querySelector('.icon');
         
-        // Close all other FAQ items
         document.querySelectorAll('.faq-item').forEach(item => {
             if (item !== faqItem) {
                 item.classList.remove('active');
@@ -346,12 +344,10 @@
             }
         });
         
-        // Toggle current item
         faqItem.classList.toggle('active');
         answer.classList.toggle('active');
     }
 
-    // Mobile Menu and Navigation
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -381,7 +377,12 @@
                 }
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                    const bannerHeight = document.getElementById('rush-announcement')?.offsetHeight || 0;
+                    window.scrollTo({ 
+                        top: target.offsetTop - (headerHeight + bannerHeight), 
+                        behavior: 'smooth' 
+                    });
                 }
             });
         });
