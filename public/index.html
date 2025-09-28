@@ -28,8 +28,7 @@
 <!-- 🚨 ANNOUNCEMENT BANNER -->
 <div id="rush-announcement">
     🚨 <strong>RushBrowser Update:</strong> Public downloads removed. 
-    <span id="countdown-text">Next 10 days: donate $100+ = lifetime license!</span>
-    <span id="countdown-timer"></span>
+    Donate <strong>$100+</strong> by <strong>October 7, 2025</strong> to receive a lifetime license!
 </div>
 
 <header>
@@ -166,7 +165,7 @@
         </div>
     </section>
 
-    <!-- 🔗 LICENSE SECTION (REPLACED DOWNLOAD) -->
+    <!-- 🔗 LICENSE SECTION -->
     <section class="download" id="license">
         <div class="container">
             <div class="section-title">
@@ -174,13 +173,22 @@
                 <p>One-time payment for lifetime access + all future updates</p>
             </div>
             <div class="offer-highlight">
-                <strong>⏳ Limited Offer (Next 10 Days):</strong><br>
-                Donate <strong>$100+</strong> and receive your lifetime license instantly!<br>
-                <small>After this period, RushBrowser will be available via paid license only.</small>
+                <strong>⏳ Limited Offer:</strong><br>
+                Donate <strong>$100+</strong> by <strong>October 7, 2025</strong> to receive your lifetime license.<br>
+                <small>After this date, RushBrowser will be available via paid license only.</small>
             </div>
             <div style="text-align: center; margin-top: 30px;">
-                <!-- 🔗 Now links to donate.html -->
                 <a href="donate.html" class="primary-btn">Donate $100+ (Get License)</a>
+            </div>
+
+            <!-- ✅ OFFICIAL LICENSE NOTICE -->
+            <div class="license-notice" style="margin-top: 40px; padding: 20px; background: var(--dark-bg, #1a1a1a); border-radius: 8px; font-size: 0.95rem; line-height: 1.6; color: var(--text-color, #e0e0e0);">
+                <h3 style="margin-top: 0; color: var(--white, #fff);">PROPRIETARY COMMERCIAL LICENSE</h3>
+                <p>Rush Browser is protected under a proprietary commercial license. All rights reserved.</p>
+                <p>Unauthorized copying, modification, distribution, reverse engineering, or exploitation is strictly prohibited.</p>
+                <p>This software and its associated documentation are the exclusive property of Rush Technologies. Use is granted only under explicit written agreement with the copyright holder.</p>
+                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.</p>
+                <p style="margin-bottom: 0;">© 2024 Rush Technologies. All rights reserved.</p>
             </div>
         </div>
     </section>
@@ -199,7 +207,7 @@
         </div>
     </section>
 
-    <!-- ✅ IMPROVED FAQ SECTION - COLLAPSIBLE -->
+    <!-- ✅ FAQ SECTION -->
     <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-title">
@@ -293,9 +301,9 @@
         </div>
         <div class="copyright">
             <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
-             <div style="margin-top: 16px; text-align: center; color: var(--medium-gray); font-size: 0.95rem;">
+            <div style="margin-top: 16px; text-align: center; color: var(--medium-gray, #aaa); font-size: 0.95rem;">
                 Follow us on
-                <a href="https://x.com/rushbrowser" target="_blank" style="display: inline-block; margin-left: 8px; vertical-align: middle; line-height: 1; color: var(--white); text-decoration: none;" aria-label="Follow Rush Browser on X">
+                <a href="https://x.com/rushbrowser" target="_blank" style="display: inline-block; margin-left: 8px; vertical-align: middle; line-height: 1; color: var(--white, #fff); text-decoration: none;" aria-label="Follow Rush Browser on X">
                     <svg width="15" height="15" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"/></svg>
                 </a>
             </div>
@@ -303,39 +311,12 @@
     </div>
 </footer>
 
-<!-- COUNTDOWN SCRIPT -->
+<!-- ✅ CLEAN JAVASCRIPT (NO COUNTDOWN) -->
 <script>
-    // ✅ FIXED END DATE: 9 days after Sept 28, 2025 → Oct 7, 2025 at 23:59:59.999 UTC
-    const offerEnd = new Date('2025-10-07T23:59:59.999Z');
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = offerEnd.getTime() - now;
-
-        const textEl = document.getElementById("countdown-text");
-        const timerEl = document.getElementById("countdown-timer");
-
-        if (distance < 0) {
-            if (textEl) textEl.textContent = "Offer expired! RushBrowser is now available via paid license only.";
-            if (timerEl) timerEl.textContent = "";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        if (timerEl) timerEl.textContent = `(${days}d ${hours}h ${minutes}m left)`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
-
-    // ... rest of your existing JS (FAQ, mobile menu, etc.) remains unchanged ...
+    // FAQ Toggle
     function toggleFaq(button) {
         const faqItem = button.parentElement;
         const answer = faqItem.querySelector('.faq-answer');
-        const icon = button.querySelector('.icon');
         
         document.querySelectorAll('.faq-item').forEach(item => {
             if (item !== faqItem) {
@@ -348,6 +329,7 @@
         answer.classList.toggle('active');
     }
 
+    // Mobile Navigation
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
