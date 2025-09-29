@@ -12,16 +12,13 @@
     --card-bg: rgba(255, 255, 255, 0.05);
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
-    --hover-gray: rgba(255, 255, 255, 0.08);
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-
 body {
     background-color: var(--black);
     color: var(--white);
@@ -29,43 +26,12 @@ body {
     overflow-x: hidden;
     font-size: 18px;
 }
-
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
 }
-
-/* ANNOUNCEMENT BANNER STYLES - FIXED */
-#rush-announcement {
-    background: linear-gradient(135deg, #ff3366, #ff6b6b);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 12px 20px;
-    text-align: center;
-    font-weight: 600;
-    color: var(--white);
-    font-size: 0.95rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1001;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-#rush-announcement #countdown-timer {
-    color: #fff;
-    font-weight: 700;
-    margin-left: 6px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 2px 8px;
-    border-radius: 12px;
-    display: inline-block;
-}
-
 /* Header & Navigation */
 header {
     background: rgba(0, 0, 0, 0.98);
@@ -73,11 +39,10 @@ header {
     padding: 16px 0;
     position: fixed;
     width: 100%;
-    top: 45px; /* Space for announcement banner */
+    top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--border-gray);
 }
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -85,14 +50,12 @@ nav {
     width: 100%;
     gap: 20px;
 }
-
 .logo {
     display: flex;
     align-items: center;
     gap: 16px;
     flex-shrink: 0;
 }
-
 .logo-svg-wrapper {
     width: auto;
     height: 40px;
@@ -100,28 +63,24 @@ nav {
     display: flex;
     align-items: center;
 }
-
 .logo-img {
     width: auto;
     height: 100%;
     object-fit: contain;
     display: block;
 }
-
 .nav-right {
     display: flex;
     align-items: center;
     gap: 20px;
     flex-shrink: 0;
 }
-
 .nav-links {
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -131,11 +90,9 @@ nav {
     letter-spacing: 0.5px;
     white-space: nowrap;
 }
-
 .nav-links a:hover {
     color: var(--white);
 }
-
 .download-btn {
     background: var(--white);
     color: var(--black);
@@ -151,14 +108,12 @@ nav {
     white-space: nowrap;
     flex-shrink: 0;
 }
-
 .download-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
     background: var(--accent-light);
 }
-
-/* Mobile Menu */
+/* ✅ Mobile Menu — ONLY ONE DEFINITION */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -172,7 +127,6 @@ nav {
     justify-content: center;
     align-items: center;
 }
-
 .menu-toggle span {
     width: 22px;
     height: 2px;
@@ -181,28 +135,23 @@ nav {
     transition: 0.3s;
     border-radius: 2px;
 }
-
 .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
-
 .menu-toggle.active span:nth-child(2) {
     opacity: 0;
 }
-
 .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
-
 /* Hero Section */
 .hero {
-    padding: 200px 0 100px; /* Increased top padding for announcement banner */
+    padding: 160px 0 100px;
     text-align: center;
     position: relative;
     background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.97)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="black"/><path d="M0 50 L100 50" stroke="grey" stroke-width="0.5" stroke-opacity="0.2"/><path d="M50 0 L50 100" stroke="grey" stroke-width="0.5" stroke-opacity="0.2"/></svg>');
     background-size: 30px;
 }
-
 .hero h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -211,7 +160,6 @@ nav {
     color: var(--white);
     line-height: 1.2;
 }
-
 .hero p {
     font-size: 1.2rem;
     color: var(--text-secondary);
@@ -219,7 +167,6 @@ nav {
     margin: 0 auto 40px;
     line-height: 1.6;
 }
-
 .hero-buttons {
     display: flex;
     justify-content: center;
@@ -227,7 +174,6 @@ nav {
     margin-top: 32px;
     flex-wrap: wrap;
 }
-
 .hero-buttons a {
     padding: 16px 32px;
     border-radius: 30px;
@@ -237,45 +183,37 @@ nav {
     letter-spacing: 0.5px;
     transition: all 0.3s;
 }
-
 .primary-btn {
     background: var(--white);
     color: var(--black);
     border: none;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .secondary-btn {
     border: 2px solid var(--white);
     color: var(--white);
     background: transparent;
 }
-
 .hero-buttons a:hover {
     transform: translateY(-3px);
 }
-
 .primary-btn:hover {
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 .secondary-btn:hover {
     background: var(--white);
     color: var(--black);
 }
-
 /* Features Section */
 .features {
     padding: 100px 0;
     background: var(--darker-gray);
 }
-
 .section-title {
     text-align: center;
     margin-bottom: 60px;
 }
-
 .section-title h2 {
     font-size: 2.5rem;
     font-weight: 800;
@@ -283,7 +221,6 @@ nav {
     color: var(--white);
     letter-spacing: -0.5px;
 }
-
 .section-title p {
     color: var(--medium-gray);
     max-width: 700px;
@@ -291,13 +228,11 @@ nav {
     font-size: 1.1rem;
     line-height: 1.6;
 }
-
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
-
 .feature-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -309,7 +244,6 @@ nav {
     overflow: hidden;
     backdrop-filter: blur(10px);
 }
-
 .feature-card::before {
     content: '';
     position: absolute;
@@ -319,13 +253,10 @@ nav {
     height: 4px;
     background: var(--white);
 }
-
 .feature-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    background: var(--hover-gray);
 }
-
 .feature-icon, .feature-icon-svg {
     height: 80px;
     display: flex;
@@ -333,36 +264,30 @@ nav {
     justify-content: center;
     margin-bottom: 24px;
 }
-
 .feature-icon {
     font-size: 2.5rem;
     color: var(--white);
 }
-
 .feature-icon-svg img {
     height: 60px;
     width: auto;
 }
-
 .feature-card h3 {
     font-size: 1.4rem;
     margin-bottom: 16px;
     color: var(--white);
     font-weight: 700;
 }
-
 .feature-card p {
     color: var(--medium-gray);
     line-height: 1.6;
     font-size: 1rem;
 }
-
 /* Comparison Section */
 .comparison {
     padding: 100px 0;
     background: var(--black);
 }
-
 .comparison-table {
     width: 100%;
     border-collapse: collapse;
@@ -372,61 +297,47 @@ nav {
     overflow: hidden;
     border: 1px solid var(--border-gray);
 }
-
 .comparison-table th, .comparison-table td {
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid var(--border-gray);
 }
-
 .comparison-table th {
-    background: var(--hover-gray);
+    background: rgba(255, 255, 255, 0.05);
     font-weight: 600;
     color: var(--white);
     font-size: 1rem;
 }
-
-.comparison-table tbody tr:hover {
-    background: var(--hover-gray);
-}
-
 .comparison-table tr:last-child td {
     border-bottom: none;
 }
-
 .comparison-table td:first-child {
     text-align: left;
     font-weight: 500;
     color: var(--white);
 }
-
 .browser-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-
 .browser-logo {
     height: 35px;
     width: auto;
 }
-
 .checkmark {
     color: var(--white);
     font-size: 1.1rem;
 }
-
 .cross {
     color: var(--medium-gray);
     font-size: 1.1rem;
 }
-
 .tooltip {
     position: relative;
     display: inline-block;
 }
-
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 200px;
@@ -445,24 +356,20 @@ nav {
     font-size: 14px;
     border: 1px solid var(--border-gray);
 }
-
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
-
 /* Roadmap Section */
 .roadmap {
     padding: 100px 0;
     background: var(--darker-gray);
 }
-
 .roadmap-timeline {
     position: relative;
     max-width: 900px;
     margin: 50px auto 0;
 }
-
 .roadmap-timeline::before {
     content: '';
     position: absolute;
@@ -472,20 +379,17 @@ nav {
     height: 100%;
     background: var(--border-gray);
 }
-
 .roadmap-item {
     width: 50%;
     padding: 0 40px 50px 0;
     position: relative;
     text-align: right;
 }
-
 .roadmap-item:nth-child(even) {
     margin-left: 50%;
     padding: 0 0 50px 40px;
     text-align: left;
 }
-
 .roadmap-item::before {
     content: '';
     position: absolute;
@@ -496,57 +400,43 @@ nav {
     background: var(--white);
     border-radius: 50%;
 }
-
 .roadmap-item:nth-child(even)::before {
     left: -10px;
     right: auto;
 }
-
 .roadmap-content {
     background: var(--card-bg);
     padding: 20px;
     border-radius: 12px;
     border: 1px solid var(--border-gray);
-    transition: all 0.3s ease;
 }
-
-.roadmap-content:hover {
-    background: var(--hover-gray);
-    transform: translateY(-2px);
-}
-
 .roadmap-content h3 {
     color: var(--white);
     margin-bottom: 10px;
     font-size: 1.3rem;
 }
-
 .roadmap-content p {
     color: var(--medium-gray);
     line-height: 1.6;
 }
-
 .roadmap-date {
     color: var(--white);
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 1rem;
 }
-
 /* Download Section */
 .download {
     padding: 100px 0;
     text-align: center;
     background: var(--black);
 }
-
 .download-options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 28px;
     margin-top: 50px;
 }
-
 .download-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -554,31 +444,26 @@ nav {
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid var(--border-gray);
 }
-
 .download-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
-
 .download-icon {
     font-size: 2.8rem;
     margin-bottom: 24px;
     color: var(--white);
 }
-
 .download-card h3 {
     font-size: 1.4rem;
     margin-bottom: 16px;
     color: var(--white);
     font-weight: 700;
 }
-
 .download-card p {
     color: var(--medium-gray);
     margin-bottom: 20px;
     font-size: 0.95rem;
 }
-
 .download-card a {
     display: inline-block;
     margin: 8px;
@@ -594,29 +479,24 @@ nav {
     border: none;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .download-card a:hover {
     transform: translateY(-3px);
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 /* About Section */
 .about {
     padding: 100px 0;
     background: var(--darker-gray);
 }
-
 .about-content {
     display: flex;
     align-items: center;
     gap: 50px;
 }
-
 .about-text {
     flex: 1;
 }
-
 .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 24px;
@@ -625,7 +505,6 @@ nav {
     letter-spacing: -0.5px;
     text-align: center;
 }
-
 .about-text p {
     color: var(--text-secondary);
     margin-bottom: 20px;
@@ -633,12 +512,10 @@ nav {
     font-size: 1rem;
     text-align: center;
 }
-
 .about-image {
     flex: 1;
     text-align: center;
 }
-
 .about-logo {
     max-width: 100%;
     height: auto;
@@ -646,31 +523,26 @@ nav {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-gray);
 }
-
 /* Donation Section */
 .donation-section {
     padding: 100px 0;
     background: var(--black);
     text-align: center;
 }
-
 .benefits-cards {
     margin: 50px 0;
 }
-
 .benefits-cards h3 {
     font-size: 1.6rem;
     color: var(--white);
     margin-bottom: 24px;
     font-weight: 700;
 }
-
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
-
 .benefit-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -679,103 +551,65 @@ nav {
     transition: all 0.3s;
     text-align: center;
 }
-
 .benefit-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
-
 .benefit-icon {
     font-size: 2.2rem;
     margin-bottom: 16px;
     color: var(--white);
 }
-
 .benefit-card h4 {
     font-size: 1.3rem;
     margin-bottom: 12px;
     color: var(--white);
 }
-
 .benefit-card p {
     color: var(--medium-gray);
     font-size: 0.95rem;
     line-height: 1.6;
 }
-
 .benefit-card a {
     color: var(--white);
     text-decoration: underline;
 }
-
 .benefit-card a:hover {
     color: var(--accent-light);
 }
-
 .donor-list {
     margin: 40px 0;
     text-align: center;
 }
-
 .donor-list p {
     color: var(--medium-gray);
     font-size: 1rem;
     line-height: 1.6;
 }
-
 .optional-note {
     color: var(--medium-gray);
     font-size: 0.95rem;
     margin-top: 20px;
 }
-
 .optional-note a {
     color: var(--white);
     text-decoration: underline;
 }
-
 .optional-note a:hover {
     color: var(--accent-light);
 }
-
-/* Updated Offer Highlight */
-.offer-highlight {
-    background: var(--card-bg);
-    border: 1px solid var(--border-gray);
-    padding: 24px;
-    border-radius: 12px;
-    margin: 30px auto;
-    max-width: 700px;
-    text-align: center;
-    color: var(--white);
-    backdrop-filter: blur(10px);
-}
-
-.offer-highlight strong {
-    color: var(--white);
-}
-
-.offer-highlight small {
-    display: block;
-    margin-top: 8px;
-    color: var(--medium-gray);
-}
-
 /* Contact Form */
 .contact-section {
     padding: 100px 0;
     background: var(--black);
 }
-
 .contact-form-wrapper, .form-wrapper {
     max-width: 600px;
     margin: 0 auto;
 }
-
 .form-group {
     margin-bottom: 24px;
 }
-
 .form-group label {
     display: block;
     color: var(--white);
@@ -783,7 +617,6 @@ nav {
     margin-bottom: 8px;
     font-size: 1rem;
 }
-
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -796,19 +629,16 @@ nav {
     font-size: 1rem;
     box-sizing: border-box;
 }
-
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
     border-color: var(--white);
 }
-
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
 }
-
 .submit-btn {
     display: inline-block;
     padding: 12px 32px;
@@ -822,19 +652,16 @@ nav {
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
 .submit-btn:hover {
     transform: translateY(-2px);
     background: var(--accent-light);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
-
 .submit-btn:disabled {
     background: var(--medium-gray);
     cursor: not-allowed;
     box-shadow: none;
 }
-
 /* Footer */
 footer {
     padding: 40px 0;
@@ -842,7 +669,6 @@ footer {
     text-align: center;
     border-top: 1px solid var(--border-gray);
 }
-
 .footer-content {
     display: flex;
     justify-content: center;
@@ -850,7 +676,6 @@ footer {
     margin-bottom: 24px;
     width: 100%;
 }
-
 .footer-logo {
     display: flex;
     flex-direction: column;
@@ -860,32 +685,26 @@ footer {
     width: 100%;
     max-width: 300px;
 }
-
 .footer-logo img {
     height: 40px;
     margin-bottom: 12px;
 }
-
 .footer-logo p {
     color: var(--medium-gray);
     font-size: 0.95rem;
 }
-
 .copyright {
     color: var(--medium-gray);
     font-size: 0.85rem;
     text-align: center;
 }
-
 .copyright a {
     color: var(--white);
     text-decoration: none;
 }
-
 .copyright a:hover {
     color: var(--accent-light);
 }
-
 .message {
     margin-top: 20px;
     padding: 12px;
@@ -893,118 +712,22 @@ footer {
     text-align: center;
     font-size: 0.95rem;
 }
-
 .message.success {
     background: rgba(0, 255, 0, 0.1);
     color: var(--white);
     border: 1px solid rgba(0, 255, 0, 0.3);
 }
-
 .message.error {
     background: rgba(255, 0, 0, 0.1);
     color: var(--white);
     border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-/* FAQ Section - Collapsible Design */
-.faq-section {
-    padding: 100px 0;
-    background: var(--black);
-}
-
-.faq-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.faq-item {
-    border: 1px solid var(--border-gray);
-    border-radius: 12px;
-    margin-bottom: 16px;
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-    background: var(--hover-gray);
-}
-
-.faq-question {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 24px;
-    text-align: left;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.faq-question:hover {
-    color: var(--accent-light);
-}
-
-.faq-question .icon {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-    color: var(--medium-gray);
-}
-
-.faq-item.active .faq-question .icon {
-    transform: rotate(45deg);
-    color: var(--white);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.faq-answer.active {
-    max-height: 300px;
-}
-
-.faq-answer-content {
-    padding: 0 24px 24px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-/* MOBILE STYLES */
+/* ✅ MOBILE STYLES — ONLY ONE BLOCK */
 @media screen and (max-width: 768px) {
-    #rush-announcement {
-        font-size: 0.85rem;
-        padding: 10px 16px;
-        line-height: 1.4;
-    }
-    
-    #rush-announcement #countdown-timer {
-        display: block;
-        margin: 4px 0 0 0;
-        font-size: 0.8rem;
-    }
-    
-    header {
-        top: 50px; /* Slightly more space on mobile */
-    }
-    
-    .hero {
-        padding: 180px 0 80px; /* Adjusted for mobile */
-    }
-    
     .menu-toggle {
-        display: flex;
+        display: flex; /* ✅ This makes the hamburger appear */
     }
-    
     .nav-links {
         display: none;
         position: absolute;
@@ -1019,11 +742,9 @@ footer {
         border-bottom: 1px solid var(--border-gray);
         z-index: 1000;
     }
-    
     .nav-links.active {
         display: flex;
     }
-    
     .nav-links a {
         font-size: 16px;
         padding: 12px 0;
@@ -1033,106 +754,80 @@ footer {
         text-decoration: none;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    
     .nav-links a:last-child {
         border-bottom: none;
     }
-    
     .nav-links a:hover {
         background: rgba(255,255,255,0.05);
     }
-    
     .download-btn {
         display: none !important;
     }
-    
+    /* ✅ Remove .mobile-download-container completely */
+    .mobile-download-container,
+    .mobile-download-btn {
+        display: none !important;
+    }
+    .hero {
+        padding: 120px 0 60px;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
     .about-content {
         flex-direction: column;
         gap: 30px;
     }
-    
     .about-text,
     .about-image {
         flex: none;
         width: 100%;
     }
-    
     .about-text h2 {
         font-size: 2rem;
     }
-    
     .roadmap-timeline::before {
         left: 20px;
     }
-    
     .roadmap-item {
         width: 100%;
         padding: 0 20px 40px 60px;
         text-align: left;
     }
-    
     .roadmap-item:nth-child(even) {
         margin-left: 0;
         padding: 0 20px 40px 60px;
     }
-    
     .roadmap-item::before {
         left: 10px;
         right: auto;
     }
-    
     .roadmap-item:nth-child(even)::before {
         left: 10px;
     }
-    
-    .faq-question {
-        padding: 20px;
-        font-size: 1rem;
-    }
 }
-
 @media screen and (max-width: 480px) {
-    #rush-announcement {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-    }
-    
-    header {
-        top: 55px;
-    }
-    
-    .hero {
-        padding: 170px 0 60px;
-    }
-    
     .container {
         padding: 0 16px;
     }
-    
     .hero h1 {
         font-size: 1.8rem;
     }
-    
     .hero p {
         font-size: 0.95rem;
     }
-    
     .section-title h2 {
         font-size: 2rem;
     }
-    
     .section-title p {
         font-size: 1rem;
     }
-    
     .feature-card,
     .download-card,
     .benefit-card {
         padding: 24px 20px;
-    }
-    
-    .faq-question {
-        padding: 16px;
-        font-size: 0.95rem;
     }
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate to Rush Browser</title>
-    <meta name="description" content="Support the development of Rush Browser. Your contribution helps build a truly decentralized internet.">
+    <title>Unblock TLD - Rush Browser</title>
+    <meta name="description" content="Pay to unblock access for your TLD in Rush Browser. Ensure your high-value domains are accessible to all users.">
     <link rel="icon" href="assets/images/favicon.ico?v=2" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,26 +46,26 @@
         <section class="donation-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>SUPPORT THE MISSION</h2>
-                    <p>Every penny fuels Rush Browser's mission to build a secure, decentralized internet.</p>
+                    <h2>UNBLOCK YOUR TLD</h2>
+                    <p>Restore access to your high-value TLD in Rush Browser with a one-time payment.</p>
                 </div>
                 <div class="benefits-cards">
-                    <h3>Why Support Rush Browser?</h3>
+                    <h3>Why Unblock Your TLD?</h3>
                     <div class="benefits-grid">
                         <div class="benefit-card">
-                            <div class="benefit-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
-                            <h4>Fund Development</h4>
-                            <p>100% of your donation directly funds Rush Browser development — the first browser with native HNS and ENS domain resolution.</p>
+                            <div class="benefit-icon"><i class="fas fa-unlock" aria-hidden="true"></i></div>
+                            <h4>Restore Accessibility</h4>
+                            <p>Ensure all Rush Browser users can access sites on your TLD without restrictions.</p>
                         </div>
                         <div class="benefit-card">
-                            <div class="benefit-icon"><i class="fas fa-unlock" aria-hidden="true"></i></div>
-                            <h4>Enable Open Source</h4>
-                            <p>Help us reach our funding goal to open source Rush Browser and make decentralized web browsing accessible to everyone.</p>
+                            <div class="benefit-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                            <h4>Support Development</h4>
+                            <p>Your payment directly funds Rush Browser's mission to deliver a decentralized internet.</p>
                         </div>
                         <div class="benefit-card">
                             <div class="benefit-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
                             <h4>Premium Recognition</h4>
-                            <p>Donations over $5000 earn you a spot on our <a href="donors.html">Official Donors Page</a> with optional social media recognition.</p>
+                            <p>Payments over $5000 earn you a spot on our <a href="donors.html">Official Donors Page</a> with optional social media recognition.</p>
                         </div>
                     </div>
                 </div>
@@ -94,9 +94,13 @@
                     </div>
                 </div>
                 <div class="form-wrapper">
-                    <h3>SUBMIT DONATION DETAILS</h3>
-                    <p>Paste your transaction hash to receive a confirmation email and be listed as a Premium Donor.</p>
-                    <form id="donationForm" method="POST" onsubmit="event.preventDefault();">
+                    <h3>SUBMIT UNBLOCK DETAILS</h3>
+                    <p>Paste your transaction hash to request TLD unblock. Minimum: $1000 USD equivalent.</p>
+                    <form id="unblockForm" method="POST" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="tld">TLD to Unblock (e.g., .example) <span style="color: #ff3366;">(Required)</span></label>
+                            <input type="text" id="tld" name="tld" placeholder="Your TLD" required autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label for="name">Name (Optional)</label>
                             <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
@@ -110,20 +114,20 @@
                             <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email (for receipt)</label>
+                            <label for="email">Email (for confirmation)</label>
                             <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
                         </div>
                         <div class="form-group">
-                            <label for="amount">Amount Donated (e.g., 0.1 BTC)</label>
-                            <input type="text" id="amount" name="amount" placeholder="e.g., 0.1 BTC" required autocomplete="off">
+                            <label for="amount">Amount Paid (e.g., 0.01 BTC)</label>
+                            <input type="text" id="amount" name="amount" placeholder="e.g., 0.01 BTC" required autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="txHash">Transaction Hash (Tx ID)</label>
                             <textarea id="txHash" name="txHash" placeholder="Paste your transaction hash here" required autocomplete="off"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" id="submitBtn">Submit & Get Receipt</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">Submit & Request Unblock</button>
                         <div class="button-spacing"></div>
-                        <p class="optional-note">If you want to donate anonymously, skip filling out the form.</p>
+                        <p class="optional-note">High-value TLDs were restricted due to insufficient contributions. This payment ensures continued access and supports our mission.</p>
                         <div id="message" class="message"></div>
                     </form>
                 </div>
@@ -157,7 +161,6 @@
             mobileMenuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
-                // ✅ REMOVED dynamic creation of .mobile-download-container
             });
         }
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -174,7 +177,7 @@
             });
         });
 
-        // === DONATION FORM LOGIC ===
+        // === UNBLOCK FORM LOGIC ===
         const paymentMethodSelect = document.getElementById('paymentMethod');
         const addressDisplay = document.getElementById('addressDisplay');
         const paymentIcon = document.getElementById('paymentIcon');
@@ -219,7 +222,7 @@
             });
         });
 
-        const form = document.getElementById('donationForm');
+        const form = document.getElementById('unblockForm');
         const submitBtn = document.getElementById('submitBtn');
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -236,6 +239,7 @@
             }
 
             const formData = {
+                tld: document.getElementById('tld')?.value?.trim() || '',
                 name: document.getElementById('name')?.value || 'Anonymous',
                 xHandle: document.getElementById('xHandle')?.value || '',
                 email: document.getElementById('email')?.value?.trim() || '',
@@ -243,16 +247,21 @@
                 amount: document.getElementById('amount')?.value?.trim() || '',
                 network: selectedNetwork,
                 txHash: document.getElementById('txHash')?.value?.trim() || '',
-                formType: 'donation'
+                formType: 'unblock'
             };
 
+            if (!formData.tld) {
+                showMessage('TLD is required.', 'error');
+                resetSubmitBtn();
+                return;
+            }
             if (!formData.email) {
                 showMessage('Email is required.', 'error');
                 resetSubmitBtn();
                 return;
             }
             if (!formData.amount) {
-                showMessage('Donation amount is required.', 'error');
+                showMessage('Payment amount is required.', 'error');
                 resetSubmitBtn();
                 return;
             }
@@ -269,7 +278,7 @@
                     body: JSON.stringify(formData)
                 });
                 if (response.ok) {
-                    showMessage('Thank you! Your donation is received. We will verify it and list you on our donors page.', 'success');
+                    showMessage('Thank you! Your unblock request is received. We will verify it and unblock your TLD.', 'success');
                     form.reset();
                     paymentMethodSelect.selectedIndex = 0;
                     addressDisplay.style.display = 'none';
@@ -284,14 +293,14 @@
             } finally {
                 setTimeout(() => {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = 'Submit & Get Receipt';
+                    submitBtn.innerText = 'Submit & Request Unblock';
                 }, 3000);
             }
         });
 
         function resetSubmitBtn() {
             submitBtn.disabled = false;
-            submitBtn.innerText = 'Submit & Get Receipt';
+            submitBtn.innerText = 'Submit & Request Unblock';
         }
 
         function showMessage(text, type) {

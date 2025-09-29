@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rush Browser License Holders</title>
-    <meta name="description" content="Thank you to our community! Past donors and license holders supporting Rush Browser's mission for a decentralized internet.">
+    <title>Rush Browser Donors</title>
+    <meta name="description" content="Our generous donors supporting Rush Browser's mission for a decentralized internet.">
     <link rel="icon" href="assets/images/favicon.ico?v=2" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,11 +33,11 @@
                         <a href="index.html#features">FEATURES</a>
                         <a href="index.html#comparison">COMPARE</a>
                         <a href="index.html#roadmap">ROADMAP</a>
-                        <a href="index.html#license">LICENSE</a>
+                        <a href="index.html#download">DOWNLOAD</a>
                         <a href="donate.html">DONATE</a>
                         <a href="contact.html">CONTACT</a>
                     </div>
-                    <a href="index.html#license" class="download-btn">GET LICENSE</a>
+                    <a href="index.html#download" class="download-btn">DOWNLOAD</a>
                 </div>
             </nav>
         </div>
@@ -46,13 +46,13 @@
         <section class="donation-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Thank You, Community!</h2>
-                    <p>We deeply appreciate everyone who has supported Rush Browser.</p>
+                    <h2>Our Premium Donors</h2>
+                    <p>Thank you to everyone supporting Rush Browser! Donations over $5000 earn a spot as our Premium Donors below.</p>
                 </div>
                 <div class="donor-list">
-                    <p><strong>Past donors:</strong> You automatically qualify for a <strong>free lifetime license</strong>.<br>If you haven't claimed yours yet, please <a href="contact.html">contact us</a> with your donation receipt.</p>
+                    <p>Your name, website, and X handle can shine here! Donate over $5000 to become a Premium Donor.</p>
                 </div>
-                <p class="optional-note">New to Rush? <a href="donate.html">Get your lifetime license</a> today — one payment, forever access.</p>
+                <p class="optional-note">Want to join? <a href="donate.html">Donate now</a> and contribute to a decentralized web!</p>
             </div>
         </section>
     </main>
@@ -83,6 +83,7 @@
             mobileMenuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
+                // ✅ REMOVED dynamic creation of .mobile-download-container
             });
         }
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
