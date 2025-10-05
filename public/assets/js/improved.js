@@ -40,11 +40,36 @@ function showPopupMessage(message, type = 'success', duration = 4000) {
     // Create overlay
     const overlay = document.createElement('div');
     overlay.className = 'popup-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+    `;
     
     // Create popup
     const popup = document.createElement('div');
     popup.className = `message-popup ${type}`;
     popup.textContent = message;
+    popup.style.cssText = `
+        background: var(--card-bg);
+        color: var(--text-primary);
+        padding: 20px 30px;
+        border-radius: 12px;
+        border: 1px solid ${type === 'success' ? 'var(--success-color)' : type === 'error' ? 'var(--error-color)' : 'var(--border-gray)'};
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        max-width: 400px;
+        text-align: center;
+        animation: slideIn 0.3s ease;
+    `;
     
     // Add to document
     document.body.appendChild(overlay);
@@ -306,7 +331,8 @@ function initMobileNavigation() {
     
     if (!mobileMenuToggle || !navLinks) return;
     
-    mobileMenuToggle.addEventListener('click', function() {
+    mobileMenuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         navLinks.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
     });
@@ -352,6 +378,14 @@ function initMobileNavigation() {
             mobileMenuToggle?.classList.remove('active');
         }
     });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            navLinks.classList.remove('active');
+            mobileMenuToggle?.classList.remove('active');
+        }
+    });
 }
 
 // Initialize all functionality when DOM is loaded
@@ -371,11 +405,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const style = document.createElement('style');
         style.setAttribute('data-fade-animations', 'true');
         style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
             @keyframes fadeOut {
                 from { opacity: 1; }
                 to { opacity: 0; }
             }
+            @keyframes slideIn {
+                from { 
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
         `;
         document.head.appendChild(style);
     }
+    
+    // Prevent horizontal scroll issues
+    document.body.style.overflowX = 'hidden';
+    document.body.classList.add('loaded');
 });
+
+// Export functions for global use
+window.showPopupMessage = showPopupMessage;
+window.resetSubmitButton = resetSubmitButton;

@@ -25,34 +25,34 @@
 </head>
 <body>
     <header>
-    <div class="container">
-        <nav>
-            <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;" aria-label="Rush Browser Home">
-                    <div class="logo-svg-wrapper">
-                        <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;" aria-label="Rush Browser Home">
+                        <div class="logo-svg-wrapper">
+                            <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <div class="nav-links" id="navLinks">
+                        <a href="#features">FEATURES</a>
+                        <a href="#comparison">COMPARE</a>
+                        <a href="#roadmap">ROADMAP</a>
+                        <a href="#download">DOWNLOAD</a>
+                        <a href="donate.html">DONATE</a>
+                        <a href="contact.html">CONTACT</a>
                     </div>
-                </a>
-            </div>
-            <div class="nav-right">
-                <div class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <a href="#download" class="download-btn">DOWNLOAD</a>
+                    <div class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-                <div class="nav-links" id="navLinks">
-                    <a href="#features">FEATURES</a>
-                    <a href="#comparison">COMPARE</a>
-                    <a href="#roadmap">ROADMAP</a>
-                    <a href="#download">DOWNLOAD</a>
-                    <a href="donate.html">DONATE</a>
-                    <a href="contact.html">CONTACT</a>
-                </div>
-                <a href="#download" class="download-btn">DOWNLOAD</a>
-            </div>
-        </nav>
-    </div>
-</header>
+            </nav>
+        </div>
+    </header>
     <main>
         <section class="hero">
             <div class="container">
@@ -74,7 +74,7 @@
                     <div class="feature-card">
                         <div class="feature-icon-svg">
                             <img src="assets/images/hns.svg" alt="Handshake HNS Logo">
-                            <span>+</span>
+                            <span style="color: var(--white); font-size: 1.5rem; margin: 0 10px;">+</span>
                             <img src="assets/images/ens.svg" alt="Ethereum Name Service ENS Logo">
                         </div>
                         <h3>NATIVE HNS & ENS RESOLUTION</h3>
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <p style="text-align:center;margin-top:32px;color:#777;font-size:16px;">All downloads are direct from GitHub — no login required.</p>
+                <p style="text-align:center;margin-top:32px;color:#8a9ba8;font-size:16px;">All downloads are direct from GitHub — no login required.</p>
             </div>
         </section>
         <section class="about" id="about">
@@ -227,43 +227,48 @@
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
+        
         if (mobileMenuToggle && navLinks) {
-            mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
                 navLinks.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
-                // ✅ REMOVED dynamic creation of .mobile-download-container
             });
-        }
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    navLinks?.classList.remove('active');
-                    mobileMenuToggle?.classList.remove('active');
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
                 }
             });
-        });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+            });
+        }
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (navLinks?.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    mobileMenuToggle?.classList.remove('active');
-                }
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                 }
             });
         });
-        document.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768 &&
-                !e.target.closest('.nav-links') &&
-                !e.target.closest('.menu-toggle') &&
-                navLinks?.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                mobileMenuToggle?.classList.remove('active');
-            }
-        });
+        
+        document.body.style.overflowX = 'hidden';
+        document.body.classList.add('loaded');
     });
     </script>
 </body>
