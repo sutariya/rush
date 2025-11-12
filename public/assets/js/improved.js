@@ -1,5 +1,3 @@
-// Enhanced JavaScript for improved user experience
-
 // Announcement banner functionality
 function initAnnouncementBanner() {
     const announcement = document.getElementById('rush-announcement');

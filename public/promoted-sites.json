@@ -1,0 +1,18 @@
+[
+  {
+    "name": "welcome",
+    "description": "Handshake community hub and resources"
+  },
+  {
+    "name": "namebase",
+    "description": "Handshake domain marketplace and registrar"
+  },
+  {
+    "name": "nb",
+    "description": "Namebase shortlink portal"
+  },
+  {
+    "name": "australia",
+    "description": "Australian Handshake community portal"
+  }
+]
