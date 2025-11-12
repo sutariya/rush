@@ -14,5 +14,13 @@
   {
     "name": "rushbrowser.com",
     "description": "Official Rush Browser Homepage"
+  },
+  {
+    "name": "x.com",
+    "description": "Your faviourite portal"
+  },
+  {
+    "name": "google.com",
+    "description": "Popular search engine"
   }
 ]
