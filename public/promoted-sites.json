@@ -1,18 +1,18 @@
 [
   {
-    "name": "welcome",
-    "description": "Handshake community hub and resources"
-  },
-  {
-    "name": "namebase",
-    "description": "Handshake domain marketplace and registrar"
-  },
-  {
-    "name": "nb",
-    "description": "Namebase shortlink portal"
+    "name": "shakeshift",
+    "description": "Handshake Explorer"
   },
   {
     "name": "australia",
     "description": "Australian Handshake community portal"
+  },
+  {
+    "name": "ens.eth",
+    "description": "Ethereum Name Service Portal"
+  },
+  {
+    "name": "rushbrowser.com",
+    "description": "Official Rush Browser Homepage"
   }
 ]
