@@ -3,34 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rush Browser v2.1 | World's First DANE-Verified Browser with Blockchain Redirect</title>
-    <meta name="description" content="Rush Browser v2.1 - Revolutionary upgrade with RUSH blockchain redirect, IPFS without DNS, enhanced DANE verification, and performance optimization. Access the decentralized web directly from the blockchain.">
-    <meta name="keywords" content="Rush Browser 2.1, RUSH redirect, blockchain redirect, IPFS browser, DANE browser, HNS browser, ENS browser, Handshake domain, decentralized web, blockchain browser, web3 browser, certificate verification, cryptographic security">
-    <meta property="og:title" content="Rush Browser v2.1 — Revolutionary Blockchain Redirect & IPFS Without DNS">
-    <meta property="og:description" content="Major upgrade: RUSH blockchain redirect + IPFS without DNS + enhanced DANE + performance optimization. Experience true decentralized browsing.">
+
+    <title>Rush Browser v2.1 | Handshake TXT Redirects, IPFS Integration & DANE Verification</title>
+    <meta name="description" content="Rush Browser v2.1 – blockchain-backed TXT redirects for Handshake domains, IPFS integration, and DANE certificate verification for decentralized sites, with optimized DNS-over-HTTPS resolution and smart caching.">
+    <meta name="keywords" content="Rush Browser 2.1, Handshake browser, HNS browser, ENS browser, IPFS hosting, DANE verification, TLSA records, decentralized DNS, RUSH redirect, privacy browser">
+
+    <meta property="og:title" content="Rush Browser v2.1 — Handshake TXT Redirects & IPFS Integration">
+    <meta property="og:description" content="Blockchain-backed TXT redirects for Handshake (HNS), IPFS integration, faster HNS resolution with DNS-over-HTTPS and smart caching, plus DANE certificate verification.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://RushBrowser.com">
     <meta property="og:image" content="https://RushBrowser.com/card.png">
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RushBrowser">
-    <meta name="twitter:title" content="Rush Browser v2.1 — Revolutionary Blockchain Redirect">
-    <meta name="twitter:description" content="RUSH redirect + IPFS without DNS + DANE verification. Access decentralized web directly from blockchain.">
+    <meta name="twitter:title" content="Rush Browser v2.1 — Handshake TXT Redirects & IPFS Integration">
+    <meta name="twitter:description" content="Blockchain-backed TXT redirects for Handshake domains, IPFS integration, optimized HNS resolution and DANE certificate verification.">
     <meta name="twitter:image" content="https://RushBrowser.com/card.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Rush Browser",
+      "operatingSystem": "Windows, macOS, Linux",
+      "applicationCategory": "BrowserApplication",
+      "description": "Decentralized browser with Handshake TXT redirects, IPFS integration and DANE certificate verification",
+      "softwareVersion": "2.1",
+      "downloadUrl": "https://github.com/sutariya/rush/releases",
+      "author": {
+        "@type": "Organization",
+        "name": "Rush Browser Team"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "applicationSuite": "Rush Browser",
+      "featureList": [
+        "Handshake DNS resolution",
+        "TXT-based redirects", 
+        "IPFS integration",
+        "DANE certificate verification",
+        "ENS domain support",
+        "Zero telemetry"
+      ]
+    }
+    </script>
+
     <link rel="icon" href="assets/images/favicon.ico?v=2" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BC8LNHP06J"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-BC8LNHP06J');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC8LNHP06J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-BC8LNHP06J');
+    </script>
 </head>
 <body>
     <header>
@@ -48,7 +82,7 @@
                         <a href="#features">FEATURES</a>
                         <a href="#whats-new">WHAT'S NEW</a>
                         <a href="#comparison">COMPARE</a>
-                        <a href="#roadmap">ROADMAP</a>
+                        <a href="#how-it-works">HOW IT WORKS</a>
                         <a href="#download">DOWNLOAD</a>
                         <a href="donate.html">DONATE</a>
                         <a href="contact.html">CONTACT</a>
@@ -63,141 +97,380 @@
             </nav>
         </div>
     </header>
+
     <main>
+
         <section class="hero">
             <div class="container">
                 <div class="version-badge">REVOLUTIONARY UPDATE</div>
-                <h1>BLOCKCHAIN REDIRECT. NO DNS NEEDED.</h1>
-                <p>Rush Browser v2.1: RUSH blockchain redirect, IPFS without DNS, and enhanced decentralized performance.</p>
+                <h1>OWN YOUR DOMAINS. CONTROL YOUR ROUTING. HOST WITHOUT DNS.</h1>
+                <p>
+RUSH gives Handshake owners true independence: TXT-level redirects, IPFS hosting, and blockchain-backed identity without any centralized DNS provider.
+</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">Up to 85%</div>
+                        <div class="stat-label">Faster HNS resolution with DoH & caching</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Zero</div>
+                        <div class="stat-label">Built-in telemetry</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">HNS + ENS</div>
+                        <div class="stat-label">Native decentralized naming support</div>
+                    </div>
+                </div>
+                
                 <div class="hero-buttons">
                     <a href="#download" class="primary-btn">DOWNLOAD v2.1</a>
-                    <a href="#whats-new" class="secondary-btn">EXPLORE NEW FEATURES</a>
+                    <a href="#how-it-works" class="secondary-btn">SEE HOW IT WORKS</a>
                 </div>
             </div>
         </section>
 
-        <section class="features" id="features">
-            <div class="container">
-                <div class="section-title">
-                    <h2>ENTERPRISE-GRADE DECENTRALIZED SECURITY</h2>
-                    <p>World's only browser with blockchain redirect, IPFS without DNS, and complete DANE verification</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-                        <h3>DANE CERTIFICATE VERIFICATION</h3>
-                        <p>Industry-first cryptographic certificate validation via DNS. Eliminates Certificate Authority trust requirements with enhanced real-time visual security indicators and blockchain-backed authentication.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
-                        <h3>REVOLUTIONARY PERFORMANCE</h3>
-                        <p>Enhanced throttle technology now utilizes your CPU and GPU power for unprecedented browsing speed. Experience faster page loads, smoother scrolling, and superior responsiveness based on your hardware capabilities.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-magic" aria-hidden="true"></i></div>
-                        <h3>SMART DOMAIN AUTO-COMPLETE</h3>
-                        <p>Intelligent domain suggestion and auto-complete in the address bar. Discover both traditional and decentralized domains effortlessly with smart predictions that learn from your browsing habits.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-link" aria-hidden="true"></i></div>
-                        <h3>BLOCKCHAIN RUSH REDIRECT</h3>
-                        <p>Revolutionary RUSH redirect technology - direct blockchain redirection without needing NS1/NS2 records. Redirect any domain directly from on-chain records with zero DNS configuration.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section class="whats-new" id="whats-new">
             <div class="container">
                 <div class="section-title">
                     <h2>WHAT'S NEW IN v2.1</h2>
-                    <p>Revolutionary upgrade with blockchain redirect and IPFS enhancements</p>
+                    <p>Features that reduce traditional DNS dependencies for Handshake domains</p>
                 </div>
                 <div class="new-features-grid">
                     <div class="new-feature-card highlight">
-                        <div class="new-feature-icon"><i class="fas fa-link"></i></div>
-                        <h3>RUSH Blockchain Redirect</h3>
-                        <p>Direct blockchain redirection without NS records. Redirect any domain directly from on-chain TXT records with zero DNS configuration required.</p>
+                        <div class="new-feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>RUSH Redirect for HNS</h3>
+                        <p>Set <code>RUSH=</code> in TXT records on your Handshake domains for instant TXT-driven redirects. No separate ICANN DNS hosting is required for the HNS source domain.</p>
+                        <div class="feature-tags">
+                            <span class="tag">HNS</span>
+                            <span class="tag">TXT Redirect</span>
+                        </div>
                     </div>
                     <div class="new-feature-card highlight">
                         <div class="new-feature-icon"><i class="fas fa-database"></i></div>
-                        <h3>IPFS Without DNS Hosting</h3>
-                        <p>Serve IPFS content directly from blockchain records. No DNS registrar parking needed - just update TXT records on-chain for instant IPFS deployment.</p>
+                        <h3>IPFS from TXT Records</h3>
+                        <p>Add <code>IPFS=&lt;CID&gt;</code> to blockchain‑backed TXT records for your Handshake names. Rush fetches content via the IPFS gateway, giving you a full site instead of a parking page and near‑instant updates when you change the CID.</p>
+                        <div class="feature-tags">
+                            <span class="tag">IPFS</span>
+                            <span class="tag">Blockchain TXT</span>
+                        </div>
                     </div>
                     <div class="new-feature-card highlight">
-                        <div class="new-feature-icon"><i class="fas fa-bolt"></i></div>
-                        <h3>Enhanced Performance</h3>
-                        <p>Faster blockchain resolution and improved IPFS gateway selection for quicker page loads and smoother decentralized browsing experience.</p>
-                    </div>
-                    <div class="new-feature-card">
-                        <div class="new-feature-icon"><i class="fas fa-wallet"></i></div>
-                        <h3>Integrated Wallet Dashboard</h3>
-                        <p>Real-time cryptocurrency balance tracking for Bitcoin, Handshake, and Ethereum wallets directly on the homepage.</p>
-                    </div>
-                    <div class="new-feature-card">
-                        <div class="new-feature-icon"><i class="fas fa-magic"></i></div>
-                        <h3>Smart Domain Auto-Complete</h3>
-                        <p>Intelligent domain suggestions and auto-complete in the address bar for both traditional and decentralized domains.</p>
-                    </div>
-                    <div class="new-feature-card">
-                        <div class="new-feature-icon"><i class="fas fa-smile"></i></div>
-                        <h3>Personalized Greetings</h3>
-                        <p>Time-based welcome messages (Good Morning, Afternoon, Evening) that create a more personalized browsing experience.</p>
+                        <div class="new-feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <h3>Faster HNS Resolution</h3>
+                        <p>Optimized DNS-over-HTTPS resolution with a prioritized list of HNS resolvers, timeouts, and a 5‑minute in‑browser DNS cache significantly reduces HNS load times in practice.</p>
+                        <div class="feature-tags">
+                            <span class="tag">DoH</span>
+                            <span class="tag">Caching</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="revolutionary-feature">
+
+        <section class="features" id="features">
             <div class="container">
                 <div class="section-title">
-                    <h2>THE RUSH REDIRECT REVOLUTION</h2>
-                    <p>Direct blockchain redirection - No DNS configuration required</p>
+                    <h2>CORE FEATURES</h2>
+                    <p>Decentralized naming with enhanced security and performance</p>
                 </div>
-                <div class="revolutionary-content">
-                    <div class="revolutionary-text">
-                        <h3>How RUSH Redirect Changes Everything</h3>
-                        <p>Traditional domain redirection requires complex DNS configuration, nameservers, and registrar settings. RUSH redirect eliminates all of this:</p>
-                        
-                        <div class="feature-comparison">
-                            <div class="old-way">
-                                <h4>Traditional Way</h4>
-                                <ul>
-                                    <li><i class="fas fa-times"></i> Requires NS1/NS2 configuration</li>
-                                    <li><i class="fas fa-times"></i> Needs DNS hosting</li>
-                                    <li><i class="fas fa-times"></i> Registrar dependency</li>
-                                    <li><i class="fas fa-times"></i> Propagation delays</li>
-                                    <li><i class="fas fa-times"></i> Complex setup</li>
-                                </ul>
-                            </div>
-                            <div class="new-way">
-                                <h4>RUSH Redirect Way</h4>
-                                <ul>
-                                    <li><i class="fas fa-check"></i> Direct from blockchain</li>
-                                    <li><i class="fas fa-check"></i> No DNS hosting needed</li>
-                                    <li><i class="fas fa-check"></i> Registrar independent</li>
-                                    <li><i class="fas fa-check"></i> Instant updates</li>
-                                    <li><i class="fas fa-check"></i> Simple TXT record</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <h3>IPFS Deployment Revolution</h3>
-                        <p>With RUSH Browser v2.1, deploy IPFS websites without any DNS configuration:</p>
-                        <ul>
-                            <li><strong>Direct IPFS Serving:</strong> Serve IPFS content directly from blockchain TXT records</li>
-                            <li><strong>No Parking Pages:</strong> Your IPFS content appears as a full website, not a parking page</li>
-                            <li><strong>Instant Updates:</strong> Change your IPFS CID in the blockchain record for instant updates</li>
-                            <li><strong>Zero DNS Dependency:</strong> No nameserver changes, no registrar configuration</li>
-                        </ul>
-
-                        <div class="code-example">
-                            <h4>Example Blockchain TXT Record:</h4>
-                            <pre><code>RUSH=your-domain.com
-IPFS=QmYourContentID</code></pre>
-                            <p>That's it! Your domain now redirects and serves IPFS content directly.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>DANE Certificate Verification</h3>
+                        <p>Cryptographic validation of TLS certificates using TLSA records fetched over DNS-over-HTTPS, with real-time visual indicators for domains that publish DANE.</p>
+                        <div class="feature-tags centered-tags">
+                            <span class="tag">TLSA Records</span>
+                            <span class="tag">DoH</span>
+                            <span class="tag">SHA-256</span>
                         </div>
                     </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>Multi-Protocol Support</h3>
+                        <p>Native Handshake (HNS) and Ethereum Name Service (ENS) handling, alongside traditional DNS for ICANN domains — including <code>hns://</code> and <code>ens://</code> schemes and automatic handling of <code>.eth</code> via gateways.</p>
+                        <div class="feature-tags centered-tags">
+                            <span class="tag">HNS</span>
+                            <span class="tag">ENS</span>
+                            <span class="tag">ICANN</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                        <h3>Privacy First</h3>
+                        <p>No built-in telemetry, analytics, or profiling from the browser itself, with HNS and DANE lookups sent over encrypted DNS-over-HTTPS to reduce metadata leakage.</p>
+                        <div class="feature-tags centered-tags">
+                            <span class="tag">No Telemetry</span>
+                            <span class="tag">Encrypted DoH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="section-title">
+                    <h2>HOW RUSH REDIRECT WORKS</h2>
+                    <p>Set up Handshake TXT-based redirection in 3 simple steps</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Update Your TXT Record</h3>
+                            <p>Add TXT records to your Handshake (HNS) domain:</p>
+                            <div class="code-block">
+                                <code>RUSH=yourdomain.com</code>
+                            </div>
+                            <p>Or redirect to any HNS label:</p>
+                            <div class="code-block">
+                                <code>RUSH=you<br>RUSH=you.guidance</code>
+                            </div>
+                            <p>Use IPFS for direct content hosting from blockchain-backed TXT on your HNS name:</p>
+                            <div class="code-block">
+                                <code>IPFS=QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco</code>
+                            </div>
+                            <p style="margin-top: 8px; font-size: 0.9rem; opacity: 0.8;">
+                                RUSH and IPFS TXT records are currently supported for HNS domains; ENS domains are resolved via gateways and ignore these keys.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Browser Resolves via HNS DoH</h3>
+                            <p>Rush Browser sends DNS-over-HTTPS queries for TXT, NS, and A records through a prioritized list of Handshake resolvers, with timeouts and caching to keep lookups fast and reliable.</p>
+                            <ul class="resolver-list">
+                                <li><span class="resolver-name">ap.hnsdoh.com</span> <span class="resolver-time">(primary)</span></li>
+                                <li><span class="resolver-name">as.hnsdoh.com</span> <span class="resolver-time">(fallback)</span></li>
+                                <li><span class="resolver-name">au.hnsdoh.com</span> <span class="resolver-time">(fallback)</span></li>
+                            </ul>
+                            <p>Results are cached in-browser for 5 minutes to avoid redundant DNS queries.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Instant HTML Redirect</h3>
+                            <p>When a matching <code>RUSH=</code> TXT record is found, Rush serves a tiny HTML page that immediately forwards the user to the normalized target URL.</p>
+                            <div class="code-block">
+                                <code>yourhns/ → target.com</code>
+                            </div>
+                            <p class="performance-note">In testing, HNS sites typically load in 2–4 seconds versus 10–15 seconds with slower legacy resolver paths, once TXT changes have propagated to the queried HNS resolvers.</p>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="txt-keys-table">
+                    <h3>Supported TXT Keys</h3>
+                    <div class="table-container">
+                        <table class="keys-table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>RUSH=</code></td>
+                                    <td>Instant redirects for HNS domains</td>
+                                    <td><code>RUSH=example.com</code></td>
+                                    <td><span class="status-active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>IPFS=</code></td>
+                                    <td>Load content from IPFS CID</td>
+                                    <td><code>IPFS=QmXoypiz...</code></td>
+                                    <td><span class="status-active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>TLSA=</code></td>
+                                    <td>DANE certificate validation</td>
+                                    <td><em>Auto-handled</em></td>
+                                    <td><span class="status-active">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-note">Currently supported for HNS domains. ENS domains are resolved via gateways.</p>
+                </div>
+                
+                <div class="architecture-diagram">
+                    <h3>Security & Resolution Architecture</h3>
+                    <div class="diagram">
+                        <div class="arch-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">HNS Domain Request</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">DoH Resolver (TXT/NS)</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">Rush Browser Processing</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">DANE + TLS Validation</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">Secure Content Delivery</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="technical-implementation">
+                    <h3>Technical Implementation</h3>
+                    <div class="implementation-grid">
+                        <div class="impl-item">
+                            <h4>Parallel TXT/NS Lookup</h4>
+                            <p>TXT and NS DNS-over-HTTPS queries for HNS domains execute in parallel via <code>Promise.all()</code> to minimize latency before redirect and IPFS checks run.</p>
+                        </div>
+                        <div class="impl-item">
+                            <h4>Smart Caching</h4>
+                            <p>DNS responses are cached in-memory with a 5-minute TTL to prevent redundant queries and speed up repeat visits.</p>
+                        </div>
+                        <div class="impl-item">
+                            <h4>Prioritized Resolvers</h4>
+                            <p>Rush uses an ordered list of HNS DNS-over-HTTPS resolvers with per-resolver timeouts and graceful fallback if one endpoint is slow or unavailable.</p>
+                        </div>
+                        <div class="impl-item">
+                            <h4>Fallback Chain</h4>
+                            <p>Resolution flow: HNS DoH → direct HTTPS-to-IP → gateway (<code>hns.to</code>) → human-friendly error pages when all methods fail.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>THE RUSH BROWSER REVOLUTION</h2>
+                        <p>Rush Browser v2.1 pushes decentralized browsing forward with native Handshake (HNS) resolution, TXT‑powered redirects, and IPFS integration designed for real‑world use.</p>
+                        <p>This upgrade lets HNS owners control redirects and IPFS content using TXT records on their Handshake domains, reducing reliance on traditional Web2 DNS hosting.</p>
+
+                        <h3>Why v2.1 is a Game Changer</h3>
+                        <p>Unlike traditional setups, v2.1 can route traffic and content for HNS names directly from blockchain‑backed TXT data in Handshake DNS, so you do not need to run separate ICANN DNS hosting just to make your Handshake domain useful.</p>
+
+                        <div class="highlight-box">
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <strong>HNS RUSH Redirect</strong><br>
+                                <span>Define <code>RUSH=</code> TXT records on your Handshake domain and Rush Browser will read them via Handshake DNS‑over‑HTTPS, performing instant HTML‑level redirects. Redirect HNS to HNS, or HNS to traditional Web2 domains, without changing DNS on the destination.</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <i class="fas fa-database"></i>
+                            <div>
+                                <strong>IPFS from TXT Records</strong><br>
+                                <span>Attach an <code>IPFS=</code> TXT record with a CID to your Handshake DNS record and Rush will fetch that content via the IPFS gateway, presenting it as a full website instead of a registrar parking page. Update the CID for near‑instant content changes as resolvers see the new TXT.</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <strong>Optimized Resolution Path</strong><br>
+                                <span>Rush uses multiple Handshake DNS‑over‑HTTPS resolvers with in‑browser caching, direct HTTPS‑to‑IP connections, and hns.to gateway fallback to keep decentralized resolution fast and resilient.</span>
+                            </div>
+                        </div>
+
+                        <p>This architecture makes Rush Browser v2.1 a powerful option for decentralized browsing, combining TXT‑driven HNS behavior, IPFS content delivery, and robust TLS/DANE checks.</p>
+                        <p>Rush Browser is developed and maintained by Rush Team, with a singular vision: to make accessing the decentralized web as secure, intelligent, and low‑dependency as modern technology allows.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/images/preview.png" alt="Rush Browser v2.1 Interface Preview" class="about-logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-different">
+            <div class="container">
+                <div class="section-title">
+                    <h2>WHY RUSH IS DIFFERENT</h2>
+                    <p>True decentralization without traditional DNS dependencies</p>
+                </div>
+                <div class="different-grid">
+                    <div class="different-item">
+                        <div class="different-icon">🚫</div>
+                        <h3>No ICANN Dependency</h3>
+                        <p>Handshake domains operate outside traditional DNS authorities</p>
+                    </div>
+                    <div class="different-item">
+                        <div class="different-icon">🔗</div>
+                        <h3>Blockchain-Powered Routing</h3>
+                        <p>TXT records on the blockchain control redirects and content</p>
+                    </div>
+                    <div class="different-item">
+                        <div class="different-icon">🏠</div>
+                        <h3>No DNS Hosting Needed</h3>
+                        <p>Redirects work without separate ICANN DNS providers</p>
+                    </div>
+                    <div class="different-item">
+                        <div class="different-icon">🔒</div>
+                        <h3>Built-in DANE Verification</h3>
+                        <p>Cryptographic certificate validation beyond traditional CAs</p>
+                    </div>
+                    <div class="different-item">
+                        <div class="different-icon">🌐</div>
+                        <h3>Native HNS + ENS Support</h3>
+                        <p>Direct resolution of decentralized naming systems</p>
+                    </div>
+                    <div class="different-item">
+                        <div class="different-icon">⚡</div>
+                        <h3>Decentralized-First Architecture</h3>
+                        <p>Resolution designed for blockchain domains from the ground up</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="performance-metrics">
+            <div class="container">
+                <div class="section-title">
+                    <h2>REAL-WORLD PERFORMANCE</h2>
+                    <p>Benchmarks from actual usage testing</p>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">110-300ms</div>
+                        <div class="metric-label">HNS TXT Redirect</div>
+                        <div class="metric-desc">Instant HTML-level forwarding</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">500-900ms</div>
+                        <div class="metric-label">TXT + IPFS Load</div>
+                        <div class="metric-desc">CID to content delivery</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">~1s</div>
+                        <div class="metric-label">ENS Resolution</div>
+                        <div class="metric-desc">Via gateway with caching</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">2-4s</div>
+                        <div class="metric-label">HNS Cold Lookup</div>
+                        <div class="metric-desc">First-time domain resolution</div>
+                    </div>
+                </div>
+                <div class="performance-note">
+                    <p><strong>Note:</strong> Performance varies based on network conditions, resolver latency, and cache state. HNS sites typically load 85% faster than traditional resolution paths.</p>
                 </div>
             </div>
         </section>
@@ -205,9 +478,10 @@ IPFS=QmYourContentID</code></pre>
         <section class="comparison" id="comparison">
             <div class="container">
                 <div class="section-title">
-                    <h2>SECURITY & FEATURE LEADERSHIP</h2>
-                    <p>Rush Browser v2.1 stands alone with blockchain redirect, IPFS without DNS, and comprehensive DANE verification</p>
+                    <h2>FEATURE COMPARISON</h2>
+                    <p>See how Rush Browser compares on decentralized features</p>
                 </div>
+
                 <div class="comparison-table-container">
                     <table class="comparison-table">
                         <thead>
@@ -215,8 +489,8 @@ IPFS=QmYourContentID</code></pre>
                                 <th>Feature</th>
                                 <th>
                                     <div class="browser-header">
-                                        <img src="assets/images/chrome.svg" class="browser-logo" alt="Chrome Browser">
-                                        <span>Chrome</span>
+                                        <img src="assets/images/rush.svg" class="browser-logo" alt="Rush Browser">
+                                        <span>Rush v2.1</span>
                                     </div>
                                 </th>
                                 <th>
@@ -227,39 +501,132 @@ IPFS=QmYourContentID</code></pre>
                                 </th>
                                 <th>
                                     <div class="browser-header">
-                                        <img src="assets/images/rush.svg" class="browser-logo" alt="Rush Browser">
-                                        <span>Rush v2.1</span>
+                                        <img src="assets/images/chrome.svg" class="browser-logo" alt="Chrome Browser">
+                                        <span>Chrome</span>
                                     </div>
                                 </th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr><td>🔒 DANE Verification</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Blockchain Redirect</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>IPFS Without DNS</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Domain Auto-Complete</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Wallet Balance Display</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Personalized Greetings</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Native HNS Support</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Native ENS Support</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Zero Tracking</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
-                            <tr><td>Web3 Focused</td><td><i class="fas fa-times cross" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td><td><i class="fas fa-check checkmark" aria-hidden="true"></i></td></tr>
+                            <tr>
+                                <td>HNS Native Support</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>ENS Native Support</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>DANE Verification</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>TXT-Based Redirect for HNS</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>IPFS via Blockchain TXT</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>Zero Built-in Telemetry</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-minus neutral"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>DANE / TLSA Integration</td>
+                                <td><i class="fas fa-check checkmark"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                                <td><i class="fas fa-times cross"></i></td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="comparison-note">
+                    <p><strong>DANE Verification:</strong> DNS-based Authentication of Named Entities validates SSL certificates using TLSA records, adding cryptographic checks alongside traditional Certificate Authorities.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Updated Download Section -->
+        <section class="specifications">
+            <div class="container">
+                <div class="section-title">
+                    <h2>TECHNICAL SPECIFICATIONS</h2>
+                    <p>Built on modern technologies for performance and security</p>
+                </div>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <h3>Framework</h3>
+                        <p>Electron / Chromium</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>DNS Resolution</h3>
+                        <p>DNS-over-HTTPS (ap.hnsdoh.com, as.hnsdoh.com, au.hnsdoh.com, and others)</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>Security</h3>
+                        <p>DANE/TLSA validation, CSP handling, HTTPS-only navigation for most flows</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>Performance</h3>
+                        <p>Parallel TXT/NS queries, 5-minute DNS cache, connection timeouts</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>Protocols</h3>
+                        <p>hns://, ens://, http://, https://</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>Storage</h3>
+                        <p>IPFS loading via gateway using IPFS CIDs from blockchain-backed TXT records</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>Redirect System</h3>
+                        <p>TXT-based redirects for HNS domains using RUSH= keys</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <h3>Handshake Root</h3>
+                        <p>Native Handshake DNS resolution via multiple DoH endpoints</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="download" id="download">
             <div class="container">
                 <div class="section-title">
                     <h2>DOWNLOAD RUSH BROWSER v2.1</h2>
-                    <p>Experience the revolutionary upgrade with blockchain redirect, IPFS without DNS, and performance optimization</p>
+                    <p>Experience decentralized browsing with Handshake TXT redirects and IPFS integration</p>
                 </div>
                 <div class="download-options">
                     <div class="download-card">
-                        <div class="download-icon"><i class="fab fa-windows" aria-hidden="true"></i></div>
+                        <div class="download-icon"><i class="fab fa-windows"></i></div>
                         <h3>WINDOWS</h3>
                         <p>Choose your preferred version</p>
                         <div>
@@ -276,7 +643,7 @@ IPFS=QmYourContentID</code></pre>
                         </div>
                     </div>
                     <div class="download-card">
-                        <div class="download-icon"><i class="fab fa-apple" aria-hidden="true"></i></div>
+                        <div class="download-icon"><i class="fab fa-apple"></i></div>
                         <h3>macOS</h3>
                         <p>Universal Build</p>
                         <div>
@@ -288,7 +655,7 @@ IPFS=QmYourContentID</code></pre>
                         </div>
                     </div>
                     <div class="download-card">
-                        <div class="download-icon"><i class="fab fa-linux" aria-hidden="true"></i></div>
+                        <div class="download-icon"><i class="fab fa-linux"></i></div>
                         <h3>LINUX</h3>
                         <p>Choose your distribution format</p>
                         <div>
@@ -306,67 +673,46 @@ IPFS=QmYourContentID</code></pre>
                     </div>
                 </div>
                 <p style="text-align:center;margin-top:32px;color:#8a9ba8;font-size:16px;">
-                    All downloads are direct from GitHub — no login required. Experience the v2.1 revolution today!
+                    All downloads are direct from GitHub — no login required. Try the v2.1 release today.
                 </p>
             </div>
         </section>
 
-        <section class="about" id="about">
+        <section class="newsletter">
             <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>THE v2.1 REVOLUTION</h2>
-                        <p>Rush Browser v2.1 represents a quantum leap in decentralized browsing technology. This revolutionary upgrade introduces blockchain-powered redirection and IPFS deployment without DNS dependencies.</p>
-                        
-                        <h3>Why v2.1 is a Game Changer</h3>
-                        <p>Unlike any previous browser, v2.1 eliminates the need for traditional DNS configuration entirely:</p>
-                        
-                        <!-- Clean highlight boxes – no accidental link styling -->
-                        <div class="highlight-box">
-                            <i class="fas fa-link" aria-hidden="true"></i>
-                            <div>
-                                <strong>Blockchain RUSH Redirect</strong><br>
-                                <span>Direct domain redirection from blockchain TXT records. No NS1/NS2 configuration, no DNS hosting required.</span>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-box">
-                            <i class="fas fa-database" aria-hidden="true"></i>
-                            <div>
-                                <strong>IPFS Without DNS</strong><br>
-                                <span>Serve IPFS content directly from blockchain records. No registrar parking pages — your content appears as a full website.</span>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-box">
-                            <i class="fas fa-bolt" aria-hidden="true"></i>
-                            <div>
-                                <strong>Enhanced Performance</strong><br>
-                                <span>Faster blockchain resolution and improved IPFS gateway selection for superior decentralized browsing.</span>
-                            </div>
-                        </div>
-                        
-                        <p>This breakthrough makes Rush Browser v2.1 the most advanced option for true decentralized browsing, combining enterprise-grade cryptographic security with revolutionary blockchain redirection and IPFS deployment.</p>
-                        <p>Rush Browser is developed and maintained by Rahul Sutariya, with a singular vision: to make accessing the decentralized web as secure, intelligent, and dependency-free as modern technology allows.</p>
-                    </div>
-                    <div class="about-image">
-                        <img src="assets/images/preview.png" alt="Rush Browser v2.1 Interface Preview" class="about-logo">
-                    </div>
+                <div class="newsletter-content">
+                    <h2>Stay Updated on v2.2</h2>
+                    <p>Get early access to new features and decentralized web updates</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" required class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                    <p class="newsletter-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="container">
+                <div class="mission-content">
+                    <h2>Open Web3 for Everyone</h2>
+                    <p>Rush Browser is committed to making decentralized web access simple, secure, and available to everyone. By reducing reliance on traditional DNS for Handshake domains and moving redirects into blockchain‑backed TXT records, we're paving the way for a more open and decentralized internet.</p>
                 </div>
             </div>
         </section>
     </main>
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="assets/images/rush_logo.svg" alt="Rush Browser Logo" class="logo-img">
-                    <p>World's first browser with blockchain redirect and IPFS without DNS.</p>
+                    <p>Browser with Handshake-based DNS redirection and IPFS integration.</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2025 RUSH BROWSER. PROPRIETARY & CONFIDENTIAL.</p>
-                 <div style="margin-top: 16px; text-align: center; color: var(--medium-gray); font-size: 0.95rem;">
+                <p>© 2025 RUSH BROWSER. ALL RIGHTS RESERVED. RUSH IS PROPRIETARY SOFTWARE.</p>
+                <div style="margin-top: 16px; text-align: center; color: var(--medium-gray); font-size: 0.95rem;">
                     Follow us on
                     <a href="https://x.com/rushbrowser" target="_blank" style="display: inline-block; margin-left: 8px; vertical-align: middle; line-height: 1; color: var(--white); text-decoration: none;" aria-label="Follow Rush Browser on X">
                         <svg width="15" height="15" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"/></svg>
@@ -376,89 +722,321 @@ IPFS=QmYourContentID</code></pre>
         </div>
     </footer>
 
-    <!-- Add CSS for the new revolutionary feature section and highlight boxes -->
     <style>
-        .revolutionary-feature {
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Feature Tags */
+        .feature-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .centered-tags {
+            justify-content: center;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
             padding: 100px 0;
             background: var(--darker-gray);
         }
-
-        .revolutionary-content {
-            max-width: 900px;
-            margin: 0 auto;
+        
+        .steps-container {
+            max-width: 800px;
+            margin: 50px auto;
         }
-
-        .feature-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            gap: 24px;
         }
-
-        .old-way, .new-way {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border-gray);
-        }
-
-        .old-way h4, .new-way h4 {
-            color: var(--white);
-            margin-bottom: 15px;
+        
+        .step-number {
+            background: var(--white);
+            color: var(--black);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
-
-        .old-way ul, .new-way ul {
-            list-style: none;
-            padding: 0;
+        
+        .step-content {
+            flex: 1;
         }
-
-        .old-way li, .new-way li {
-            padding: 8px 0;
+        
+        .step-content h3 {
+            color: var(--white);
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .step-content p {
             color: var(--medium-gray);
+            margin-bottom: 16px;
         }
-
-        .old-way .fa-times {
-            color: var(--error-color);
-            margin-right: 10px;
-        }
-
-        .new-way .fa-check {
-            color: var(--success-color);
-            margin-right: 10px;
-        }
-
-        .old-way {
-            border-color: var(--error-color);
-        }
-
-        .new-way {
-            border-color: var(--success-color);
-        }
-
-        .code-example {
+        
+        .code-block {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-gray);
             border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .code-example h4 {
-            color: var(--white);
-            margin-bottom: 10px;
-        }
-
-        .code-example pre {
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 6px;
+            padding: 16px;
+            margin: 12px 0;
             overflow-x: auto;
+        }
+        
+        .code-block code {
             color: #00ff00;
             font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .resolver-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        
+        .resolver-list li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+        }
+        
+        .resolver-name {
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        .resolver-time {
+            color: var(--success-color);
+        }
+        
+        .performance-note {
+            background: rgba(0, 200, 81, 0.1);
+            border: 1px solid rgba(0, 200, 81, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--success-color);
+            font-weight: 500;
+        }
+        
+        /* Technical Implementation */
+        .technical-implementation {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-gray);
+        }
+        
+        .technical-implementation h3 {
+            color: var(--white);
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.6rem;
+        }
+        
+        .implementation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .impl-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-gray);
+        }
+        
+        .impl-item h4 {
+            color: var(--white);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .impl-item p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* Comparison Note */
+        .comparison-note {
+            max-width: 800px;
+            margin: 30px auto 0;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .comparison-note p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        /* Neutral icon for partial support */
+        .neutral {
+            color: var(--warning-color);
+        }
+        
+        /* Specifications Section */
+        .specifications {
+            padding: 100px 0;
+            background: var(--black);
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .spec-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .spec-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--white);
+        }
+        
+        .spec-card h3 {
+            color: var(--white);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .spec-card p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Mission Section */
+        .mission {
+            padding: 80px 0;
+            background: var(--darker-gray);
+            text-align: center;
+        }
+        
+        .mission-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .mission-content h2 {
+            color: var(--white);
+            margin-bottom: 24px;
+            font-size: 2rem;
+        }
+        
+        .mission-content p {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
-        /* Clean highlight boxes in About section – no fake links */
+        /* About Section Styles */
+        .about {
+            padding: 100px 0;
+            background: var(--black);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-align: left;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-logo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-gray);
+            transition: all 0.3s ease;
+        }
+
+        .about-logo:hover {
+            transform: scale(1.02);
+            border-color: var(--white);
+        }
+
+        /* Clean highlight boxes in About section */
         .highlight-box {
             display: flex;
             align-items: flex-start;
@@ -501,10 +1079,360 @@ IPFS=QmYourContentID</code></pre>
         .highlight-box:nth-of-type(1) i { color: #00c851; }
         .highlight-box:nth-of-type(2) i { color: #ffbb33; }
         .highlight-box:nth-of-type(3) i { color: #3385d6; }
+        
+        /* Why Different Section */
+        .why-different {
+            padding: 100px 0;
+            background: var(--darker-gray);
+        }
 
+        .different-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .different-item {
+            background: var(--card-bg);
+            padding: 30px 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .different-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--white);
+        }
+
+        .different-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .different-item h3 {
+            color: var(--white);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .different-item p {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* TXT Keys Table */
+        .txt-keys-table {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .txt-keys-table h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .keys-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .keys-table th,
+        .keys-table td {
+            padding: 16px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .keys-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .keys-table code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+        }
+
+        .status-active {
+            background: var(--success-color);
+            color: var(--black);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .table-note {
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin-top: 16px;
+        }
+
+        /* Performance Metrics */
+        .performance-metrics {
+            padding: 100px 0;
+            background: var(--black);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            padding: 24px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--white);
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            color: var(--medium-gray);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .metric-desc {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        .performance-note {
+            margin-top: 30px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .performance-note p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Architecture Diagram */
+        .architecture-diagram {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .architecture-diagram h3 {
+            color: var(--white);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .arch-step {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .step-number {
+            background: var(--white);
+            color: var(--black);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .arch-arrow {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: var(--darker-gray);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+            font-size: 2rem;
+        }
+
+        .newsletter-content p {
+            color: var(--medium-gray);
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--medium-gray);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--white);
+        }
+
+        .newsletter-btn {
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-note {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .feature-comparison {
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                align-self: center;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .about-text,
+            .about-image {
+                flex: none;
+                width: 100%;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .about-text p {
+                text-align: center;
+            }
+            
+            .different-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .arch-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metric-value {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -552,6 +1480,40 @@ IPFS=QmYourContentID</code></pre>
                 }
             });
         });
+        
+        // Newsletter form functionality
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const emailInput = this.querySelector('input[type="email"]');
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const email = emailInput.value.trim();
+                
+                if (!email) {
+                    alert('Please enter your email address.');
+                    return;
+                }
+                
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Subscribing...';
+                
+                try {
+                    // Simulate API call - replace with your actual endpoint
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    
+                    alert('🎉 Successfully subscribed! You\'ll receive updates on v2.2.');
+                    newsletterForm.reset();
+                } catch (error) {
+                    alert('Subscription failed. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                }
+            });
+        }
         
         document.body.style.overflowX = 'hidden';
         document.body.classList.add('loaded');
