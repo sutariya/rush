@@ -238,18 +238,21 @@ RUSH gives Handshake owners true independence: TXT-level redirects, IPFS hosting
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Browser Resolves via HNS DoH</h3>
-                            <p>Rush Browser sends DNS-over-HTTPS queries for TXT, NS, and A records through a prioritized list of Handshake resolvers, with timeouts and caching to keep lookups fast and reliable.</p>
-                            <ul class="resolver-list">
-                                <li><span class="resolver-name">ap.hnsdoh.com</span> <span class="resolver-time">(primary)</span></li>
-                                <li><span class="resolver-name">as.hnsdoh.com</span> <span class="resolver-time">(fallback)</span></li>
-                                <li><span class="resolver-name">au.hnsdoh.com</span> <span class="resolver-time">(fallback)</span></li>
-                            </ul>
-                            <p>Results are cached in-browser for 5 minutes to avoid redundant DNS queries.</p>
-                        </div>
-                    </div>
+    <div class="step-number">2</div>
+    <div class="step-content">
+        <h3>Browser Resolves via HNS DoH</h3>
+        <p>Rush Browser sends DNS-over-HTTPS queries for TXT, NS, and A records through a prioritized list of Handshake resolvers, with timeouts and caching to keep lookups fast and reliable.</p>
+        
+        <p class="acknowledgment">Special thanks to <a href="https://nathan.woodburn.au" target="_blank" style="color: inherit; text-decoration: underline;">Nathan Woodburn</a> from Australia for building HNSDoh - without his work, the gateway would not be possible.</p>
+        
+        <ul class="resolver-list">
+            <li><span class="resolver-name">ap.hnsdoh.com</span> <span class="resolver-time">(primary)</span></li>
+            <li><span class="resolver-name">as.hnsdoh.com</span> <span class="resolver-time">(fallback)</span></li>
+            <li><span class="resolver-name">au.hnsdoh.com</span> <span class="resolver-time">(fallback)</span></li>
+        </ul>
+        <p>Results are cached in-browser for 5 minutes to avoid redundant DNS queries.</p>
+    </div>
+</div>
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
