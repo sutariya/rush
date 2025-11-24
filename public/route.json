@@ -1,0 +1,10 @@
+{
+  "resolvers": [
+    "https://ap.hnsdoh.com/dns-query",
+    "https://as.hnsdoh.com/dns-query",
+    "https://au.hnsdoh.com/dns-query",
+    "https://dns.easyhns.com/dns-query",
+    "https://eu.hnsdoh.com/dns-query",
+    "https://na.hnsdoh.com/dns-query"
+  ]
+}
