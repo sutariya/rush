@@ -1583,3 +1583,24 @@ body.loaded * {
     font-weight: 500;
     margin: 16px 0;
 }
+
+        /* Full width about text */
+        .about-text.full-width {
+            width: 100%;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-text.full-width h2,
+        .about-text.full-width h3,
+        .about-text.full-width p {
+            text-align: center;
+        }
+        
+        .about-text.full-width .highlight-box {
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
